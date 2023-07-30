@@ -1,9 +1,18 @@
 import { create } from "zustand";
-
-const useStore = create((set,get)=>(
+interface storeProps {
+cart:any[];
+product:any;
+modal:boolean;
+setModal:Function;
+setProduct:Function;
+AddProductToCart:Function;
+ResetCart:Function;
+RemoveItemFromCart:Function;
+}
+const useStore = create<storeProps>((set)=>(
     {
     cart:[],
-    product:{},    
+    product:{},     
     modal:false,
     setModal:()=>set((state)=>({...state,modal:!state.modal})),
     setProduct:(newProduct)=>set((state)=>{
@@ -12,14 +21,14 @@ const useStore = create((set,get)=>(
             product:newProduct
         }
     }),
-    AddProductToCard:(newProduct)=>set((state)=>{
+    AddProductToCart:(newProduct)=>set((state)=>{
         const newCart =[...state.cart,newProduct]
         return {
             ...state,
             cart:newCart
         }
     }),
-    ResetCard:()=>set((state)=>{
+    ResetCart:()=>set((state)=>{
         return {
             ...state,
             cart:[]
@@ -34,3 +43,5 @@ const useStore = create((set,get)=>(
     })
 }
 ))
+
+export default useStore
