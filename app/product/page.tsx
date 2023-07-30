@@ -4,8 +4,8 @@ import useStore from '../../zustand/store'
 export const ProductPage = () => {
     const product = useStore(state=>state.product)
   return (
-    <div>
-
-    </div>
+    <main>
+      
+    </main>
   )
 }

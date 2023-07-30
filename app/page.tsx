@@ -13,7 +13,7 @@ const GetStripePrices=async ()=>{
       created:{gt:1687321829},
       expand: ['data.product']
     });
-  console.log(prices.data.length,"here🤠") 
+  console.log(prices.data,"") 
   if (prices.data.length===0){
     return null
   } 
