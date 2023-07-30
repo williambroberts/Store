@@ -2,16 +2,18 @@
 //import { GetStripePrices } from "@/Functions/ClientFunctions";
 import Stripe from "stripe";
 
-export const GetStripePrices=async ()=>{
+const GetStripePrices=async ()=>{
   
   const stripe = new Stripe(process.env.STRIPE_SECRET ?? '',{
       apiVersion:'2022-11-15'
   })
   const prices = await stripe.prices.list({
       // limit: 3,
-      created:1690701377921
+      active:true,
+      created:{gt:1687321829},
+      expand: ['data.product']
     });
-  console.log(prices.data,"here") 
+  console.log(prices.data.length,"here🤠") 
   if (prices.data.length===0){
     return null
   } 
