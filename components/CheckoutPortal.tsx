@@ -10,35 +10,39 @@ const CheckoutPortal = () => {
     const {setModal,cart,total}=useStore()
   const router = useRouter()
     const handleCheckout = async ()=>{
-      const url = '/api/checkout'
+      const origin = window.location.origin
+      const url = `${origin}/api/checkout`
       if (cart.length===0){return};
       const line_items = cart.map((item)=>{
         return {
           price:item.id,
-          quantity:item.quantity,
+          quantity:item.quantity
         }
         
       })
+      console.log(line_items,"🥩")
       const options = {
-        method:'POST',
+        method: 'POST',
         headers: {
-          'Content-Type':'application/json'
+            'Content-type': 'application/json'
         },
         body:JSON.stringify({line_items})
 
       }
-      let res = null
-      try {
-         res = await fetch(url,options)
+      
+     
+        fetch(url,options).then((res)=>res.json())
+         .then((data)=>console.log(data,"data"))
+         .catch((err)=>console.log(err))
+
          //let data = await res.json()
          //console.log(res,"re",data,"da",data.session)
       //router.push(data.session.url)
-      }catch(err){
-        console.log(err)
-      }
+     
       
       
     }
+    
   return ReactDom.createPortal(
     <main className='checkout__portal'>
       <button
