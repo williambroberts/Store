@@ -1,7 +1,8 @@
 
 //import { GetStripePrices } from "@/Functions/ClientFunctions";
 import Stripe from "stripe";
-
+import { ProductCard } from "../components/ProductCard";
+import {v4} from "uuid"
 const GetStripePrices=async ()=>{
   
   const stripe = new Stripe(process.env.STRIPE_SECRET ?? '',{
@@ -24,8 +25,19 @@ const GetStripePrices=async ()=>{
 export default async function Home() {
  const prices = await GetStripePrices()
   return (
-    <main className={``}>
-     hi
+    <main className={`flex flex-col items-center 
+    `}>
+      <div className={`grid max-w-[768px] w-full
+      grid-cols-1 
+      sm:grid-cols-2`}>
+
+     
+     {prices?.map((price)=>{
+      return (
+        <ProductCard props={price} key={v4()}/>
+      )
+     })}
+      </div>
     </main>
   )
 }

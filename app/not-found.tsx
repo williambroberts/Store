@@ -10,7 +10,7 @@ const Custom404 = () => {
        
     },[])
   return (
-    <div>404 Response</div>
+    <main>404 Response</main>
   )
 }
 export default Custom404

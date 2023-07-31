@@ -1,46 +1,103 @@
 import { create } from "zustand";
 interface storeProps {
 cart:any[];
-product:any;
+priceObject:any;
 modal:boolean;
 setModal:Function;
-setProduct:Function;
+setPriceObject:Function;
 AddProductToCart:Function;
 ResetCart:Function;
 RemoveItemFromCart:Function;
+count:number;
+ReduceItemQuantityByOne:Function;
+total:number;
 }
 const useStore = create<storeProps>((set)=>(
     {
     cart:[],
-    product:{},     
+    count:0,
+    total:0,
+    priceObject:{},     
     modal:false,
     setModal:()=>set((state)=>({...state,modal:!state.modal})),
-    setProduct:(newProduct)=>set((state)=>{
+    setPriceObject:(newProduct)=>set((state)=>{
         return {
             ...state,
-            product:newProduct
+            priceObject:newProduct
         }
     }),
     AddProductToCart:(newProduct)=>set((state)=>{
-        const newCart =[...state.cart,newProduct]
+        const newCart =[...state.cart]
+        let includes = false
+        for (let i = 0; i<newCart.length; i++){
+            if (newCart[i].id===newProduct.id){
+                newCart[i].quantity++
+                includes=true
+                break
+            }
+        }
+        if (includes===false){
+            newCart.push(newProduct)
+        }
+        let newCount = newCart.reduce((acc,cur)=>{
+            return acc+cur.quantity
+        },0)
+        let newTotal = newCart.reduce((acc,cur)=>{
+            return acc + cur.quantity*cur.unit_amount
+        },0)
         return {
             ...state,
-            cart:newCart
+            cart:newCart,
+            count:newCount,
+            total:newTotal
         }
     }),
     ResetCart:()=>set((state)=>{
         return {
             ...state,
-            cart:[]
+            cart:[],
+            count:0,
+            total:0,
         }
     }),
-    RemoveItemFromCart:()=>set((state)=>{
-        //remove every occurance of the item from the cart
+    RemoveItemFromCart:(id)=>set((state)=>{
+        let newCart = [...state.cart]
+        let index = newCart.findIndex((item)=>item.id===id)
+        if (index!==-1){
+            newCart.splice(index,1)
+        }
+        let newCount = newCart.reduce((acc,cur)=>{
+            return acc+cur.quantity
+        },0)
+        let newTotal = newCart.reduceRight((acc,cur)=>{
+            return acc+ cur.quantity*cur.unit_amount
+        },0)
+
         return {
             ...state,
             cart:newCart,
+            count:newCount,
+            total:newTotal,
+        }
+    }),
+    ReduceItemQuantityByOne: (id)=>set((state)=>{
+        let newCart = [...state.cart]
+        let index = newCart.findIndex((item)=>item.id===id)
+        if (index!==-1){
+            newCart[index].quantity--
+        }
+        let newCount=state.count-1
+        let newTotal = newCart.reduce((acc,cur)=>{
+            return acc+cur.quantity*cur.unit_amount
+        },0)
+        return {
+            ...state,
+            cart:newCart,
+            count:newCount,
+            total:newTotal,
         }
     })
+
 }
 ))
 
