@@ -24,7 +24,7 @@ const CheckoutPortal = () => {
       const options = {
         method: 'POST',
         headers: {
-            'Content-type': 'application/json'
+          "Content-Type": "application/json",
         },
         body:JSON.stringify({line_items})
 
@@ -32,7 +32,11 @@ const CheckoutPortal = () => {
       
      
         fetch(url,options).then((res)=>res.json())
-         .then((data)=>console.log(data,"data"))
+         .then((data)=>{
+          console.log(data)
+          window.location.assign(data)
+         }
+         )
          .catch((err)=>console.log(err))
 
          //let data = await res.json()
@@ -42,7 +46,7 @@ const CheckoutPortal = () => {
       
       
     }
-    
+
   return ReactDom.createPortal(
     <main className='checkout__portal'>
       <button
