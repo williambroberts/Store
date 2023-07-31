@@ -31,14 +31,16 @@ export const Header = () => {
                 <IconMenuLeftAlt/>
             </button>
             <Link 
-            className='sm:flex hidden items-center
+            className='
+            rounded-full px-3 py-1 bg-[var(--bg-3)]
+            sm:flex hidden h-11 items-center
             
             '
             href={"/"}>Home</Link>
             <button 
             className='
-            ml-auto
-            flex flex-row items-center gap-1
+            ml-auto rounded-full bg-[var(--bg-3)]
+            flex flex-row items-center gap-1 px-3 py-1
             h-11'
             onClick={()=>setModal()}>
                 

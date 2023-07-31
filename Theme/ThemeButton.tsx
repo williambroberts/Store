@@ -19,7 +19,8 @@ export const ThemeButton = () => {
     }
   return (
     <button
-    
+    className='w-11 h-11 rounded-md flex items-center
+    px-3'
     onClick={handleClick}>
         {themeRef.current==="light"?
         <IconSun/> :<IconBxsMoon/>

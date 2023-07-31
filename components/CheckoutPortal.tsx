@@ -1,6 +1,6 @@
 
 "use client"
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import ReactDom from 'react-dom'
 import useStore from '../zustand/store'
 import { CheckoutItem } from './CheckoutItem'
@@ -10,10 +10,23 @@ import IconEcommerce_cart_content from './icons/CartEmpty'
 import IconCcStripe from './icons/stripe'
 import IconEcommerce_money from './icons/money'
 import IconBackward from './icons/back'
+import IconEcommerce_cart_remove from './icons/CartX'
 const CheckoutPortal = () => {
-    const {setModal,cart,total,ResetCart}=useStore()
+    const {setModal,cart,total,ResetCart,count}=useStore()
+    const [theme,setTheme]=useState(()=>{
+      let theme=document.body.dataset.theme
+      return theme
+    })
+    
   const router = useRouter()
 
+  useEffect(()=>{
+    if (count===0){
+      setTimeout(()=>{
+        setModal()
+      },3000)
+    }
+  },[count])
   const handleReset = ()=>{
     ResetCart()
   }
@@ -44,21 +57,24 @@ const CheckoutPortal = () => {
          )
          .catch((err)=>console.log(err))
     }
-
+console.log(count)
   return ReactDom.createPortal(
     <main className='checkout__portal'>
-      <div className='flex flex-row items-center justify-center'>
+      <div className='flex flex-row items-center
+      justify-between px-0 py-1 '>
       <button
-      className='header__button'
+      className={`header__button ${theme}`}
       onClick={()=>setModal()}
       ><IconBackward/> back</button>
       <button
-      className='header__button'
+     className={`header__button ${theme}`}
       onClick={()=>handleReset()}
       > <IconEcommerce_cart_content/> reset cart</button>
       </div>
      
-        <div className='flex flex-col items-center gap-1'>
+       {count!==0? <div className='flex flex-col 
+        w-full
+        items-center gap-1'>
         {cart.map((item)=>{
          return (
           <CheckoutItem props={item} key={v4()}/>
@@ -66,10 +82,15 @@ const CheckoutPortal = () => {
 
         })}
 
-        </div>
+        </div>:
         <div className='flex flex-row items-center gap-1'>
+          <IconEcommerce_cart_remove/>
+          No items in checkout</div>
+        }
+        <div className='flex flex-row items-center 
+        gap-1 py-1'>
           <span
-          className='header__button'
+          className={`header__button ${theme}`}
           >
             <IconEcommerce_money/>
             Total: {(0.01*total).toLocaleString('en-GB',{
@@ -77,15 +98,23 @@ const CheckoutPortal = () => {
           })}</span>
          
           <button
-          className='header__button'
+         className={`header__button ${theme}`}
           onClick={handleCheckout}
           ><IconCcStripe/>checkout</button>
            </div>
           <div className='flex flex-col items-center gap-1 w-full'>
-          <span>Demo Card Number:4242424242424242</span>
+          <span
+          className='flex font-light '
+          >Demo Card Number:<pre
+          
+          >4242 4242 4242 4242</pre></span>
           <div>
-          <span>Demo CVC:567</span>
-          <span>Demo DATE:</span>
+          <span
+          className='flex font-light'
+          >Demo CVC:<pre>567</pre></span>
+          <span
+          className='flex font-light'
+          >Demo DATE:<pre>12 / 34</pre></span>
           </div>
           
           </div>

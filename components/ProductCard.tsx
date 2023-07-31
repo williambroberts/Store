@@ -45,19 +45,23 @@ export const ProductCard = ({props}:theProps) => {
 
         />
         <div className='flex flex-nowrap items-center 
-        justify-between w-full
+        justify-between w-full py-2 px-2
         '>
           <h2>{product?.name}</h2>
-          <span>£{unit_amount/100}</span>
+          <span>{(unit_amount/100).toLocaleString('en-GB',{
+            style:"currency",currency:"GBP"
+          })}</span>
         </div>
 
         <div className='flex flex-row  flex-nowrap 
         items-center w-full justify-between'>
           <button
+          className='product__card__button'
           onClick={handleProduct}
           >view</button>
           <button
-          className='flex flex-nowrap items-center gap-1
+
+          className='product__card__button
           '
           onClick={handleAddToCart}
           >

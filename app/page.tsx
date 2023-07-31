@@ -25,7 +25,7 @@ const GetStripePrices=async ()=>{
 export default async function Home() {
  const prices = await GetStripePrices()
   return (
-    <main className={`flex flex-col items-center 
+    <main className={`flex flex-col items-center px-2 py-3
     `}>
       <div className={`grid max-w-[768px] w-full
       grid-cols-1 

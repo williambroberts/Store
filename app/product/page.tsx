@@ -37,7 +37,7 @@ export default function ProductPage(){
         <span>£{unit_amount/100}</span>
         <p>{product?.description}</p>
         <button
-          className='flex flex-nowrap items-center gap-1
+          className='product__card__button
           '
           onClick={handleAddToCart}
           >
