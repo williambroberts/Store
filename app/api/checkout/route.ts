@@ -1,35 +1,37 @@
 import { NextResponse } from "next/server";
-import Stripe from "stripe"
+import Stripe from "stripe";
 
-export async function POST(request,response) {
 
-    // if (request.method !== 'POST') { return res.sendStatus(405) }
-    const body = await request.json()
-    console.log(body,"🥩")
-    if (body.line_items.length === 0) {
-
-        return new Response('Error1', {
-            status: 405,
-        });
-    }
-
+export async function POST(req, res) {
+  if (req.method === 'POST') {
+    const body  = await req.json()
+    const j= JSON.stringify(body.line_items)
+    console.log(body,req.headers.origin,typeof(body.line_items))
+    
+    //return NextResponse.json({body})
     try {
         const stripe = new Stripe(process.env.STRIPE_SECRET ?? '', {
             apiVersion: '2022-11-15'
-        })
-
-        const session = await stripe.checkout.sessions.create({
-            success_url: 'http://localhost:3000/success',
-            cancel_url: 'http://localhost:3000/cancel',
-            line_items: body.line_items,
-            mode: 'payment'
-        })
-        return NextResponse.json({ session })
+          })
+      // Create Checkout Sessions from body params.
+      const session = await stripe.checkout.sessions.create({
+        line_items:[],
+        mode: 'payment',
+        success_url: `http://localhost:3000/success`,
+        cancel_url: `http://localhost:3000/canceled`,
+      });
+      console.log(session,"🤠🥩")
+      res.status(201).json({ session })
+      //res.redirect(303, session.url);
     } catch (err) {
-        console.log('BROKED')
         console.log(err)
-        return new Response('Error2', {
-            status: 405,
-        });
+        return new Response(err,{
+            status:405
+        })
+        //res.status(err.statusCode || 500).json(err.message);
     }
+  } else {
+    res.setHeader('Allow', 'POST');
+    res.status(405).end('Method Not Allowed');
+  }
 }

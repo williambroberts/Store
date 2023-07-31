@@ -22,7 +22,7 @@ const CheckoutPortal = () => {
       const options = {
         method:'POST',
         headers: {
-          'Content-type':'application-json'
+          'Content-Type':'application/json'
         },
         body:JSON.stringify({line_items})
 
@@ -30,8 +30,8 @@ const CheckoutPortal = () => {
       let res = null
       try {
          res = await fetch(url,options)
-         let data = await res.json()
-         console.log(res,data,data.session)
+         //let data = await res.json()
+         //console.log(res,"re",data,"da",data.session)
       //router.push(data.session.url)
       }catch(err){
         console.log(err)
