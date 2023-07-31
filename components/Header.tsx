@@ -48,7 +48,9 @@ export const Header = () => {
                  gap-1 px-3
                 '
                 >{count}</span>
-                <span>£{total/100}.00</span>
+                <span>{(0.01*total).toLocaleString('en-GB',{
+            style:"currency",currency:"GBP"
+          })}</span>
             </button>
             <ThemeButton/> 
             </section>

@@ -15,9 +15,9 @@ export default function RootLayout({ children }) {
       <body
       data-theme="light"
       className={`${inter.className}`}>
-        <Header/>
+        
         {children}
-
+        <Header/>
 
         <div id="portal"></div>
         </body>

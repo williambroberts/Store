@@ -84,7 +84,12 @@ const useStore = create<storeProps>((set)=>(
         let newCart = [...state.cart]
         let index = newCart.findIndex((item)=>item.id===id)
         if (index!==-1){
-            newCart[index].quantity--
+            if(newCart[index].quantity>1){
+                newCart[index].quantity--
+            }else {
+                newCart.splice(index,1)
+            }
+           
         }
         let newCount=state.count-1
         let newTotal = newCart.reduce((acc,cur)=>{

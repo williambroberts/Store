@@ -27,6 +27,8 @@
    --purple2:#c6beee;
    --vertical-header-width:90px;
    --lightblue:#ebf2fd;
+   --bg-blur:rgba(56,57,59,.8);
+   --sepia-filter:filter:sepia(0.9);
    --gradient:linear-gradient(to right, #c6ffdd, #fbd786, #f7797d);
    --gradient2: linear-gradient(to right, #005aa7, #fffde4);
    }
@@ -143,7 +145,7 @@
      box-sizing: border-box;
      transform-style: preserve-3d;
      color: var(--t-1);
-     background-color: var(--bg-1);
+     background-color: transparent;
      /* transition: var(--transition-1); */
    }
    html:focus-within {
@@ -242,8 +244,10 @@ header > nav {
   transition: var(--transition-1);
   transform: translate(-300px,0px);
   background-color: var(--bg-3);
+  z-index: 1;
   color: var(--t-2);
   width:min(90vw,300px);
+  height: 100vh;
   @apply flex flex-col items-start
   text-base
 }
@@ -256,9 +260,9 @@ header > nav {
   position: absolute;
   top: 0px;
   left: 0px;
-  height: 100px;
-  background-color: var(--bg-3);
-  @apply flex 
+  height: 100vh;
+  background-color: var(--bg-blur);
+  @apply flex
 }
 
 main {
@@ -269,16 +273,71 @@ width: 100vw;
 .checkout__portal {
   margin-top: 0px;
   height: 100vh;
+  background-color: var(--bg-1);
+  @apply flex flex-col items-center
+
+  ;
   
 }
 
 .checkout__item {
+  background-color: var(--bg-2);
   transition: var(--transition-1);
   width: min(450px,100%);
   @apply flex flex-row rounded-md
-  items-center flex-nowrap
+  items-center flex-nowrap px-2 py-1
   ;
 }
 .checkout__item:hover {
-  
+  background-color: var(--bg-3);
+}
+
+
+.checkout__button{
+  transition: var(--transition-1);
+  @apply w-11 h-11 inline-flex flex-row items-center
+  px-2 py-1 opacity-60
+  ;
+}
+
+
+.checkout__button:hover {
+  opacity: 1;
+}
+[data-theme="light"]{
+  .header__button {
+    width: min-content;
+    white-space: nowrap;
+    border: 1px solid var(--bg-4);
+    background-color: var(--bg-1);
+    opacity: 0.6;
+    transition: var(--transition-1);
+    @apply flex flex-row px-3 py-2
+    rounded-md gap-1 flex-nowrap
+    font-medium
+    text-base items-center
+    ;
+}
+
+
+}
+[data-theme="dark"]{
+  .header__button{
+    
+    width: min-content;
+    transition: var(--transition-1);
+    opacity: 0.6;
+    white-space: nowrap;
+    border: 1px solid var(--bg-4);
+    background-color: var(--bg-3);
+    @apply flex flex-row px-3 py-2
+    rounded-md gap-1 flex-nowrap 
+    font-medium
+    text-base items-center
+    ;
+  }
+
+}
+.header__button:hover {
+  opacity: 1;
 }

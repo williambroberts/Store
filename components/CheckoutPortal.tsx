@@ -6,9 +6,17 @@ import useStore from '../zustand/store'
 import { CheckoutItem } from './CheckoutItem'
 import {v4} from "uuid"
 import { useRouter } from 'next/navigation'
+import IconEcommerce_cart_content from './icons/CartEmpty'
+import IconCcStripe from './icons/stripe'
+import IconEcommerce_money from './icons/money'
+import IconBackward from './icons/back'
 const CheckoutPortal = () => {
-    const {setModal,cart,total}=useStore()
+    const {setModal,cart,total,ResetCart}=useStore()
   const router = useRouter()
+
+  const handleReset = ()=>{
+    ResetCart()
+  }
     const handleCheckout = async ()=>{
       const origin = window.location.origin
       const url = `${origin}/api/checkout`
@@ -20,7 +28,6 @@ const CheckoutPortal = () => {
         }
         
       })
-      console.log(line_items,"🥩")
       const options = {
         method: 'POST',
         headers: {
@@ -29,8 +36,6 @@ const CheckoutPortal = () => {
         body:JSON.stringify({line_items})
 
       }
-      
-     
         fetch(url,options).then((res)=>res.json())
          .then((data)=>{
           console.log(data)
@@ -38,21 +43,21 @@ const CheckoutPortal = () => {
          }
          )
          .catch((err)=>console.log(err))
-
-         //let data = await res.json()
-         //console.log(res,"re",data,"da",data.session)
-      //router.push(data.session.url)
-     
-      
-      
     }
 
   return ReactDom.createPortal(
     <main className='checkout__portal'>
+      <div className='flex flex-row items-center justify-center'>
       <button
+      className='header__button'
       onClick={()=>setModal()}
-      >back</button>
-      <button>reset cart</button>
+      ><IconBackward/> back</button>
+      <button
+      className='header__button'
+      onClick={()=>handleReset()}
+      > <IconEcommerce_cart_content/> reset cart</button>
+      </div>
+     
         <div className='flex flex-col items-center gap-1'>
         {cart.map((item)=>{
          return (
@@ -62,11 +67,29 @@ const CheckoutPortal = () => {
         })}
 
         </div>
-
-          <span>Total: £{total}</span>
+        <div className='flex flex-row items-center gap-1'>
+          <span
+          className='header__button'
+          >
+            <IconEcommerce_money/>
+            Total: {(0.01*total).toLocaleString('en-GB',{
+            style:"currency",currency:"GBP"
+          })}</span>
+         
           <button
+          className='header__button'
           onClick={handleCheckout}
-          >checkout</button>
+          ><IconCcStripe/>checkout</button>
+           </div>
+          <div className='flex flex-col items-center gap-1 w-full'>
+          <span>Demo Card Number:4242424242424242</span>
+          <div>
+          <span>Demo CVC:567</span>
+          <span>Demo DATE:</span>
+          </div>
+          
+          </div>
+          
     </main>,document.getElementById('portal')
   )
 }
