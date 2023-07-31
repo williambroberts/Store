@@ -308,9 +308,14 @@ width: 100vw;
 }
 .product__card__button {
   background-color: var(--bg-3);
+  opacity: 0.7;
+  transition: var(--transition-1);
   @apply flex flex-nowrap items-center gap-1
   px-4 py-2 rounded-full text-sm
   ;
+}
+.product__card__button:hover{
+  opacity: 1;
 }
 
   .header__button.light{
@@ -356,7 +361,20 @@ width: 100vw;
 .checkout__portal>div:nth-of-type(1){
   width: min(100%,650px);
 }
-
+.hamburger__button{
+  width: 100%;
+  white-space: nowrap;
+  border: 1px solid var(--bg-3);
+  background-color: var(--bg-3);
+  opacity: 0.6;
+  filter: sepia(0.1);
+  transition: var(--transition-1);
+  @apply flex flex-row px-3 py-2
+  rounded-md gap-1 flex-nowrap
+  font-medium shadow
+  text-base items-center
+  ;
+}
 .hamburger__button.dark {
   width: 100%;
   transition: var(--transition-1);

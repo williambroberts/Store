@@ -1,17 +1,35 @@
 "use client"
 import Link from 'next/link'
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import useStore from '../zustand/store'
 import CheckoutPortal from './CheckoutPortal'
 import IconEcommerce_cart_content from './icons/CartEmpty'
 import IconMenuLeftAlt from './icons/hamburgert'
 import { Hamburger } from './Hamburger'
 import { ThemeButton } from '../Theme/ThemeButton'
+import IconEcommerce_cart_check from './icons/CartAdd'
+import IconEcommerce_cart_remove from './icons/CartX'
 
 export const Header = () => {
     const {modal,setModal,count,total}=useStore()
+    const prevCount= useRef(0)
+  const [cartIcon,setCartIcon]=useState(<IconEcommerce_cart_content/>)
     const [isHamburger,setIsHamburger]=useState<boolean>(false)
     console.log(count)
+    useEffect(()=>{
+      setTimeout(()=>{
+        setCartIcon(<IconEcommerce_cart_content/>)
+      },3000)
+    },[cartIcon])
+    useEffect(()=>{
+      if (prevCount.current<count){
+        setCartIcon(<IconEcommerce_cart_check/>)
+      }else if (prevCount.current>count){
+        setCartIcon(<IconEcommerce_cart_remove/>)
+      }
+      prevCount.current=count
+      
+    },[count])
   return (
     <header
     
@@ -40,17 +58,21 @@ export const Header = () => {
             <button 
             className='
             ml-auto rounded-full bg-[var(--bg-3)]
-            flex flex-row items-center gap-1 px-3 py-1
+            flex flex-row 
+            hover:opacity-100 opacity-70
+            items-center gap-1 px-3 py-1
             h-11'
             onClick={()=>setModal()}>
                 
-                <IconEcommerce_cart_content/>
+                {cartIcon}
                 <span
                 className='flex flex-row items-center
-                 gap-1 px-3
+                 gap-1 px-3 
                 '
                 >{count}</span>
-                <span>{(0.01*total).toLocaleString('en-GB',{
+                <span
+                className=''
+                >{(0.01*total).toLocaleString('en-GB',{
             style:"currency",currency:"GBP"
           })}</span>
             </button>
@@ -63,7 +85,9 @@ export const Header = () => {
             onClick={()=>setIsHamburger(false)}
             ></div>
              
-            <Hamburger open={isHamburger}/>
+            <Hamburger
+            setOpen={setIsHamburger}
+            open={isHamburger}/>
         </nav>
     </header>
   )

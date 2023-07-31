@@ -6,8 +6,9 @@ import IconShop from './icons/shop';
 import IconHome_door from './icons/home';
 interface theProps {
     open:boolean;
+    setOpen:Function;
 }
-export const Hamburger = ({open}:theProps) => {
+export const Hamburger = ({setOpen,open}:theProps) => {
   const [theme,setTheme]=useState(()=>{
     return document.body.dataset.theme
   })
@@ -46,6 +47,7 @@ export const Hamburger = ({open}:theProps) => {
                 {/* <ThemeButton/> */}
               </div>
                 <Link 
+                onClick={()=>setOpen(false)}
                 className={`hamburger__button ${theme}`}
                 href={"/"}> <IconHome_door/> Home</Link>
                 

@@ -31,7 +31,7 @@ export default function ProductPage(){
       
       aspect-video skeleton ${loaded? "loaded":""}`}>
       <Image 
-      alt={product?.name} src={product?.images[0]}
+      alt="product image" src={product?.images[0]}
     fill priority
     onLoad={()=>setLoaded(false)}
       />
