@@ -1,6 +1,6 @@
 "use client"
 import Image from 'next/image'
-import React from 'react'
+import React, { useState } from 'react'
 import useStore from '../zustand/store';
 import { useRouter } from 'next/navigation';
 import IconHandbag from './icons/bag';
@@ -10,8 +10,9 @@ interface theProps {
 export const ProductCard = ({props}:theProps) => {
   const router = useRouter()
   const {id,product,unit_amount}=props
+  const [loaded,setLoaded]=useState(false)
   const {setPriceObject,AddProductToCart}=useStore()
-  //console.log(product.images[0])
+  console.log(props)
   const handleProduct=()=>{
       //🥩set this to the product and push to its route
       console.log(props)
@@ -25,25 +26,37 @@ export const ProductCard = ({props}:theProps) => {
       id:id,
       unit_amount:unit_amount,
       name:product.name,
-      image:product.images[0]
+      image:product.images[0],
+      blur:product.metadata.blur
     }
     //console.log(newItem,"added to cart")
     AddProductToCart(newItem)
   }
   return (
-    <div className='w-full flex flex-col items-start
-    h-80
-    '>
+    <div
+    
+    className='w-full flex flex-col items-start
+    h-96 
+    '>  <div
+    style={{backgroundImage:`url(${product.metadata.blur})`}}
+    className={`skeleton ${loaded?"loaded":""}`}
+    >
+
+    
         <Image
-        className='w-full'
-        style={{objectFit:"cover",objectPosition:"center"}}
+        onClick={handleProduct}
+        className={`w-full`}
+        style={{objectFit:"cover",objectPosition:"center",
+        
+      
+      }}
         src={product.images[0]}
         alt={product.name}
         priority
-        width={100}
-        height={100}
-
+       fill
+        onLoad={()=>setLoaded(true)}
         />
+        </div>
         <div className='flex flex-nowrap items-center 
         justify-between w-full py-2 px-2
         '>

@@ -356,3 +356,74 @@ width: 100vw;
 .checkout__portal>div:nth-of-type(1){
   width: min(100%,650px);
 }
+
+.hamburger__button.dark {
+  width: 100%;
+  transition: var(--transition-1);
+  opacity: 0.6;
+  white-space: nowrap;
+  border: 1px solid var(--bg-4);
+  background-color: var(--bg-3);
+  @apply flex flex-row px-3 py-2
+  rounded-md gap-1 flex-nowrap 
+  font-medium
+  text-base items-center
+  ;
+}
+
+
+.hamburger__button.light {
+  width: 100%;
+  white-space: nowrap;
+  border: 1px solid var(--bg-3);
+  background-color: var(--bg-3);
+  opacity: 0.6;
+  filter: sepia(0.1);
+  transition: var(--transition-1);
+  @apply flex flex-row px-3 py-2
+  rounded-md gap-1 flex-nowrap
+  font-medium shadow
+  text-base items-center
+  ;
+}
+
+.hamburger__button:hover {
+  opacity: 1;
+}
+
+.skeleton {
+  /* filter: blur(8px); */
+  @apply flex-auto
+  rounded-md overflow-hidden
+  ;
+  width: 100%;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.skeleton > img {
+  transition: var(--transition-1);
+  opacity: 0;
+}
+.skeleton::before {
+  content: "";
+ position: absolute;
+  inset:0px;
+  opacity: 0;
+  animation: pulse 2.5s ease-in-out 0s infinite forwards ;
+  background-color: var(--t-1);
+}
+@keyframes pulse {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.skeleton.loaded >img {
+  opacity: 1;
+}
