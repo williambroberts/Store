@@ -26,7 +26,7 @@ const GetStripePrices=async ()=>{
 export default async function Home() {
  const prices = await GetStripePrices()
   return (
-    <main className={`flex flex-col items-center px-2 py-3
+    <main className={`flex flex-col items-center px-2 py-3 gap-12
     `}>
       <div className="flex flex-col items-start justify-start
       gap-2 max-w-[768px] w-full py-3
@@ -34,7 +34,7 @@ export default async function Home() {
       <h2
       className="
       text-3xl font-bold 
-      flex flex-row items-center gap-2 py-4"
+      flex flex-row items-center gap-2 py-8"
       >Welcome to SideStore <IconShop/></h2>
       <p className="font-light">
       Welcome to our shop, where creativity finds its canvas, and memories come to life through stunning imagery.  
