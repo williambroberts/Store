@@ -18,8 +18,9 @@ export default function RootLayout({ children }) {
       className={`${inter.className}`}>
         
         {children}
+        <Footer/>
         <Header/>
-          <Footer/>
+         
         <div id="portal"></div>
         </body>
     </html>

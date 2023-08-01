@@ -16,7 +16,14 @@ export const Header = () => {
     const prevCount= useRef(0)
   const [cartIcon,setCartIcon]=useState(<IconEcommerce_cart_content/>)
     const [isHamburger,setIsHamburger]=useState<boolean>(false)
-    
+    useEffect(()=>{
+      let htmlTag = document.querySelector("html")
+      if (isHamburger){
+        htmlTag.style.overflowY="hidden"
+      }else if (!isHamburger){
+        htmlTag.style.overflowY="scroll"
+      }
+    },[isHamburger])
     
     useEffect(()=>{
       if (prevCount.current<count){
@@ -69,7 +76,9 @@ export const Header = () => {
             h-11'
             onClick={()=>setModal()}>
                 
-                {cartIcon}
+                <span
+                className='text-xl font-semibold'
+                >{cartIcon}</span>
                 <span
                 className='flex flex-row items-center
                  gap-1 px-3 

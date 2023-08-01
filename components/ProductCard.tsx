@@ -36,7 +36,7 @@ export const ProductCard = ({props}:theProps) => {
     <div
     
     className='w-full flex flex-col items-start
-    h-96 
+    
     '>  <div
     style={{backgroundImage:`url(${product.metadata.blur})`}}
     className={`skeleton ${loaded?"loaded":""}`}
@@ -67,7 +67,9 @@ export const ProductCard = ({props}:theProps) => {
         </div>
 
         <div className='flex flex-row  flex-nowrap 
-        items-center w-full justify-between'>
+        items-center w-full justify-between
+        mt-auto
+        '>
           <button
           className='product__card__button'
           onClick={handleProduct}

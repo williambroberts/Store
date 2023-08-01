@@ -4,6 +4,7 @@ import Stripe from "stripe";
 import { ProductCard } from "../components/ProductCard";
 import {v4} from "uuid"
 import IconShop from "../components/icons/shop";
+import Animator from "../components/Animator";
 const GetStripePrices=async ()=>{
   
   const stripe = new Stripe(process.env.STRIPE_SECRET ?? '',{
@@ -28,17 +29,22 @@ export default async function Home() {
   return (
     <main className={`flex flex-col items-center px-2 py-3 gap-12
     `}>
+
+      
       <div className="flex flex-col items-start justify-start
       gap-2 max-w-[768px] w-full py-3
       ">
+      <Animator delay={0}>
+
       <h2
       className="
       text-3xl font-bold 
       flex flex-row items-center gap-2 py-8"
-      >Welcome to SideStore <IconShop/></h2>
+      >SideStore <IconShop/></h2>
       <p className="font-light">
       Welcome to our shop, where creativity finds its canvas, and memories come to life through stunning imagery.  
       </p>
+      </Animator>
       </div>
      
       <div className={`grid max-w-[768px] w-full
@@ -46,9 +52,12 @@ export default async function Home() {
       sm:grid-cols-2`}>
 
      
-     {prices?.map((price)=>{
+     {prices?.map((price,index)=>{
       return (
-        <ProductCard props={price} key={v4()}/>
+        <Animator key={v4()} delay={index*0.13}>
+ <ProductCard props={price} />
+        </Animator>
+       
       )
      })}
       </div>

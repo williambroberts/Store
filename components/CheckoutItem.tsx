@@ -66,6 +66,7 @@ export const CheckoutItem = ({props}:theProps) => {
        checkout__skeleton ${loaded? "loaded":""}
        `}>
        <Image 
+       priority
        onLoad={()=>setLoaded(true)}
        className='w-24 h-24 rounded-md '
        src={props.image} alt={props.name}
