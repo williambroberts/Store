@@ -9,6 +9,7 @@ import { Hamburger } from './Hamburger'
 import { ThemeButton } from '../Theme/ThemeButton'
 import IconEcommerce_cart_check from './icons/CartAdd'
 import IconEcommerce_cart_remove from './icons/CartX'
+import IconShop from './icons/shop'
 
 export const Header = () => {
     const {modal,setModal,count,total}=useStore()
@@ -44,16 +45,24 @@ export const Header = () => {
             >
                 <IconMenuLeftAlt/>
             </button>
+            <Link href={"/"}
+            className='flex flex-row items-center
+            gap-1 px-3'
+            >
+              <IconShop/> <span
+              className='sm:flex hidden'
+              >SideStore</span>
+            </Link>
             <Link 
             className='
-            rounded-full px-3 py-1 bg-[var(--bg-3)]
+            rounded-full px-3 py-1 bg-[var(--bg-2)]
             sm:flex hidden h-11 items-center
             
             '
             href={"/"}>Home</Link>
             <button 
             className='
-            ml-auto rounded-full bg-[var(--bg-3)]
+            ml-auto rounded-full bg-[var(--bg-2)]
             flex flex-row 
             hover:opacity-100 opacity-70
             items-center gap-1 px-3 py-1

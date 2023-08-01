@@ -3,6 +3,9 @@ import React, { useState } from 'react'
 import useStore from '../../zustand/store'
 import Image from 'next/image'
 import IconHandbag from '../../components/icons/bag'
+import IconTag from '../../components/icons/tag'
+import IconBackward from '../../components/icons/back'
+import Link from 'next/link'
 
 export default function ProductPage(){
     const {priceObject,AddProductToCart} = useStore()
@@ -23,11 +26,11 @@ export default function ProductPage(){
       AddProductToCart(newItem)
     }
     return (  
-    <main className='max-w-[768px] px-2
+    <main className='max-w-[768px] px-2 py-8
     flex flex-col items-start justify-start'>
       <div 
        style={{backgroundImage:`url(${product?.metadata.blur})`}}
-      className={`w-full flex 
+      className={`w-full flex
       
       aspect-video skeleton ${loaded? "loaded":""}`}>
       <Image 
@@ -37,10 +40,22 @@ export default function ProductPage(){
     onLoad={()=>setLoaded(true)}
       />
       </div>
-      <div className='flex flex-col items-start '>
+      <div className='
+      py-4
+      flex flex-col items-start '>
         
-        <span>{product?.name}</span>
-        <span>£{unit_amount/100}</span>
+        <span
+        className='font-medium '
+        >{product?.name}</span>
+        <span
+        className='flex flex-row items-center flex-nowrap
+        gap-1 
+        '
+        ><IconTag/>{(unit_amount/100).toLocaleString('en-GB',{
+          currency:"GBP",style:"currency"
+        })} <i
+        className='text-sm font-light opacity-70'
+        >per unit</i></span>
         <p>{product?.description}</p>
         <button
           className='product__card__button
@@ -50,6 +65,13 @@ export default function ProductPage(){
             <IconHandbag/>
             Add to cart</button>
       </div> 
+
+      <Link href="/"
+      className='flex flex-row items-center
+      gap-1 px-2 underline
+      '>
+        <IconBackward/>
+        See all</Link>
     </main>
   )
 }

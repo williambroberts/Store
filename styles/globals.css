@@ -225,7 +225,7 @@ text-base
 
 
 header > nav {
-  background-color: var(--bg-2);
+  background-color: var(--bg-3);
   width: 100vw;
   height: 60px;
   @apply flex flex-row items-center
@@ -269,6 +269,7 @@ main {
   background-color: transparent;
 margin-top: 60px;
 width: 100vw;
+flex:1 1 auto
 }
 
 .checkout__portal {
@@ -309,9 +310,9 @@ width: 100vw;
 .product__card__button {
   background-color: var(--bg-3);
   opacity: 0.7;
-  transition: var(--transition-1);
+  /* transition: var(--transition-1); */
   @apply flex flex-nowrap items-center gap-1
-  px-4 py-2 rounded-full text-sm
+  px-4 py-2 rounded-full text-sm my-2
   ;
 }
 .product__card__button:hover{
@@ -455,4 +456,9 @@ width: 100vw;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+}
+
+footer {
+  background-color: var(--bg-3);
+  @apply w-[100vw] h-[60px] px-3
 }
