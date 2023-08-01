@@ -452,7 +452,7 @@ flex:1 1 auto
 }
 
 .checkout__skeleton{
-  @apply  w-24 h-24 ml-auto
+  @apply  w-24 h-24 ml-auto relative
   rounded-md overflow-hidden
   flex flex-row items-center;
 

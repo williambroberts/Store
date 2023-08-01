@@ -1,4 +1,6 @@
 import { create } from "zustand";
+import { persist, createJSONStorage } from 'zustand/middleware'
+
 interface storeProps {
 cart:any[];
 priceObject:any;
@@ -12,7 +14,9 @@ count:number;
 ReduceItemQuantityByOne:Function;
 total:number;
 }
-const useStore = create<storeProps>((set)=>(
+const useStore = create<storeProps>()(
+    persist(
+    (set,get)=>(
     {
     cart:[],
     count:0,
@@ -104,6 +108,12 @@ const useStore = create<storeProps>((set)=>(
     })
 
 }
-))
+    ),
+    {
+        name: 'cart-storage', // name of the item in the storage (must be unique)
+        storage: createJSONStorage(() => localStorage), // (optional) by default, 'localStorage' is used
+      }
+    )
+    )
 
 export default useStore

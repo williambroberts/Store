@@ -8,8 +8,21 @@ import IconBackward from '../../components/icons/back'
 import Link from 'next/link'
 import IconCross1 from '../../components/icons/cross'
 import IconSearch from '../../components/icons/zoom'
+import Stripe from 'stripe'
+import { useSearchParams } from 'next/navigation'
 
-export default function ProductPage(){
+async function getStripePrice (){
+  const stripe = new Stripe(process.env.STRIPE_SECRET ?? '',{
+    apiVersion:'2022-11-15'
+})
+const searchParams = useSearchParams()
+const price_id = searchParams.get("id")
+  const price = await stripe.prices.retrieve(
+    price_id
+  );
+}
+
+export default  function ProductPage(){
     const {priceObject,AddProductToCart} = useStore()
     const {id,unit_amount,product}=priceObject
    const [loaded,setLoaded]=useState(false)
