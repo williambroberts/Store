@@ -449,6 +449,7 @@ flex:1 1 auto
 }
 .skeleton.loaded >img,.checkout__skeleton.loaded >img {
   opacity: 1;
+  cursor: pointer;
 }
 
 .checkout__skeleton{
