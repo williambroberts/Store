@@ -6,13 +6,30 @@ import IconHandbag from '../../components/icons/bag'
 import IconTag from '../../components/icons/tag'
 import IconBackward from '../../components/icons/back'
 import Link from 'next/link'
+import IconCross1 from '../../components/icons/cross'
+import IconSearch from '../../components/icons/zoom'
 
 export default function ProductPage(){
     const {priceObject,AddProductToCart} = useStore()
     const {id,unit_amount,product}=priceObject
    const [loaded,setLoaded]=useState(false)
-
-
+const [open,setOpen]=useState<boolean>(false)
+  const toggleFullScreen = ()=>{
+    setOpen((prev)=>!prev)
+    console.log(document?.fullscreenElement)
+    try {
+      let img = document.querySelector('[data-id="image"]')
+      if (document.fullscreenElement){
+        document.exitFullscreen()
+      }else{
+        img.requestFullscreen()
+      }
+    }catch(err){
+      console.log(err)
+    }
+   
+   
+  }
     const handleAddToCart = ()=>{
       const newItem = {
         quantity:1,
@@ -28,17 +45,26 @@ export default function ProductPage(){
     return (  
     <main className='max-w-[768px] px-2 py-8
     flex flex-col items-start justify-start'>
-      <div 
+      <div
+      data-id="image" 
+      onClick={toggleFullScreen}
        style={{backgroundImage:`url(${product?.metadata.blur})`}}
       className={`w-full flex
       
       aspect-video skeleton ${loaded? "loaded":""}`}>
       <Image 
+      
       style={{cursor:"auto"}}
       alt="product image" src={product?.images[0]}
     fill priority
     onLoad={()=>setLoaded(true)}
       />
+      <button
+     
+      className='exit__fullScreen'
+      >
+      {open? <IconCross1/>:<IconSearch/>} 
+      </button>
       </div>
       <div className='
       py-4

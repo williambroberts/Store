@@ -12,10 +12,10 @@ export const ProductCard = ({props}:theProps) => {
   const {id,product,unit_amount}=props
   const [loaded,setLoaded]=useState(false)
   const {setPriceObject,AddProductToCart}=useStore()
-  console.log(props)
+  //console.log(props)
   const handleProduct=()=>{
       //🥩set this to the product and push to its route
-      console.log(props)
+      //console.log(props)
       setPriceObject(props)
       //window.location.assign("/product")
       router.push(`/product?id=${props.id}`)

@@ -34,7 +34,7 @@ export default async function Home() {
       <div className="flex flex-col items-start justify-start
       gap-2 max-w-[768px] w-full py-3
       ">
-      <Animator delay={0}>
+     
 
       <h2
       className="
@@ -44,7 +44,7 @@ export default async function Home() {
       <p className="font-light">
       Welcome to our shop, where creativity finds its canvas, and memories come to life through stunning imagery.  
       </p>
-      </Animator>
+     
       </div>
      
       <div className={`grid max-w-[768px] w-full
