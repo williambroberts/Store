@@ -40,7 +40,7 @@ export default async function Home() {
       className="
       text-3xl font-bold 
       flex flex-row items-center gap-2 py-8"
-      >SideStore <IconShop/></h2>
+      >SideStore</h2>
       <p className="font-light">
       Welcome to our shop, where creativity finds its canvas, and memories come to life through stunning imagery.  
       </p>

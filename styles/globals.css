@@ -427,6 +427,11 @@ flex:1 1 auto
   transition: var(--transition-1);
   opacity: 0;
   cursor: pointer;
+  object-fit: cover;
+  object-position: center;
+}
+.skeleton > img {
+  position: absolute;
 }
 .skeleton::before,.checkout__skeleton::before {
   content: "";

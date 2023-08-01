@@ -10,7 +10,8 @@ interface theProps {
 }
 export const Hamburger = ({setOpen,open}:theProps) => {
   const [theme,setTheme]=useState(()=>{
-    return document?.body.dataset.theme
+    
+    return "light"
   })
   const handleTheme  = (e)=>{
      let theme = document?.body.dataset.theme

@@ -17,7 +17,9 @@ export default  function ProductPage(){
     const {priceObject,AddProductToCart} = useStore()
     const {id,unit_amount,product}=priceObject
    const [loaded,setLoaded]=useState(false)
+   const [zoom,setZoom]=useState<boolean>(false)
 const [open,setOpen]=useState<boolean>(false)
+const [position,setPosition]=useState<any>({x:0,y:0})
   const toggleFullScreen = ()=>{
     setOpen((prev)=>!prev)
     console.log(document?.fullscreenElement)
@@ -46,6 +48,9 @@ const [open,setOpen]=useState<boolean>(false)
       console.log(newItem,"added to cart")
       AddProductToCart(newItem)
     }
+    const handleMouseOver =(e)=>{
+      console.log(e.clientX,e.clientY)
+    }
     return (  
     <main className='max-w-[768px] px-2 py-8
     flex flex-col items-start justify-start'>
@@ -56,9 +61,12 @@ const [open,setOpen]=useState<boolean>(false)
       className={`w-full flex
       
       aspect-video skeleton ${loaded? "loaded":""}`}>
-      <Image 
+      <Image
+      // style={{transform:zoom?`scale(2)`:""}}
+      onMouseEnter={()=>setZoom(true)} 
+      onMouseLeave={()=>setZoom(false)}
+      onMouseMove={handleMouseOver}
       
-      style={{cursor:"auto"}}
       alt="product image" src={product?.images[0]}
     fill priority
     onLoad={()=>setLoaded(true)}
