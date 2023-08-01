@@ -419,11 +419,12 @@ width: 100vw;
   background-size: cover;
   background-repeat: no-repeat;
 }
-.skeleton > img {
+.skeleton > img, .checkout__skeleton>img {
   transition: var(--transition-1);
   opacity: 0;
+  cursor: pointer;
 }
-.skeleton::before {
+.skeleton::before,.checkout__skeleton::before {
   content: "";
  position: absolute;
   inset:0px;
@@ -442,6 +443,16 @@ width: 100vw;
     opacity: 0;
   }
 }
-.skeleton.loaded >img {
+.skeleton.loaded >img,.checkout__skeleton.loaded >img {
   opacity: 1;
+}
+
+.checkout__skeleton{
+  @apply  w-24 h-24 ml-auto
+  rounded-md overflow-hidden
+  flex flex-row items-center;
+
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }

@@ -13,10 +13,10 @@ export const Hamburger = ({setOpen,open}:theProps) => {
     return document.body.dataset.theme
   })
   const handleTheme  = (e)=>{
-    
-    if (document.body.dataset.theme==="light"){
+     let theme = document?.body.dataset.theme
+    if (theme&&theme==="light"){
       setTheme("dark")
-    }else if(document.body.dataset.theme==="dark"){
+    }else if(theme&&theme==="dark"){
       setTheme("light")
     }
   }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import IconDeleteBin6Line from './icons/delete';
 import useStore from '../zustand/store';
 import Image from 'next/image';
@@ -9,6 +9,7 @@ interface theProps {
 }
 export const CheckoutItem = ({props}:theProps) => {
     //console.log(props)
+    const [loaded,setLoaded]=useState<boolean>(false)
     const {AddProductToCart,RemoveItemFromCart,ReduceItemQuantityByOne}=useStore()
     const handleAddToCart = ()=>{
         
@@ -59,11 +60,19 @@ export const CheckoutItem = ({props}:theProps) => {
         ><IconDeleteBin6Line/></button>
        </div>
        </div>
+       <div
+      style={{backgroundImage:`url(${props.blur})`}}
+       className={` 
+       checkout__skeleton ${loaded? "loaded":""}
+       `}>
        <Image 
-       className='w-24 h-24 rounded-md ml-auto'
+       onLoad={()=>setLoaded(true)}
+       className='w-24 h-24 rounded-md '
        src={props.image} alt={props.name}
        width={100} height={100}
        />
+       </div>
+      
     </div>
   )
 }

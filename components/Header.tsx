@@ -15,12 +15,8 @@ export const Header = () => {
     const prevCount= useRef(0)
   const [cartIcon,setCartIcon]=useState(<IconEcommerce_cart_content/>)
     const [isHamburger,setIsHamburger]=useState<boolean>(false)
-    console.log(count)
-    useEffect(()=>{
-      setTimeout(()=>{
-        setCartIcon(<IconEcommerce_cart_content/>)
-      },3000)
-    },[cartIcon])
+    
+    
     useEffect(()=>{
       if (prevCount.current<count){
         setCartIcon(<IconEcommerce_cart_check/>)

@@ -28,7 +28,7 @@ export default async function Home() {
     <main className={`flex flex-col items-center px-2 py-3
     `}>
       <div className={`grid max-w-[768px] w-full
-      grid-cols-1 
+      grid-cols-1 gap-2
       sm:grid-cols-2`}>
 
      

@@ -31,9 +31,10 @@ export default function ProductPage(){
       
       aspect-video skeleton ${loaded? "loaded":""}`}>
       <Image 
+      style={{cursor:"auto"}}
       alt="product image" src={product?.images[0]}
     fill priority
-    onLoad={()=>setLoaded(false)}
+    onLoad={()=>setLoaded(true)}
       />
       </div>
       <div className='flex flex-col items-start '>
