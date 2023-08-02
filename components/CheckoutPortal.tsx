@@ -46,6 +46,7 @@ const CheckoutPortal = () => {
          .then((data)=>{
           
           window.location.assign(data)
+          setModal()
          }
          )
          .catch((err)=>console.log(err))

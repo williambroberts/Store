@@ -55,7 +55,9 @@ export const CheckoutItem = ({props,index}:theProps) => {
        <span>{props.name}</span>
        <div className='flex flex-nowrap items-center'>
         <span
-        className='flex flex-row items-center flex-nowrap'
+        className='flex flex-row items-center
+        
+        gap-1 flex-nowrap'
         ><IconTag/>{(props.unit_amount/100).toLocaleString('en-GB',{
         style:"currency",currency:"GBP"
        })}</span>

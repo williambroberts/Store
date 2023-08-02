@@ -51,7 +51,7 @@ export default async function Home() {
       </p>
      
       </div>
-     
+      
       <div className={`grid max-w-[768px] w-full
       grid-cols-1 gap-2
       sm:grid-cols-2`}>
@@ -65,6 +65,38 @@ export default async function Home() {
        
       )
      })}
+      </div>
+
+     <div
+     className="w-full flex flex-col
+     py-3
+     ">
+
+    
+      <h3 className="flex 
+      py-3
+      font-medium text-xl">
+About our products
+</h3>
+<span></span>
+      <div className="flex flex-row items-center
+      gap-2
+      ">
+       
+        
+        <span
+        className="about__icon"
+        >Flexible</span>
+         <span
+        className="about__icon"
+        >Professional</span>
+         <span
+        className="about__icon"
+        >Fast Delivery</span>
+         <span
+        className="about__icon"
+        >Transparent</span>
+      </div>
       </div>
     </main>
   )

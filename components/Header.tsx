@@ -11,6 +11,7 @@ import IconEcommerce_cart_check from './icons/CartAdd'
 import IconEcommerce_cart_remove from './icons/CartX'
 import IconShop from './icons/shop'
 import { Counter } from './Counter'
+import { PersistReset } from './PersistReset'
 
 export const Header = () => {
     const {modal,setModal,count,total}=useStore()
@@ -47,7 +48,7 @@ export const Header = () => {
     >
         <nav>
            <section className='header__section'>
-
+            <PersistReset/>
            
          
           
