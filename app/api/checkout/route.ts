@@ -1,6 +1,6 @@
 import Stripe from "stripe";
 import { NextResponse, NextRequest } from "next/server";
-
+import 'dotenv/config'
 export async function POST (request) {
     const body = await request.json()
    
