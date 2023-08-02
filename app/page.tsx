@@ -15,8 +15,13 @@ const GetStripePrices=async ()=>{
       active:true,
       created:{gt:1687321829},
       expand: ['data.product']
+      
+        
+      
+    },{
+      apiKey:process.env.NEXT_PUBLIC_STRIPE_SECRET
     });
-  //console.log(prices.data,"") 
+  console.log(prices.data[0],"") 
   if (prices.data.length===0){
     return null
   } 

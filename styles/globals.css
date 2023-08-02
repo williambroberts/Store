@@ -469,7 +469,7 @@ flex:1 1 auto
 
 footer {
   background-color: var(--bg-2);
-  @apply w-[100vw] h-[60px] px-3
+  @apply w-[100vw] h-[60px] px-4
 }
 
 .Animator {
