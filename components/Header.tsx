@@ -18,6 +18,7 @@ export const Header = () => {
   const [cartIcon,setCartIcon]=useState(<IconEcommerce_cart_content/>)
     const [isHamburger,setIsHamburger]=useState<boolean>(false)
     const [active,setActive]=useState<boolean>(false)
+    const [viewCheckout,setViewCheckout]=useState<boolean>(false)
     useEffect(()=>{
       let htmlTag = document.querySelector("html")
       if (isHamburger){
@@ -74,9 +75,11 @@ export const Header = () => {
             '
             href={"/"}>Home</Link>
             <button 
+            onMouseEnter={()=>setViewCheckout(true)}
+            onMouseLeave={()=>setViewCheckout(false)}
             className='
             ml-auto rounded-full bg-[var(--bg-2)]
-            flex flex-row 
+            flex flex-row relative
             hover:opacity-100 opacity-70
             items-center gap-1 px-3 py-1
             h-11'
@@ -92,6 +95,15 @@ export const Header = () => {
                 >{(0.01*total).toLocaleString('en-GB',{
             style:"currency",currency:"GBP"
           })}</span>
+          <div
+          style={{display:viewCheckout?"":"none"}}
+          data-theme="dark"
+          className='flex flex-row w-full absolute py-2 rounded-full
+          bg-[var(--bg-1)] opacity-100 left-0
+          justify-center
+          '>
+            checkout
+          </div>
             </button>
             <ThemeButton/> 
             </section>
