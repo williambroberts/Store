@@ -9,12 +9,15 @@ import Link from 'next/link'
 import IconCross1 from '../../components/icons/cross'
 import IconSearch from '../../components/icons/zoom'
 import Animator from '../../components/Animator'
+import { FetchMore } from '../../components/FetchMore'
+import { useSearchParams } from 'next/navigation'
 
 
 
 
 
 export default  function ProductPage(){
+  const searchParams = useSearchParams()
     const {priceObject,AddProductToCart} = useStore()
     const {id,unit_amount,product}=priceObject
    const [loaded,setLoaded]=useState(false)
@@ -122,6 +125,7 @@ const [position,setPosition]=useState<any>({x:0,y:0})
         <IconBackward/>
         See all</Link>
         </Animator>
+        <FetchMore searchParams={searchParams}/>
     </main>
   )
 }
