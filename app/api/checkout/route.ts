@@ -3,7 +3,7 @@ import { NextResponse, NextRequest } from "next/server";
 
 export async function POST (request) {
     const body = await request.json()
-    console.log(body,"🥩")
+   
 
     const stripe = new Stripe(process.env.NEXT_PUBLIC_STRIPE_SECRET,{
         apiVersion:"2022-11-15"
