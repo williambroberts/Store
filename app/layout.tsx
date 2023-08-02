@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
   title: 'sideStore',
-  description: 'An online photograph store with premium photos',
+  description: 'An online photograph store with premium photos  ',
 }
 
 export default function RootLayout({ children }) {
