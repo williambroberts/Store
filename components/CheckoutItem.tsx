@@ -4,12 +4,17 @@ import useStore from '../zustand/store';
 import Image from 'next/image';
 import IconBxCartAdd from './icons/miniCartPlus';
 import IconCartMinus from './icons/miniCartMinus';
+import IconTag from './icons/tag';
+import IconSearch from './icons/zoom';
+import IconCross1 from './icons/cross';
 interface theProps {
     props:any;
+    index:number;
 }
-export const CheckoutItem = ({props}:theProps) => {
+export const CheckoutItem = ({props,index}:theProps) => {
     //console.log(props)
     const [loaded,setLoaded]=useState<boolean>(false)
+    const [open,setOpen]=useState<boolean>(false)
     const {AddProductToCart,RemoveItemFromCart,ReduceItemQuantityByOne}=useStore()
     const handleAddToCart = ()=>{
         
@@ -22,6 +27,23 @@ export const CheckoutItem = ({props}:theProps) => {
     const handleDelete =()=>{
         RemoveItemFromCart(props.id)
     }
+
+    const toggleFullScreen = ()=>{
+      setOpen((prev)=>!prev)
+      
+      try {
+        let img = document.querySelector(`[data-id="image${index}"]`)
+        if (document.fullscreenElement){
+          document.exitFullscreen()
+        }else{
+          img.requestFullscreen()
+        }
+      }catch(err){
+        console.log(err)
+      }
+     
+     
+    }
   return (
     <div className='checkout__item'>
 
@@ -32,7 +54,9 @@ export const CheckoutItem = ({props}:theProps) => {
        
        <span>{props.name}</span>
        <div className='flex flex-nowrap items-center'>
-        <span>Per unit:{(props.unit_amount/100).toLocaleString('en-GB',{
+        <span
+        className='flex flex-row items-center flex-nowrap'
+        ><IconTag/>{(props.unit_amount/100).toLocaleString('en-GB',{
         style:"currency",currency:"GBP"
        })}</span>
         <span
@@ -61,6 +85,8 @@ export const CheckoutItem = ({props}:theProps) => {
        </div>
        </div>
        <div
+       data-id={`image${index}`}
+       onClick={toggleFullScreen}
       style={{backgroundImage:`url(${props.blur})`}}
        className={` 
        checkout__skeleton ${loaded? "loaded":""}
@@ -68,10 +94,16 @@ export const CheckoutItem = ({props}:theProps) => {
        <Image 
        priority
        onLoad={()=>setLoaded(true)}
-       className='w-24 h-24 rounded-md '
+       className='w-32 h-32 rounded-md '
        src={props.image} alt={props.name}
-       width={100} height={100}
+       fill
        />
+       <button
+     
+     className='exit__fullScreen__mini'
+     >
+     {open? <IconCross1/>:<IconSearch/>} 
+     </button>
        </div>
       
     </div>

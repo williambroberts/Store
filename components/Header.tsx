@@ -10,12 +10,14 @@ import { ThemeButton } from '../Theme/ThemeButton'
 import IconEcommerce_cart_check from './icons/CartAdd'
 import IconEcommerce_cart_remove from './icons/CartX'
 import IconShop from './icons/shop'
+import { Counter } from './Counter'
 
 export const Header = () => {
     const {modal,setModal,count,total}=useStore()
     const prevCount= useRef(0)
   const [cartIcon,setCartIcon]=useState(<IconEcommerce_cart_content/>)
     const [isHamburger,setIsHamburger]=useState<boolean>(false)
+    const [active,setActive]=useState<boolean>(false)
     useEffect(()=>{
       let htmlTag = document.querySelector("html")
       if (isHamburger){
@@ -30,10 +32,14 @@ export const Header = () => {
         setCartIcon(<IconEcommerce_cart_check/>)
       }else if (prevCount.current>count){
         setCartIcon(<IconEcommerce_cart_remove/>)
+      }else if (count===0){
+        setCartIcon(<IconEcommerce_cart_content/>)
       }
       prevCount.current=count
       
     },[count])
+
+   
   return (
     <header
     
@@ -79,11 +85,8 @@ export const Header = () => {
                 <span
                 className='text-xl font-semibold'
                 >{cartIcon}</span>
-                <span
-                className='flex flex-row items-center
-                 gap-1 px-3 
-                '
-                >{count}</span>
+                
+                <Counter/>
                 <span
                 className=''
                 >{(0.01*total).toLocaleString('en-GB',{

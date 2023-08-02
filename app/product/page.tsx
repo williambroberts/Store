@@ -22,7 +22,7 @@ const [open,setOpen]=useState<boolean>(false)
 const [position,setPosition]=useState<any>({x:0,y:0})
   const toggleFullScreen = ()=>{
     setOpen((prev)=>!prev)
-    console.log(document?.fullscreenElement)
+    //console.log(document?.fullscreenElement)
     try {
       let img = document.querySelector('[data-id="image"]')
       if (document.fullscreenElement){
@@ -45,11 +45,11 @@ const [position,setPosition]=useState<any>({x:0,y:0})
         image:product.images[0],
         blur:product.metadata.blur
       }
-      console.log(newItem,"added to cart")
+      //console.log(newItem,"added to cart")
       AddProductToCart(newItem)
     }
     const handleMouseOver =(e)=>{
-      console.log(e.clientX,e.clientY)
+      //console.log(e.clientX,e.clientY)
     }
     return (  
     <main className='max-w-[768px] px-2 py-8

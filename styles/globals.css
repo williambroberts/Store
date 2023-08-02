@@ -458,15 +458,17 @@ flex:1 1 auto
 }
 
 .checkout__skeleton{
-  @apply  w-24 h-24 ml-auto relative
-  rounded-md overflow-hidden
+  @apply  w-28 h-28 ml-auto relative
+  rounded-md overflow-hidden cursor-pointer
   flex flex-row items-center;
 
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
 }
+.checkout__skeleton>div {
 
+}
 footer {
   background-color: var(--bg-2);
   @apply w-[100vw] h-[60px] px-4
@@ -509,4 +511,18 @@ footer {
   
   rounded-full;
 
+}
+
+.exit__fullScreen__mini {
+  position: absolute;
+  background-color: var(--bg-1);
+  color: var(--t-1);
+  top: 0px;
+  right: 0px;
+  font-size:24px;
+  @apply px-3  flex items-center justify-center
+  my-1 mx-1 shadow
+  py-2 h-8 w-8 
+  
+  rounded-full;
 }

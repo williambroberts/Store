@@ -18,16 +18,9 @@ const CheckoutPortal = () => {
       return theme
     })
     
-  const router = useRouter()
-
-  useEffect(()=>{
-    if (count===0){
-      setTimeout(()=>{
-        setModal()
-      },3000)
-    }
-  },[count])
+ 
   const handleReset = ()=>{
+    setModal()
     ResetCart()
   }
     const handleCheckout = async ()=>{
@@ -51,13 +44,12 @@ const CheckoutPortal = () => {
       }
         fetch(url,options).then((res)=>res.json())
          .then((data)=>{
-          console.log(data)
+          
           window.location.assign(data)
          }
          )
          .catch((err)=>console.log(err))
     }
-console.log(count)
   return ReactDom.createPortal(
     <main className='checkout__portal'>
       <div className='flex flex-row items-center
@@ -75,9 +67,11 @@ console.log(count)
        {count!==0? <div className='flex flex-col 
         w-full
         items-center gap-1'>
-        {cart.map((item)=>{
+        {cart.map((item,index)=>{
          return (
-          <CheckoutItem props={item} key={v4()}/>
+          <CheckoutItem props={item} 
+          index={index}
+          key={v4()}/>
          )
 
         })}
