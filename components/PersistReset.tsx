@@ -8,12 +8,12 @@ export const PersistReset = () => {
 
 
     function PersistZustandReset() {
-        let DAY = 86400000
+        let MINUTE = 60000
         let time = new Date().getTime()
         let lastEntryTime = localStorage.getItem("zustand-timeout")
         if (lastEntryTime!==null){
             let Difference = time-JSON.parse(lastEntryTime)
-            if (Difference>DAY){
+            if (Difference>MINUTE){
                 ResetCart()
             }
         }

@@ -5,10 +5,10 @@ import { ProductCard } from "../components/ProductCard";
 import {v4} from "uuid"
 import IconShop from "../components/icons/shop";
 import Animator from "../components/Animator";
-import 'dotenv/config'
+const dotenv =require("dotenv")
 const GetStripePrices=async ()=>{
   
-  const stripe = new Stripe('pk_test_51NJVyhDt6cUT5aTWzdE7ZGjmMfUnNsndqEIqICcXmhw5BSg8avvtugpbVxOeq5P0R0HGO6GI2Fjo0cXUIMzS9cBk00BaFizCBQ' ?? '',{
+  const stripe = new Stripe('sk_test_51NJVyhDt6cUT5aTWuiobYjYMmg9RhpFdJ4b8MhPMuOs2ahr3T41eoR4Q6h8x9506DDpLyK2U89gyHiQ2cxCY5FzT00CFlik7Hj' ?? '',{
       apiVersion:'2022-11-15'
   })
   const prices = await stripe.prices.list({
@@ -20,7 +20,7 @@ const GetStripePrices=async ()=>{
         
       
     },{
-      apiKey:'pk_test_51NJVyhDt6cUT5aTWzdE7ZGjmMfUnNsndqEIqICcXmhw5BSg8avvtugpbVxOeq5P0R0HGO6GI2Fjo0cXUIMzS9cBk00BaFizCBQ'
+      apiKey:'sk_test_51NJVyhDt6cUT5aTWuiobYjYMmg9RhpFdJ4b8MhPMuOs2ahr3T41eoR4Q6h8x9506DDpLyK2U89gyHiQ2cxCY5FzT00CFlik7Hj'
     });
   console.log(prices.data[0],"") 
   if (prices.data.length===0){
@@ -70,7 +70,7 @@ export default async function Home() {
 
      <div
      className="w-full flex flex-col
-     py-3
+     py-3 max-w-[768px]
      ">
 
     
