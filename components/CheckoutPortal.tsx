@@ -34,12 +34,13 @@ const CheckoutPortal = () => {
         }
         
       })
+      
       const options = {
         method: 'POST',
         headers: {
           "Content-Type": "application/json",
         },
-        body:JSON.stringify({line_items})
+        body:JSON.stringify({line_items,origin:origin})
 
       }
         fetch(url,options).then((res)=>res.json())

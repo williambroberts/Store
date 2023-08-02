@@ -8,6 +8,7 @@ import IconBackward from '../../components/icons/back'
 import Link from 'next/link'
 import IconCross1 from '../../components/icons/cross'
 import IconSearch from '../../components/icons/zoom'
+import Animator from '../../components/Animator'
 
 
 
@@ -54,6 +55,9 @@ const [position,setPosition]=useState<any>({x:0,y:0})
     return (  
     <main className='max-w-[768px] px-2 py-8
     flex flex-col items-start justify-start'>
+     <Animator delay={0}>
+
+    
       <div
       data-id="image" 
       onClick={toggleFullScreen}
@@ -78,6 +82,9 @@ const [position,setPosition]=useState<any>({x:0,y:0})
       {open? <IconCross1/>:<IconSearch/>} 
       </button>
       </div>
+      </Animator>
+      <Animator delay={0.13}>
+     
       <div className='
       py-4
       flex flex-col items-start '>
@@ -103,13 +110,18 @@ const [position,setPosition]=useState<any>({x:0,y:0})
             <IconHandbag/>
             Add to cart</button>
       </div> 
+   
+      </Animator>
+      <Animator delay={0.26}>
 
+      
       <Link href="/"
       className='flex flex-row items-center
       gap-1 px-2 underline
       '>
         <IconBackward/>
         See all</Link>
+        </Animator>
     </main>
   )
 }
