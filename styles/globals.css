@@ -533,5 +533,5 @@ footer {
   color: var(--t-2);
   @apply flex px-2 py-1 text-sm
   justify-center items-center
-  rounded-md opacity-70
+  rounded-md opacity-70 flex-nowrap
 }

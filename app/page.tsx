@@ -81,7 +81,7 @@ About our products
 </h3>
 <span></span>
       <div className="flex flex-row items-center
-      gap-2
+      gap-2 flex-wrap
       ">
        
         

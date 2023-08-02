@@ -30,14 +30,17 @@ export const Header = () => {
     },[isHamburger])
     
     useEffect(()=>{
-      if (prevCount.current<count){
-        setCartIcon(<IconEcommerce_cart_check/>)
-      }else if (prevCount.current>count){
-        setCartIcon(<IconEcommerce_cart_remove/>)
-      }else if (count===0){
-        setCartIcon(<IconEcommerce_cart_content/>)
+      return ()=>{
+        if (prevCount.current<count){
+          setCartIcon(<IconEcommerce_cart_check/>)
+        }else if (prevCount.current>count){
+          setCartIcon(<IconEcommerce_cart_remove/>)
+        }else if (count===0){
+          setCartIcon(<IconEcommerce_cart_content/>)
+        }
+        prevCount.current=count
       }
-      prevCount.current=count
+      
       
     },[count])
 

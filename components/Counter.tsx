@@ -7,7 +7,7 @@ export const Counter = () => {
     const [active,setActive]=useState<boolean>(false)
     useEffect(()=>{
         let timeout=null
-        setActive(true)
+        if(count>0){setActive(true)}
         timeout = setTimeout(()=>{
           setActive(false)
         },1000)
