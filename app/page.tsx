@@ -7,7 +7,7 @@ import IconShop from "../components/icons/shop";
 import Animator from "../components/Animator";
 const GetStripePrices=async ()=>{
   
-  const stripe = new Stripe(process.env.STRIPE_SECRET ?? '',{
+  const stripe = new Stripe(process.env.NEXT_PUBLIC_STRIPE_SECRET ?? '',{
       apiVersion:'2022-11-15'
   })
   const prices = await stripe.prices.list({
