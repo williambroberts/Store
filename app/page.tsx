@@ -8,7 +8,7 @@ import Animator from "../components/Animator";
 import 'dotenv/config'
 const GetStripePrices=async ()=>{
   
-  const stripe = new Stripe('sk_test_51NJVyhDt6cUT5aTWuiobYjYMmg9RhpFdJ4b8MhPMuOs2ahr3T41eoR4Q6h8x9506DDpLyK2U89gyHiQ2cxCY5FzT00CFlik7Hj' ?? '',{
+  const stripe = new Stripe('pk_test_51NJVyhDt6cUT5aTWzdE7ZGjmMfUnNsndqEIqICcXmhw5BSg8avvtugpbVxOeq5P0R0HGO6GI2Fjo0cXUIMzS9cBk00BaFizCBQ' ?? '',{
       apiVersion:'2022-11-15'
   })
   const prices = await stripe.prices.list({
@@ -20,7 +20,7 @@ const GetStripePrices=async ()=>{
         
       
     },{
-      apiKey:'sk_test_51NJVyhDt6cUT5aTWuiobYjYMmg9RhpFdJ4b8MhPMuOs2ahr3T41eoR4Q6h8x9506DDpLyK2U89gyHiQ2cxCY5FzT00CFlik7Hj'
+      apiKey:'pk_test_51NJVyhDt6cUT5aTWzdE7ZGjmMfUnNsndqEIqICcXmhw5BSg8avvtugpbVxOeq5P0R0HGO6GI2Fjo0cXUIMzS9cBk00BaFizCBQ'
     });
   console.log(prices.data[0],"") 
   if (prices.data.length===0){

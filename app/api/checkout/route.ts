@@ -5,7 +5,7 @@ export async function POST (request) {
     const body = await request.json()
    
 
-    const stripe = new Stripe(process.env.NEXT_PUBLIC_STRIPE_SECRET,{
+    const stripe = new Stripe('pk_test_51NJVyhDt6cUT5aTWzdE7ZGjmMfUnNsndqEIqICcXmhw5BSg8avvtugpbVxOeq5P0R0HGO6GI2Fjo0cXUIMzS9cBk00BaFizCBQ',{
         apiVersion:"2022-11-15"
     });
     
