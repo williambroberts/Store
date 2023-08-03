@@ -567,7 +567,7 @@ footer {
   ;
 }
 .search__form {
- 
+  background-color: var(--bg-3);
   width: min(100vw,480px);
   @apply flex flex-row items-center
   flex-nowrap gap-2 px-5 py-3 
@@ -575,7 +575,7 @@ footer {
 }
 
 .search__portal input {
-  background-color: var(--bg-3);
+  
   outline: none;
   border: none;
   @apply rounded-md 

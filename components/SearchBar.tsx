@@ -48,8 +48,12 @@ export const SearchBar = ({prices,isOpen,setOpen}:theProps) => {
             onChange={(e)=>setQuery((e.target.value).toLowerCase())}
             />
         </form>
-        <div className='flex flex-col items-center
-        gap-2 w-full overflow-y-auto transition-all duration-200
+        <div 
+        style={{height:`${query===""?"0px":"auto"}`}}
+        className='flex flex-col items-center
+        gap-2 w-full overflow-y-auto transition-all 
+        ease-in-out flex-auto
+        duration-200
         '>
             {query===""? null:
             prices.filter((price)=>price.product.name.toLowerCase().includes(query))

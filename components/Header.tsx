@@ -18,7 +18,7 @@ export const Header = () => {
     const prevCount= useRef(0)
   const [cartIcon,setCartIcon]=useState(<IconEcommerce_cart_content/>)
     const [isHamburger,setIsHamburger]=useState<boolean>(false)
-    const [active,setActive]=useState<boolean>(false)
+    
     const [viewCheckout,setViewCheckout]=useState<boolean>(false)
     useEffect(()=>{
       let htmlTag = document.querySelector("html")
