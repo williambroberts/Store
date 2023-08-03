@@ -54,7 +54,7 @@ export default async function Home() {
       </p>
      
       </div>
-        <SearchBarButton prices={prices}/>
+        
       <div className={`grid max-w-[768px] w-full
       grid-cols-1 gap-2
       sm:grid-cols-2`}>

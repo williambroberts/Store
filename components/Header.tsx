@@ -12,6 +12,7 @@ import IconEcommerce_cart_remove from './icons/CartX'
 import IconShop from './icons/shop'
 import { Counter } from './Counter'
 import { PersistReset } from './PersistReset'
+import { SearchBarButton } from './SearchBarButton'
 
 export const Header = () => {
     const {modal,setModal,count,total}=useStore()
@@ -64,8 +65,10 @@ export const Header = () => {
                 <IconMenuLeftAlt/>
             </button>
             <Link href={"/"}
-            className='flex flex-row items-center
-            gap-1 px-3'
+            className=' flex-row items-center
+            gap-1 px-4
+            hidden sm:flex
+            '
             >
               <IconShop/> <span
               className='sm:flex hidden'
@@ -78,6 +81,7 @@ export const Header = () => {
             
             '
             href={"/"}>Home</Link>
+            <SearchBarButton/>
             <button 
             onMouseEnter={()=>setViewCheckout(true)}
             onMouseLeave={()=>setViewCheckout(false)}

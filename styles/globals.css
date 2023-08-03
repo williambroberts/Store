@@ -261,6 +261,7 @@ header > nav {
   position: absolute;
   top: 0px;
   left: 0px;
+  cursor: pointer;
   height: 100vh;
   background-color: var(--bg-blur);
   @apply flex
