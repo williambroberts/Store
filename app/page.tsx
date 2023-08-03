@@ -5,6 +5,8 @@ import { ProductCard } from "../components/ProductCard";
 import {v4} from "uuid"
 import IconShop from "../components/icons/shop";
 import Animator from "../components/Animator";
+import { SearchBar } from "../components/SearchBar";
+import { SearchBarButton } from "../components/SearchBarButton";
 const dotenv =require("dotenv")
 const GetStripePrices=async ()=>{
   
@@ -22,7 +24,7 @@ const GetStripePrices=async ()=>{
     },{
       apiKey:'sk_test_51NJVyhDt6cUT5aTWuiobYjYMmg9RhpFdJ4b8MhPMuOs2ahr3T41eoR4Q6h8x9506DDpLyK2U89gyHiQ2cxCY5FzT00CFlik7Hj'
     });
-  console.log(prices.data[0],"") 
+  //console.log(prices.data[0],"") 
   if (prices.data.length===0){
     return null
   } 
@@ -52,7 +54,7 @@ export default async function Home() {
       </p>
      
       </div>
-      
+        <SearchBarButton prices={prices}/>
       <div className={`grid max-w-[768px] w-full
       grid-cols-1 gap-2
       sm:grid-cols-2`}>
