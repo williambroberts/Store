@@ -1,72 +1,67 @@
 "use client"
-import React, { createContext, useContext, useState } from 'react'
-interface ThemeContextValues {
-    theme:string;
+import React, { createContext,useContext,useState } from 'react'
+
+interface ReactThemeContextValues {
+    theme:"light"|"dark";
     setTheme:Function;
-    // getInitialTheme:()=>"light"|"dark"|string;
     updateTheme:Function;
-    getInitialTheme:Function;
 }
+const ReactThemeContext = createContext<ReactThemeContextValues|undefined>(undefined)
 
 function getInitialTheme(){
-    
-    try {
-        let doc = window.document
-       
-      const persistedThemePreference =  localStorage.getItem("color-theme")
-      const hasPersistedThemePreference = typeof(persistedThemePreference)==="string"
-      if (hasPersistedThemePreference){
-           
-          return persistedThemePreference
-      }
-      const mql = window.matchMedia('(prefers-color-scheme:dark)')
-      const hasMediaQueryPrefence = typeof(mql.matches)==="boolean"
-      if (hasMediaQueryPrefence){
-            let theme = mql.matches? 'dark':'light'
-            
-          return theme
-      }
-    }catch (err){
-      console.log(err)
+  console.log("🧧🧧🧧🧧")
+  try {
+    const persistedThemePreference =  localStorage.getItem("color-theme")
+    const hasPersistedThemePreference = typeof(persistedThemePreference)==="string"
+    if (hasPersistedThemePreference){
+        // let CC:HTMLElement = document.querySelector('[data-id="CC"]')
+        // CC.dataset.theme=persistedThemePreference
+        return persistedThemePreference
     }
-    
-     
-  
-      return "light"
+    const mql = window.matchMedia('(prefers-color-scheme:dark)')
+    const hasMediaQueryPrefence = typeof(mql.matches)==="boolean"
+    if (hasMediaQueryPrefence){
+        return mql.matches? 'dark':'light'
+    }
+  }catch (err){
+    console.log(err)
   }
-const ThemeContext = createContext<ThemeContextValues|null>(null)
-const ThemeProvider = ({children}:{children:React.ReactNode}) => {
-    const [theme,setTheme]=useState<"light"|"dark"|string>(getInitialTheme)
+  
+   
 
-    const updateTheme = ()=>{
-        if (theme==="light"){
-            setTheme("dark")
-            window.localStorage.setItem("color-theme","dark")
-        }else if (theme==="dark"){
-            setTheme("light")
-            window.localStorage.setItem("color-theme","light")
-        }
-        
-       
-      }
-    const ThemeValues = {
-        getInitialTheme:getInitialTheme,
-        theme:theme,setTheme:setTheme,
-        updateTheme:updateTheme,
-    }
+    return "light"
+}
+
+const ReactThemeProvider = ({children}:{children:React.ReactNode}) => {
+  const [theme,setTheme]=useState<any>(()=>{
+    let PT = localStorage.getItem("color-theme")
+    if (PT) return PT
+    return "light"
+  })
+  
+  const updateTheme = (value)=>{
+    
+    setTheme(value)
+    window.localStorage.setItem("color-theme",value)
+  }
+  
+  const ThemeValues={
+    updateTheme:updateTheme,
+    theme:theme,setTheme:setTheme,
+  }
     return (
-    <ThemeContext.Provider value={ThemeValues}>
-        {children}
-    </ThemeContext.Provider>
+   <ReactThemeContext.Provider value={ThemeValues}>
+    {children}
+    </ReactThemeContext.Provider>
   )
 }
 
-export default ThemeProvider
+export default ReactThemeProvider
 
-export function useTheme(){
-    const TC = useContext(ThemeContext)
-    if (!TC){
-        throw new Error("You must use the context inside its provider")
+export function useReactTheme(): ReactThemeContextValues {
+    const RTC = useContext(ReactThemeContext)
+    if(!RTC){
+        throw new Error("useBlogs must be used inside BlogsProvider")
     }
-    return TC
+    return RTC;
 }

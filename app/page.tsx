@@ -1,12 +1,11 @@
+// "use client"
 
-//import { GetStripePrices } from "@/Functions/ClientFunctions";
 import Stripe from "stripe";
 import { ProductCard } from "../components/ProductCard";
 import {v4} from "uuid"
-import IconShop from "../components/icons/shop";
+
 import Animator from "../components/Animator";
-import { SearchBar } from "../components/SearchBar";
-import { SearchBarButton } from "../components/SearchBarButton";
+
 const dotenv =require("dotenv")
 const GetStripePrices=async ()=>{
   
@@ -43,15 +42,21 @@ export default async function Home() {
       gap-2 max-w-[768px] w-full py-3
       ">
      
+      <Animator delay={0.05}>
 
+      
       <h2
       className="
       text-3xl font-bold 
       flex flex-row items-center gap-2 py-8"
       >SideStore</h2>
+      </Animator>
+      
+      <Animator delay={0.1}>
       <p className="font-light">
       Welcome to our shop, where creativity finds its canvas, and memories come to life through stunning imagery.  
       </p>
+      </Animator>
      
       </div>
         
@@ -62,7 +67,7 @@ export default async function Home() {
      
      {prices?.map((price,index)=>{
       return (
-        <Animator key={v4()} delay={index*0.13}>
+        <Animator key={v4()} delay={(index+2)*0.13}>
  <ProductCard props={price} />
         </Animator>
        

@@ -5,13 +5,13 @@ import IconShop from './icons/shop2';
 import IconHome_door from './icons/home';
 import IconInfoSquare from './icons/about';
 import { usePathname } from 'next/navigation';
-import { useTheme } from '../Theme/ThemeContext';
+import { useReactTheme } from '../Theme/ThemeContext';
 interface theProps {
     open:boolean;
     setOpen:Function;
 }
 export const Hamburger = ({setOpen,open}:theProps) => {
-  const {theme}=useTheme()
+  const {theme}=useReactTheme()
   const pathname = usePathname()
   const selectedStyles = {
     opacity:"1",
@@ -50,7 +50,7 @@ export const Hamburger = ({setOpen,open}:theProps) => {
                    style={{opacity:pathname==="/about"?"1":""}}
                 onClick={()=>setOpen(false)}
                 className={`hamburger__button ${theme}`}
-                href={"/"}> <IconInfoSquare/> About</Link>
+                href={"/about"}> <IconInfoSquare/> About</Link>
                 
         </nav>
     </div>

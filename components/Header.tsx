@@ -6,9 +6,8 @@ import CheckoutPortal from './CheckoutPortal'
 import IconEcommerce_cart_content from './icons/CartEmpty'
 import IconMenuLeftAlt from './icons/hamburgert'
 import { Hamburger } from './Hamburger'
-import { ThemeButton } from '../Theme/ThemeButton'
-import IconEcommerce_cart_check from './icons/CartAdd'
-import IconEcommerce_cart_remove from './icons/CartX'
+import ReactColorThemeButton from '../Theme/ThemeButton'
+
 
 import { Counter } from './Counter'
 import { PersistReset } from './PersistReset'
@@ -17,10 +16,11 @@ import IconShop from './icons/shop2'
 import IconHome_door from './icons/home'
 import IconInfoSquare from './icons/about'
 import { usePathname } from 'next/navigation'
-import { useTheme } from '../Theme/ThemeContext'
+import { useReactTheme } from '../Theme/ThemeContext'
+
 
 export const Header = () => {
-  const {theme}=useTheme()
+  const {theme}=useReactTheme()
     const {modal,setModal,count,total}=useStore()
     const prevCount= useRef(0)
   const [cartIcon,setCartIcon]=useState(<IconEcommerce_cart_content/>)
@@ -72,7 +72,7 @@ export const Header = () => {
            
             <Link 
           data-id="header__link"
-          data-theme={theme}
+          
             className={`
            header__link
           
@@ -81,7 +81,7 @@ export const Header = () => {
             href={"/"}><IconHome_door/> Home</Link>
              <Link
              data-id="header__link"
-            data-theme={theme}
+            
             className={`
             header__link
             ${pathname==="/about"?"active":""}
@@ -117,7 +117,7 @@ export const Header = () => {
             Checkout
           </div>
             </button>
-            <ThemeButton/> 
+           <ReactColorThemeButton/>
             </section>
             <div
             style={{display:isHamburger?"":"none"}}

@@ -1,8 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    experimental: {
-        serverActions: false,
-      },
+    // experimental: {
+    //     serverActions: false,
+    //   },
       optimization:{
         mergeDuplicateChunks:true,
       },

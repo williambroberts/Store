@@ -5,16 +5,16 @@ import ReactDom from 'react-dom'
 import useStore from '../zustand/store'
 import { CheckoutItem } from './CheckoutItem'
 import {v4} from "uuid"
-import { useRouter } from 'next/navigation'
+
 import IconEcommerce_cart_content from './icons/CartEmpty'
 import IconCcStripe from './icons/stripe'
 import IconEcommerce_money from './icons/money'
 import IconBackward from './icons/back'
 import IconEcommerce_cart_remove from './icons/CartX'
-import { useTheme } from '../Theme/ThemeContext'
+import { useReactTheme } from '../Theme/ThemeContext'
 const CheckoutPortal = () => {
     const {setModal,cart,total,ResetCart,count}=useStore()
-    const {theme}=useTheme()
+    const {theme}=useReactTheme()
     
  
   const handleReset = ()=>{

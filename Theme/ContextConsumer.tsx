@@ -1,20 +1,22 @@
 "use client"
 import React from 'react'
-import { useTheme } from './ThemeContext'
+import { useReactTheme } from './ThemeContext'
 
-export const ContextConsumer = ({children}:{children:React.ReactNode  }) => {
-    const {theme}=useTheme()
-    console.log(theme)
-  return (
-    <div
-    className='w-[100vw] h-[100vh]
-     flex flex-col 
-     bg-[var(--bg-1)] flex-auto
-     text-[var(--t-1)]
-     items-center'
+
+const ContextConsumer = ({children}:{children:React.ReactNode}) => {
+    const {theme}=useReactTheme()
+    return (
+    <div 
+    data-id="CC"
+    className='flex 
+    items-center bg-[var(--bg-1)]
+    text-[var(--t-1)]
+    flex-col w-full flex-auto'
     data-theme={theme}
     >
         {children}
     </div>
   )
 }
+
+export default ContextConsumer

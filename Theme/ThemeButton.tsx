@@ -1,33 +1,41 @@
 "use client"
-import React, { useLayoutEffect, useRef } from 'react'
+import React from 'react'
+import { useReactTheme } from './ThemeContext' 
 import IconSun from '../components/icons/sun'
 import IconBxsMoon from '../components/moon'
-import useStore from '../zustand/store'
-import { useTheme } from './ThemeContext'
 
-export const ThemeButton = () => {
-    const {theme,updateTheme}=useTheme()
-    
+
+const ReactColorThemeButton = () => {
+    const {updateTheme,theme}=useReactTheme()
+
     const themeChange = ()=>{
-        updateTheme()
-    }
-    useLayoutEffect(()=>{
-        let body=document.body
-        let headerLink=body.querySelectorAll('[data-id="header__link"]')
-        headerLink.forEach((link: HTMLElement)=>{
-            link.dataset.theme=theme
-        })
-        //body.dataset.theme=theme
-    },[])
-  return (
-    <button
-    data-button="theme"
-    className='w-11 h-11 rounded-md flex items-center
-    px-3'
-    onClick={()=>themeChange()}>
-        {theme==="light"?
-        <IconSun/> :<IconBxsMoon/>
-    }
-    </button>
-  )
+        if (theme==="light"){
+            updateTheme("dark")
+        }else {
+            updateTheme("light")
+        }
+        
+        let myHtml = document.querySelector('html')
+        //css styles are strings even opacity
+        myHtml.style.opacity="0"
+        setTimeout(()=>{
+          
+        myHtml.style.opacity="1"
+        },1)
+      }
+
+
+      return (
+
+
+        <button className={`theme__button ${theme==="light"? "light":"dark"}`} onClick={()=>themeChange()}>
+          {theme==="dark"?   <IconSun/>: <IconBxsMoon/>}
+
+          </button>
+          
+      )
+    
+
 }
+
+export default ReactColorThemeButton

@@ -1,4 +1,7 @@
-import { ContextConsumer } from '../Theme/ContextConsumer'
+
+import Script from 'next/script'
+import ContextConsumer from '../Theme/ContextConsumer'
+import ReactThemeProvider from '../Theme/ThemeContext'
 import ThemeProvider from '../Theme/ThemeContext'
 import { Header } from '../components/Header'
 import { Footer } from '../components/footer'
@@ -21,7 +24,15 @@ export default function RootLayout({ children }) {
       <body
      
       className={`${inter.className}`}>
-        <ThemeProvider>   
+        <Script
+        
+        strategy="beforeInteractive"
+      >
+        console.log("hi will")
+
+      </Script>
+        <ReactThemeProvider>
+          
           <ContextConsumer>
           
         {children}
@@ -29,7 +40,7 @@ export default function RootLayout({ children }) {
         <Header/>
         <div id="portal"></div>
         </ContextConsumer>   
-        </ThemeProvider>
+        </ReactThemeProvider>   
         </body>
     </html>
   )
