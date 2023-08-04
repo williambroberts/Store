@@ -38,14 +38,11 @@ export const Header = () => {
     
     useEffect(()=>{
       return ()=>{
-        if (prevCount.current<count){
+        if (count>0){
           setCartIcon(<IconEcommerce_cart_check/>)
-        }else if (prevCount.current>count){
-          setCartIcon(<IconEcommerce_cart_remove/>)
-        }else if (count===0){
+        }else {
           setCartIcon(<IconEcommerce_cart_content/>)
         }
-        prevCount.current=count
       }
       
       
@@ -56,7 +53,11 @@ export const Header = () => {
     <header
     
     >
-        <nav>
+        <nav
+        className={
+          `${theme==="light"?"light":""}`
+      }
+        >
            <section className='header__section'>
             <PersistReset/>
            
@@ -100,12 +101,8 @@ export const Header = () => {
             <button 
             onMouseEnter={()=>setViewCheckout(true)}
             onMouseLeave={()=>setViewCheckout(false)}
-            className='
-            ml-auto rounded-full bg-[var(--bg-2)]
-            flex flex-row relative
-            hover:opacity-100 opacity-70
-            items-center gap-1 px-3 py-1
-            h-11'
+            className='header__cart
+           '
             onClick={()=>setModal()}>
                 
                 <span
@@ -121,11 +118,11 @@ export const Header = () => {
           <div
           style={{display:viewCheckout?"":"none"}}
           data-theme="dark"
-          className='flex flex-row w-full absolute py-2 rounded-full
+          className='flex flex-row w-full absolute py-2 rounded-md
           bg-[var(--bg-1)] opacity-100 left-0
-          justify-center
+          justify-center font-medium
           '>
-            checkout
+            Checkout
           </div>
             </button>
             <ThemeButton/> 

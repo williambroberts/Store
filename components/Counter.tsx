@@ -1,13 +1,14 @@
 "use client"
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import useStore from '../zustand/store'
 
 export const Counter = () => {
     const {count}=useStore()
     const [active,setActive]=useState<boolean>(false)
+    const numberOfRenders = useRef(0)
     useEffect(()=>{
         let timeout=null
-        if(count>0){setActive(true)}
+        if(numberOfRenders.current>0){setActive(true)}
         timeout = setTimeout(()=>{
           setActive(false)
         },1000)
@@ -16,7 +17,9 @@ export const Counter = () => {
             clearTimeout(timeout)
         }
       },[count])
-
+      useEffect(()=>{
+        numberOfRenders.current++
+      })
   return (
     <div
     className='flex flex-row items-center

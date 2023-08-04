@@ -234,6 +234,9 @@ header > nav {
   ;
 
 }
+header>nav.light {
+  background-color: var(--bg-3);
+}
 .header__section {
   width:min(100vw,768px);
   @apply flex flex-row items-center px-3
@@ -624,4 +627,15 @@ border: 1px solid var(--bg-4);
 box-shadow:inset 0px 0px 22px 0px rgba(252, 252, 252, 0.791);
 background-color: var(--bg-2);
 border: 1px solid var(--bg-1);
+}
+
+.header__cart {
+  box-shadow: inset 0px 0px 3px 0px rgba(255, 255, 255, 0.079);
+  border: 1px solid var(--bg-3);
+  @apply  ml-auto rounded-md bg-[var(--bg-2)]
+  flex flex-row relative
+
+  hover:opacity-100 opacity-70
+  items-center gap-1 px-3 py-1
+  h-10
 }
