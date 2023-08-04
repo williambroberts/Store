@@ -40,9 +40,8 @@ const ReactThemeProvider = ({children}:{children:React.ReactNode}) => {
   })
   
   const updateTheme = (value)=>{
-    
     setTheme(value)
-    window.localStorage.setItem("color-theme",value)
+    window?.localStorage?.setItem("color-theme",value)
   }
   
   const ThemeValues={
