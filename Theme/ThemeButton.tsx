@@ -8,7 +8,7 @@ import { useTheme } from './ThemeContext'
 export const ThemeButton = () => {
     const {theme,updateTheme}=useTheme()
     
-    const handleClick = ()=>{
+    const themeChange = ()=>{
         updateTheme()
     }
     useLayoutEffect(()=>{
@@ -24,7 +24,7 @@ export const ThemeButton = () => {
     data-button="theme"
     className='w-11 h-11 rounded-md flex items-center
     px-3'
-    onClick={handleClick}>
+    onClick={()=>themeChange()}>
         {theme==="light"?
         <IconSun/> :<IconBxsMoon/>
     }

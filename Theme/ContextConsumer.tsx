@@ -9,7 +9,7 @@ export const ContextConsumer = ({children}:{children:React.ReactNode  }) => {
     <div
     className='w-[100vw] h-[100vh]
      flex flex-col 
-     bg-[var(--bg-1)]
+     bg-[var(--bg-1)] flex-auto
      text-[var(--t-1)]
      items-center'
     data-theme={theme}

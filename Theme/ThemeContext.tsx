@@ -8,26 +8,32 @@ interface ThemeContextValues {
     getInitialTheme:Function;
 }
 
-const getInitialTheme = ()=>{
-    try {
-
+function getInitialTheme(){
     
-    let persistedTheme = localStorage.getItem("color-theme")
-    if (typeof(persistedTheme)==="string"){
-        console.log("🐻",persistedTheme)
-        return persistedTheme
+    try {
+        let doc = window.document
+       
+      const persistedThemePreference =  localStorage.getItem("color-theme")
+      const hasPersistedThemePreference = typeof(persistedThemePreference)==="string"
+      if (hasPersistedThemePreference){
+           
+          return persistedThemePreference
+      }
+      const mql = window.matchMedia('(prefers-color-scheme:dark)')
+      const hasMediaQueryPrefence = typeof(mql.matches)==="boolean"
+      if (hasMediaQueryPrefence){
+            let theme = mql.matches? 'dark':'light'
+            
+          return theme
+      }
+    }catch (err){
+      console.log(err)
     }
-
-    const mql = window.matchMedia('(prefers-color-scheme:dark)')
-    const hasMediaQueryPrefence = typeof(mql.matches)==="boolean"
-    if (hasMediaQueryPrefence){
-        return mql.matches? 'dark':'light'
-    }
-}catch(err){
-    console.log(err)
-}
-    return "light"
-}
+    
+     
+  
+      return "light"
+  }
 const ThemeContext = createContext<ThemeContextValues|null>(null)
 const ThemeProvider = ({children}:{children:React.ReactNode}) => {
     const [theme,setTheme]=useState<"light"|"dark"|string>(getInitialTheme)

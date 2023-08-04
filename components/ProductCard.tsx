@@ -50,6 +50,7 @@ export const ProductCard = ({props}:theProps) => {
         
       
       }}
+        sizes='(650px)'
         src={product.images[0]}
         alt={product.name}
         priority
@@ -72,13 +73,13 @@ export const ProductCard = ({props}:theProps) => {
         '>
           <button
           className='product__card__button'
-          onClick={handleProduct}
+          onClick={()=>handleProduct()}
           >view</button>
           <button
 
           className='product__card__button
           '
-          onClick={handleAddToCart}
+          onClick={()=>handleAddToCart()}
           >
             <IconHandbag/>
             Add to cart</button>

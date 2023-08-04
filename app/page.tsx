@@ -81,7 +81,9 @@ export default async function Home() {
       font-medium text-xl">
 About our products
 </h3>
-<span></span>
+<span
+className="text-sm py-3 text-[var(--t-3)]"
+>Curating top quality photographs for you</span>
       <div className="flex flex-row items-center
       gap-2 flex-wrap
       ">

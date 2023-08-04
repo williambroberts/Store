@@ -11,12 +11,10 @@ import IconCcStripe from './icons/stripe'
 import IconEcommerce_money from './icons/money'
 import IconBackward from './icons/back'
 import IconEcommerce_cart_remove from './icons/CartX'
+import { useTheme } from '../Theme/ThemeContext'
 const CheckoutPortal = () => {
     const {setModal,cart,total,ResetCart,count}=useStore()
-    const [theme,setTheme]=useState(()=>{
-      let theme=document.body.dataset.theme
-      return theme
-    })
+    const {theme}=useTheme()
     
  
   const handleReset = ()=>{
