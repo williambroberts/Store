@@ -9,7 +9,7 @@ export function useLocalStorage(key,initialValue){
 
 
     useEffect(()=>{
-        localStorage?.setItem(key,value)
+        localStorage &&localStorage?.setItem(key,value)
     },[key,value])
     return [value,setValue]
 }
