@@ -641,3 +641,10 @@ border: 1px solid var(--bg-1);
   items-center gap-1 px-3 py-1
   h-10
 }
+
+.product__card__name {
+  max-width: 80%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

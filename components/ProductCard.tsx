@@ -59,9 +59,11 @@ export const ProductCard = ({props}:theProps) => {
         />
         </div>
         <div className='flex flex-nowrap items-center 
-        justify-between w-full py-2 px-2
+        justify-between w-full py-2 px-2 gap-2
         '>
-          <h2>{product?.name}</h2>
+          <h2
+          className='product__card__name'
+          >{product?.name}</h2>
           <span>{(unit_amount/100).toLocaleString('en-GB',{
             style:"currency",currency:"GBP"
           })}</span>

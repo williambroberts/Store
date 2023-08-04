@@ -24,13 +24,10 @@ export default function RootLayout({ children }) {
       <body
      
       className={`${inter.className}`}>
-        <Script
+      {/* <Script id="show-banner" strategy="lazyOnload">
         
-        strategy="beforeInteractive"
-      >
-        console.log("hi will")
-
-      </Script>
+  {`document.getElementById(CC).dataset.theme=${"dark"}`}
+</Script> */}
         <ReactThemeProvider>
           
           <ContextConsumer>

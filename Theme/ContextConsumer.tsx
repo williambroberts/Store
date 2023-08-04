@@ -7,7 +7,8 @@ const ContextConsumer = ({children}:{children:React.ReactNode}) => {
     const {theme}=useReactTheme()
     return (
     <div 
-    data-id="CC"
+    id="CC"
+    
     className='flex 
     items-center bg-[var(--bg-1)]
     text-[var(--t-1)]
