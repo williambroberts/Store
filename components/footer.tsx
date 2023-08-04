@@ -1,6 +1,6 @@
 "use client"
 import React from 'react'
-import IconShop from './icons/shop'
+import IconShop from './icons/shop2'
 
 export const Footer = () => {
     const scrollToTop = ()=>{

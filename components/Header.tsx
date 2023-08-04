@@ -80,17 +80,19 @@ export const Header = () => {
 
            
             <Link 
-            data-theme={theme}
+         
             className={`
            header__link
+           ${theme==="light"?"light":"dark"}
             ${pathname==="/"?"active":""}
             `}
             href={"/"}><IconHome_door/> Home</Link>
              <Link 
-             data-theme={theme}
+            
             className={`
             header__link
-            
+            ${pathname==="/about"?"active":""}
+            ${theme==="light"?"light":"dark"}
             `}
             href={"/about"}><IconInfoSquare/> About</Link>
              </div>
