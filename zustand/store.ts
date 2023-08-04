@@ -13,16 +13,19 @@ RemoveItemFromCart:Function;
 count:number;
 ReduceItemQuantityByOne:Function;
 total:number;
+
 }
 const useStore = create<storeProps>()(
     persist(
     (set,get)=>(
     {
+    
     cart:[],
     count:0,
     total:0,
     priceObject:{},     
     modal:false,
+   
     setModal:()=>set((state)=>({...state,modal:!state.modal})),
     setPriceObject:(newProduct)=>set((state)=>{
         return {

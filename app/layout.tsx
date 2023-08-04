@@ -1,3 +1,4 @@
+import ThemeProvider from '../Theme/ThemeContext'
 import { Header } from '../components/Header'
 import { Footer } from '../components/footer'
 import '../styles/globals.css'
@@ -16,12 +17,12 @@ export default function RootLayout({ children }) {
       <body
       data-theme="light"
       className={`${inter.className}`}>
-        
+        <ThemeProvider>      
         {children}
         <Footer/>
         <Header/>
-         
         <div id="portal"></div>
+        </ThemeProvider>
         </body>
     </html>
   )

@@ -9,10 +9,11 @@ import { Hamburger } from './Hamburger'
 import { ThemeButton } from '../Theme/ThemeButton'
 import IconEcommerce_cart_check from './icons/CartAdd'
 import IconEcommerce_cart_remove from './icons/CartX'
-import IconShop from './icons/shop'
+
 import { Counter } from './Counter'
 import { PersistReset } from './PersistReset'
 import { SearchBarButton } from './SearchBarButton'
+import IconShop from './icons/shop2'
 
 export const Header = () => {
     const {modal,setModal,count,total}=useStore()
@@ -64,16 +65,10 @@ export const Header = () => {
             >
                 <IconMenuLeftAlt/>
             </button>
-            <Link href={"/"}
-            className=' flex-row items-center
-            gap-1 px-4
-            hidden sm:flex
-            '
-            >
-              <IconShop/> <span
-              className='sm:flex hidden'
-              >SideStore</span>
-            </Link>
+             <div
+                  data-theme="light"
+                  className='icon'
+                  ><IconShop/></div>
             <Link 
             className='
             rounded-full px-3 py-1 bg-[var(--bg-2)]

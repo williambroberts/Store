@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import IconSearch from './icons/zoom';
 import  ReactDOM  from 'react-dom';
 import { SearchBarResult } from './SearchBarResult';
+import IconCross1 from './icons/cross';
 interface theProps {
     prices:any;
     isOpen:boolean;
@@ -45,8 +46,13 @@ export const SearchBar = ({prices,isOpen,setOpen}:theProps) => {
             placeholder='Search products...'
             className='flex-auto'
             type='text' 
+            value={query}
             onChange={(e)=>setQuery((e.target.value).toLowerCase())}
             />
+            <div
+            className='cursor-pointer'
+            onClick={()=>setQuery("")}
+            ><IconCross1/></div>
         </form>
         <div 
         style={{height:`${query===""?"0px":"auto"}`}}

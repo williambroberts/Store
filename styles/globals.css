@@ -373,7 +373,7 @@ flex:1 1 auto
   filter: sepia(0.1);
   transition: var(--transition-1);
   @apply flex flex-row px-3 py-2
-  rounded-md gap-1 flex-nowrap
+  rounded-md gap-3 flex-nowrap
   font-medium shadow
   text-base items-center
   ;
@@ -540,7 +540,7 @@ footer {
 
 .search__button {
   
-  border: 1px solid var(--bg-2);
+  border: 1px solid var(--bg-1);
   background-color: var(--bg-3);
   @apply flex flex-row rounded-full
   items-center px-3 py-2
@@ -581,4 +581,17 @@ footer {
   border: none;
   @apply rounded-md 
   px-3 py-2 font-light
+}
+
+.icon {
+  min-width: 40px;
+  color: var(--t-2);
+  filter: blur(0.8);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-image: url('../styles/images/pexels-photo-982673.jpg');
+  @apply flex flex-row items-center
+  justify-center
+  rounded-md w-10 h-10
 }
