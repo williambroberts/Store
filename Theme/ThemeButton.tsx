@@ -9,21 +9,15 @@ export const ThemeButton = () => {
     const {theme,updateTheme}=useTheme()
     
     const handleClick = ()=>{
-        
-        let body=document.body
-        if (body.dataset.theme==="light"){
-            body.dataset.theme="dark"
-           updateTheme("dark")
-           
-        }else {
-            body.dataset.theme="light"
-           updateTheme("light")
-        }
-        
+        updateTheme()
     }
     useLayoutEffect(()=>{
         let body=document.body
-        body.dataset.theme=theme
+        let headerLink=body.querySelectorAll('[data-id="header__link"]')
+        headerLink.forEach((link: HTMLElement)=>{
+            link.dataset.theme=theme
+        })
+        //body.dataset.theme=theme
     },[])
   return (
     <button

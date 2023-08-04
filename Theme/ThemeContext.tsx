@@ -5,6 +5,7 @@ interface ThemeContextValues {
     setTheme:Function;
     // getInitialTheme:()=>"light"|"dark"|string;
     updateTheme:Function;
+    getInitialTheme:Function;
 }
 
 const getInitialTheme = ()=>{
@@ -13,6 +14,7 @@ const getInitialTheme = ()=>{
     
     let persistedTheme = localStorage.getItem("color-theme")
     if (typeof(persistedTheme)==="string"){
+        console.log("🐻",persistedTheme)
         return persistedTheme
     }
 
@@ -30,13 +32,21 @@ const ThemeContext = createContext<ThemeContextValues|null>(null)
 const ThemeProvider = ({children}:{children:React.ReactNode}) => {
     const [theme,setTheme]=useState<"light"|"dark"|string>(getInitialTheme)
 
-    const updateTheme = (value)=>{
-    
-        setTheme(value)
-        window.localStorage.setItem("color-theme",value)
+    const updateTheme = ()=>{
+        if (theme==="light"){
+            setTheme("dark")
+            window.localStorage.setItem("color-theme","dark")
+        }else if (theme==="dark"){
+            setTheme("light")
+            window.localStorage.setItem("color-theme","light")
+        }
+        
+       
       }
     const ThemeValues = {
-        theme:theme,setTheme:setTheme,updateTheme:updateTheme,
+        getInitialTheme:getInitialTheme,
+        theme:theme,setTheme:setTheme,
+        updateTheme:updateTheme,
     }
     return (
     <ThemeContext.Provider value={ThemeValues}>

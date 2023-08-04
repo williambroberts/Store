@@ -616,14 +616,16 @@ footer {
   sm:flex hidden  items-center
 }
 
-.header__link.active.dark {
+[data-theme="dark"].header__link.active {
 opacity: 1;
+color: var(--t-1);
 box-shadow:inset 0px 0px 22px 10px rgba(0,0,0,0.1);
 background-color: var(--bg-3);
 border: 1px solid var(--bg-4);
 }
-.header__link.active.light{
+[data-theme="light"].header__link.active{
   opacity: 1;
+  color: var(--t-1);
 box-shadow:inset 0px 0px 22px 0px rgba(252, 252, 252, 0.791);
 background-color: var(--bg-2);
 border: 1px solid var(--bg-1);

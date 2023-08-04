@@ -36,17 +36,7 @@ export const Header = () => {
       }
     },[isHamburger])
     
-    useEffect(()=>{
-      return ()=>{
-        if (count>0){
-          setCartIcon(<IconEcommerce_cart_check/>)
-        }else {
-          setCartIcon(<IconEcommerce_cart_content/>)
-        }
-      }
-      
-      
-    },[count])
+   
 
    
   return (
@@ -81,19 +71,21 @@ export const Header = () => {
 
            
             <Link 
-         
+          data-id="header__link"
+          data-theme={theme}
             className={`
            header__link
-           ${theme==="light"?"light":"dark"}
+          
             ${pathname==="/"?"active":""}
             `}
             href={"/"}><IconHome_door/> Home</Link>
-             <Link 
-            
+             <Link
+             data-id="header__link"
+            data-theme={theme}
             className={`
             header__link
             ${pathname==="/about"?"active":""}
-            ${theme==="light"?"light":"dark"}
+           
             `}
             href={"/about"}><IconInfoSquare/> About</Link>
              </div>
