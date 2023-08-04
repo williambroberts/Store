@@ -34,10 +34,7 @@ function getInitialTheme(){
 
 const ReactThemeProvider = ({children}:{children:React.ReactNode}) => {
   const [theme,setTheme]=useState<any>(()=>{
-    if (localStorage){
-      let PT = localStorage?.getItem("color-theme")
-      if (PT) return PT
-    }
+    
    
     return "light"
   })
