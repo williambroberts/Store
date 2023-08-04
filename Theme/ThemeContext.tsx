@@ -11,7 +11,7 @@ const ReactThemeContext = createContext<ReactThemeContextValues|undefined>(undef
 function getInitialTheme(){
   console.log("🧧🧧🧧🧧")
   try {
-    const persistedThemePreference =  localStorage.getItem("color-theme")
+    const persistedThemePreference =  localStorage?.getItem("color-theme")
     const hasPersistedThemePreference = typeof(persistedThemePreference)==="string"
     if (hasPersistedThemePreference){
         // let CC:HTMLElement = document.querySelector('[data-id="CC"]')

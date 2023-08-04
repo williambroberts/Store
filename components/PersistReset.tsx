@@ -10,14 +10,14 @@ export const PersistReset = () => {
     function PersistZustandReset() {
         let MINUTE = 60000
         let time = new Date().getTime()
-        let lastEntryTime = localStorage.getItem("zustand-timeout")
+        let lastEntryTime = localStorage?.getItem("zustand-timeout")
         if (lastEntryTime!==null){
             let Difference = time-JSON.parse(lastEntryTime)
             if (Difference>MINUTE){
                 ResetCart()
             }
         }
-        localStorage.setItem("zustand-timeout",JSON.stringify(time))
+        localStorage?.setItem("zustand-timeout",JSON.stringify(time))
     }
     useEffect(()=>{
         PersistZustandReset()

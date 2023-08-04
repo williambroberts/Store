@@ -114,7 +114,7 @@ const useStore = create<storeProps>()(
     ),
     {
         name: 'cart-storage', // name of the item in the storage (must be unique)
-        storage: createJSONStorage(() => localStorage), // (optional) by default, 'localStorage' is used
+        storage: createJSONStorage(() => localStorage? localStorage:null), // (optional) by default, 'localStorage' is used
       }
     )
     )
