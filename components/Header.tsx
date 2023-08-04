@@ -14,13 +14,18 @@ import { Counter } from './Counter'
 import { PersistReset } from './PersistReset'
 import { SearchBarButton } from './SearchBarButton'
 import IconShop from './icons/shop2'
+import IconHome_door from './icons/home'
+import IconInfoSquare from './icons/about'
+import { usePathname } from 'next/navigation'
+import { useTheme } from '../Theme/ThemeContext'
 
 export const Header = () => {
+  const {theme}=useTheme()
     const {modal,setModal,count,total}=useStore()
     const prevCount= useRef(0)
   const [cartIcon,setCartIcon]=useState(<IconEcommerce_cart_content/>)
     const [isHamburger,setIsHamburger]=useState<boolean>(false)
-    
+    const pathname=usePathname()
     const [viewCheckout,setViewCheckout]=useState<boolean>(false)
     useEffect(()=>{
       let htmlTag = document.querySelector("html")
@@ -61,7 +66,7 @@ export const Header = () => {
             {modal? <CheckoutPortal/>:<div></div>}
             <button
             onClick={()=>setIsHamburger(true)}
-            className='flex flex-row sm:hidden'
+            className='flex flex-row sm:hidden px-3'
             >
                 <IconMenuLeftAlt/>
             </button>
@@ -69,13 +74,26 @@ export const Header = () => {
                   data-theme="light"
                   className='icon'
                   ><IconShop/></div>
+            <div
+            className='header__link__container'
+            >
+
+           
             <Link 
-            className='
-            rounded-full px-3 py-1 bg-[var(--bg-2)]
-            sm:flex hidden h-11 items-center
+            data-theme={theme}
+            className={`
+           header__link
+            ${pathname==="/"?"active":""}
+            `}
+            href={"/"}><IconHome_door/> Home</Link>
+             <Link 
+             data-theme={theme}
+            className={`
+            header__link
             
-            '
-            href={"/"}>Home</Link>
+            `}
+            href={"/about"}><IconInfoSquare/> About</Link>
+             </div>
             <SearchBarButton/>
             <button 
             onMouseEnter={()=>setViewCheckout(true)}

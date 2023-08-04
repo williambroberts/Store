@@ -539,11 +539,11 @@ footer {
 }
 
 .search__button {
-  
-  border: 1px solid var(--bg-1);
-  background-color: var(--bg-3);
-  @apply flex flex-row rounded-full
-  items-center px-3 py-2
+  box-shadow: inset 0px 0px 37px 0px rgba(230, 227, 227, 0.356);
+  border: 1px solid var(--bg-3);
+  background-color: var(--bg-1);
+  @apply flex flex-row rounded-md
+  items-center px-3 py-2 text-sm
  gap-1 
   ;
 }
@@ -594,4 +594,34 @@ footer {
   @apply flex flex-row items-center
   justify-center
   rounded-md w-10 h-10
+}
+.header__link__container  {
+  border: 1px solid var(--bg-3);
+  margin: 0px 8px;
+  background-color: var(--bg-1);
+  box-shadow: inset 0px 0px 36px 1px rgba(0,0,0,0.1);
+  @apply sm:flex flex-row 
+  items-center flex-nowrap hidden p-1
+  rounded-md gap-2
+}
+.header__link{
+  transition: var(--transition-1);
+  height: 32px;
+  @apply rounded-md px-2 
+  text-sm opacity-70 hover:opacity-100
+  py-1 bg-[var(--bg-2)] gap-2
+  sm:flex hidden  items-center
+}
+
+[data-theme="dark"].header__link.active {
+opacity: 1;
+box-shadow:inset 0px 0px 22px 10px rgba(0,0,0,0.1);
+background-color: var(--bg-3);
+border: 1px solid var(--bg-4);
+}
+[data-theme="light"].header__link.active{
+  opacity: 1;
+box-shadow:inset 0px 0px 22px 0px rgba(252, 252, 252, 0.791);
+background-color: var(--bg-2);
+border: 1px solid var(--bg-1);
 }

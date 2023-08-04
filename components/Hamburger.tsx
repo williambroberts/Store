@@ -15,7 +15,7 @@ export const Hamburger = ({setOpen,open}:theProps) => {
   const pathname = usePathname()
   const selectedStyles = {
     opacity:"1",
-    border: "1px dashed var(--bg-4)"
+    border: "1px dashed var(--bg-1)"
   }
   
   return (
