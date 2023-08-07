@@ -11,10 +11,12 @@ import IconSearch from '../../components/icons/zoom'
 import Animator from '../../components/Animator'
 import { FetchMore } from '../../components/FetchMore'
 import { useSearchParams } from 'next/navigation'
+import { Metadata } from 'next'
 
 
-
-
+export const metadata:Metadata = {
+  title:'Product'
+}
 
 export default  function ProductPage(){
   const searchParams = useSearchParams()

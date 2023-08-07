@@ -5,7 +5,7 @@ function IconCcStripe(props) {
   return (
     <svg
       viewBox="0 0 576 512"
-      fill="currentColor"
+      fill="white"
       height="1em"
       width="1em"
       {...props}

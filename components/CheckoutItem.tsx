@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { memo, useState } from 'react'
 import IconDeleteBin6Line from './icons/delete';
 import useStore from '../zustand/store';
 import Image from 'next/image';
@@ -11,7 +11,7 @@ interface theProps {
     props:any;
     index:number;
 }
-export const CheckoutItem = ({props,index}:theProps) => {
+const CheckoutItem = ({props,index}:theProps) => {
     //console.log(props)
     const [loaded,setLoaded]=useState<boolean>(false)
     const [open,setOpen]=useState<boolean>(false)
@@ -111,3 +111,5 @@ export const CheckoutItem = ({props,index}:theProps) => {
     </div>
   )
 }
+
+export default memo(CheckoutItem)

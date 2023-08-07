@@ -25,84 +25,18 @@
    --blue:#5bd1d7;
    --purple1:#bccefb;
    --purple2:#c6beee;
+   --purple3:#b4a4f0;
    --vertical-header-width:90px;
    --lightblue:#ebf2fd;
    --bg-blur:rgba(56,57,59,.8);
    --sepia-filter:filter:sepia(0.9);
    --gradient:linear-gradient(to right, #c6ffdd, #fbd786, #f7797d);
    --gradient2: linear-gradient(to right, #005aa7, #fffde4);
+
+
+   --br:0px;
    }
-   [data-theme="evening"]{
-     --bg-1:#161c21;
-     --bg-2:#161a20;
-     --bg-3:#1f272f;
-     --bg-4:#20272e;
-     
-     --t-1:#ffffff;
-     --t-2:rgb(242, 242, 242);
-     --t-3:#7d8084;
-     --t-4:#7c7f82;
-   
-   }
-   [data-color="purple"]{
-     --bg-1:#bccefb;
-     --bg-2:#9698f6;
-     --bg-3:#6c5bf0;
-     --bg-4:#4c2ceb;
-     
-     --t-1:#ffffff;
-     --t-2:rgb(242, 242, 242);
-     --t-3:#7d8084;
-     --t-4:#7c7f82;
-   
-   }
-   [data-color="green"]{
-     --bg-1:#d4ed31;
-     --bg-2:#aae425;
-     --bg-3:#77d917;
-     --bg-4:#4bd00b;
-     
-     --t-1:#ffffff;
-     --t-2:rgb(242, 242, 242);
-     --t-3:#7d8084;
-     --t-4:#7c7f82;
-   
-   }
-   [data-color="yellow"]{
-     --bg-1:#ffe5aa;
-     --bg-2:#fdd179;
-     --bg-3:#fbba41;
-     --bg-4:#faa612;
-     
-     --t-1:#ffffff;
-     --t-2:rgb(242, 242, 242);
-     --t-3:#7d8084;
-     --t-4:#7c7f82;
-   
-   }
-   [data-color="blue"]{
-     --bg-1:#ebf2fd;
-     --bg-2:#a4c2e7;
-     --bg-3:#4f88cd;
-     --bg-4:#0959b7;
-     
-     --t-1:#ffffff;
-     --t-2:rgb(242, 242, 242);
-     --t-3:#7d8084;
-     --t-4:#7c7f82;
-   
-   }
-   [data-color="red"]{
-     --bg-1:#f59794;
-     --bg-2:#f77c79;
-     --bg-3:#f95c57;
-     --bg-4:#fa443e;
-     
-     --t-1:#ffffff;
-     --t-2:rgb(242, 242, 242);
-     --t-3:#7d8084;
-     --t-4:#7c7f82;
-   }
+
    [data-theme="light"],[data-color="light"]{
      --bg-1:#FFFFFF; 
      --bg-2:hsl(60, 20%, 99%);
@@ -125,22 +59,12 @@
      --bg-4:#393939;
    
      --t-1:#ffffff;
-     --t-2:rgb(242, 242, 242);
+     --t-2:#f2f2f2;
      --t-3:#7d8084;
      --t-4:#7c7f82;
    
    }
-   [data-color="pink"]{
-     --bg-1:#eb94cf;
-     --bg-1:#eb94cf;
-     --bg-1:#eb94cf;
-     --bg-1:#eb94cf;
-   
-     --t-1:#ffffff;
-     --t-2:rgb(242, 242, 242);
-     --t-3:#7d8084;
-     --t-4:#7c7f82;
-   }
+
    *{
      box-sizing: border-box;
      /* transform-style: preserve-3d; */
@@ -191,7 +115,17 @@
    ::-webkit-scrollbar-thumb:hover {
      opacity: 0.8;
    }
-  
+  #notification {
+    width:100vw;
+
+    position: fixed;
+    bottom:24px; 
+   
+   
+    
+    @apply flex flex-col
+    items-center justify-center   ;
+  }
    
    #portal {
      width:min-content;
@@ -247,9 +181,9 @@ header>nav.light {
   left: 0px;
   transition: var(--transition-1);
   transform: translate(-300px,0px);
-  background-color: var(--bg-3);
+  background-color: #1c1c1c;
   z-index: 1;
-  color: var(--t-2);
+  color: #f2f2f2;
   width:min(90vw,300px);
   height: 100vh;
   @apply flex flex-col items-start
@@ -269,7 +203,29 @@ header>nav.light {
   background-color: var(--bg-blur);
   @apply flex
 }
+.hamburger__link {
+  color:#f2f2f2;
+  @apply  flex gap-2 px-3 py-2 w-full 
+  
+  items-center
+}
+.hamburger__link>*{
+  color:#f2f2f2;
 
+}
+.hamburger__heading {
+  color: #7c7f82;
+  @apply uppercase text-xs
+  px-3
+}
+.hamburger__product {
+  transition: var(--transition-1);
+  color: #7c7f82;
+  @apply px-3 py-1 w-full 
+}
+.hamburger__product:hover{
+  color: #f2f2f2;
+}
 main {
   background-color: transparent;
 margin-top: 60px;
@@ -282,7 +238,7 @@ flex:1 1 auto
   height: 100vh;
   background-color: var(--bg-1);
   @apply flex flex-col items-center
-  px-3 py-0
+  px-3 py-0 overflow-auto
   ;
   
 }
@@ -290,7 +246,7 @@ flex:1 1 auto
 .checkout__item {
   background-color: var(--bg-2);
   transition: var(--transition-1);
-  width: min(650px,100%);
+  width: min(500px,100%);
   @apply flex flex-row rounded-md
   items-center flex-nowrap px-2 py-1
   ;
@@ -301,12 +257,17 @@ flex:1 1 auto
 
 
 .checkout__button{
+  
   transition: var(--transition-1);
-  @apply w-11 h-11 inline-flex flex-row items-center
-  px-2 py-1 opacity-60
+  @apply  inline-flex flex-row items-center
+  px-2 py-1 opacity-60  rounded-md
+  text-center justify-center gap-2
   ;
 }
-
+.checkout__button.white {
+  background-color:white;
+  @apply shadow font-medium opacity-100
+}
 
 
 .checkout__button:hover {
@@ -365,7 +326,7 @@ flex:1 1 auto
 
 
 .checkout__portal>div:nth-of-type(1){
-  width: min(100%,650px);
+  width: min(100%,500px);
 }
 .hamburger__button{
   width: 100%;
@@ -564,7 +525,7 @@ footer {
 }
 .search__portal {
   transition: var(--transition-1);
-  width: min(100vw,480px);
+  width: min(90vw,480px);
   background-color: var(--bg-1);
   @apply flex flex-col items-center
   overflow-y-auto rounded-md
@@ -572,7 +533,7 @@ footer {
 }
 .search__form {
   background-color: var(--bg-3);
-  width: min(100vw,480px);
+  width: min(90vw,480px);
   @apply flex flex-row items-center
   flex-nowrap gap-2 px-5 py-3 
   rounded-md
@@ -643,8 +604,42 @@ border: 1px solid var(--bg-1);
 }
 
 .product__card__name {
+  @apply font-medium text-sm
+  ;
   max-width: 80%;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+
+.parent:hover >* {
+  opacity: 0.6;
+}
+.parent:hover >*:hover {
+  opacity: 1;
+}
+.parent:hover>*:hover>*{
+  opacity: 1;
+}
+
+.notification__portal {
+  
+  min-width:min(90vw,300px);
+  width: min(90vw,300px);
+  background-color: transparent;
+  @apply flex flex-row items-center
+  gap-2  justify-center
+  text-center
+  ;
+}
+
+.notification__alert {
+  
+
+  background-color:#161616;
+  color: whitesmoke;
+  @apply w-full h-full px-3 py-3 
+  rounded-md
+  font-medium 
+  ;
 }

@@ -2,16 +2,17 @@
 "use client"
 import React, {  useState } from 'react'
 import ReactDom from 'react-dom'
-import useStore from '../zustand/store'
-import { CheckoutItem } from './CheckoutItem'
+import useStore from '../../zustand/store'
+import CheckoutItem  from '../CheckoutItem'
 import {v4} from "uuid"
 
-import IconEcommerce_cart_content from './icons/CartEmpty'
-import IconCcStripe from './icons/stripe'
-import IconEcommerce_money from './icons/money'
-import IconBackward from './icons/back'
-import IconEcommerce_cart_remove from './icons/CartX'
-import { useReactTheme } from '../Theme/ThemeContext'
+import IconEcommerce_cart_content from '../icons/CartEmpty'
+import IconCcStripe from '../icons/stripe'
+import IconEcommerce_money from '../icons/money'
+import IconBackward from '../icons/back'
+import IconEcommerce_cart_remove from '../icons/CartX'
+import { useReactTheme } from '../../Theme/ThemeContext'
+import IconPadlock from '../icons/padlock'
 const CheckoutPortal = () => {
     const {setModal,cart,total,ResetCart,count}=useStore()
     const {theme}=useReactTheme()
@@ -52,20 +53,35 @@ const CheckoutPortal = () => {
     }
   return ReactDom.createPortal(
     <main className='checkout__portal'>
-      <div className='flex flex-row items-center
-      justify-between px-0 py-1 '>
-      <button
-      className={`header__button ${theme}`}
-      onClick={()=>setModal()}
-      ><IconBackward/> back</button>
-      <button
-     className={`header__button ${theme}`}
-      onClick={()=>handleReset()}
-      > <IconEcommerce_cart_content/> reset cart</button>
-      </div>
+      <div className='flex flex-col items-center
+      justify-between px-0 py-1 mt-32 mb-20'>
+      
      
+     
+        <div className='w-full'>
+          <h1 className='text-2xl mb-2'>
+          Checkout Details
+
+          </h1>
+          <p
+          className='text-sm mb-10'
+          >Review your products before proceeding to checkout</p>
+        </div>
+
+        <div className='grid-cols-2 px-1
+        bg-[var(--bg-3)] rounded-md py-1
+        grid w-full'>
+<button
+      className="checkout__button white"
+      onClick={()=>setModal()}
+      >Back</button>
+       <button
+     className='checkout__button'
+      onClick={()=>handleReset()}
+      > <IconEcommerce_cart_content/> Empty Cart</button>
+        </div>
        {count!==0? <div className='flex flex-col 
-        w-full
+        w-full flex-auto mt-8
         items-center gap-1'>
         {cart.map((item,index)=>{
          return (
@@ -77,25 +93,51 @@ const CheckoutPortal = () => {
         })}
 
         </div>:
-        <div className='flex flex-row items-center gap-1'>
+        <div className='flex flex-row items-center gap-1
+        py-6'>
           <IconEcommerce_cart_remove/>
           No items in checkout</div>
         }
-        <div className='flex flex-row items-center 
+        <div className='flex flex-col 
+        w-full
+        items-center 
         gap-1 py-1'>
+          <div className='flex flex-row w-full 
+          mt-8
+          justify-between font-medium text-base'>
+            <span
+            className=''
+            >Total</span>
           <span
-          className={`header__button ${theme}`}
+          className={``}
           >
-            <IconEcommerce_money/>
-            Total: {(0.01*total).toLocaleString('en-GB',{
+
+           
+            
+             {(0.01*total).toLocaleString('en-GB',{
             style:"currency",currency:"GBP"
           })}</span>
-         
+         </div>
           <button
-         className={`header__button ${theme}`}
+         className='text-base flex flex-row items-center
+         gap-2  w-full justify-center mt-8
+         text-white px-4 py-2 rounded-md
+         bg-[var(--purple3)]
+         '
           onClick={handleCheckout}
-          ><IconCcStripe/>checkout</button>
+          ><IconCcStripe/>Checkout</button>
+
+          <span
+          className='w-full mt-8 justify-center
+          bg-[var(--bg-3)] flex items-center gap-2
+          text-[13px] px-4 py-4 rounded-md '
+          >
+            <span
+            className='opacity-60'
+            ><IconPadlock/></span>
+            Payments are secure and encrypted</span>
            </div>
+
           <div className='flex flex-col items-center gap-1 w-full'>
           <span
           className='flex font-light '
@@ -112,7 +154,7 @@ const CheckoutPortal = () => {
           </div>
           
           </div>
-          
+          </div>
     </main>,document.getElementById('portal')
   )
 }

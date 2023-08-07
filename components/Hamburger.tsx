@@ -11,46 +11,48 @@ interface theProps {
     setOpen:Function;
 }
 export const Hamburger = ({setOpen,open}:theProps) => {
-  const {theme}=useReactTheme()
+ 
   const pathname = usePathname()
-  const selectedStyles = {
-    opacity:"1",
-    border: "1px dashed var(--bg-1)"
-  }
+ 
   
   return (
     <div className={`hamburger ${open? "open":""}`}>
-        <nav className='flex flex-col py-10 px-3
-        items-center w-full gap-3 
+        <nav className='flex flex-col pt-10 p-6
+        items-center w-full gap-10 h-[100vh] text-sm
         '>  
-              <div className='
-              px-3 py-2 
-              flex flex-row items-center
-              w-full flex-nowrap
-              '>
-                <div
-                
-                className='font-medium flex flex-row items-center
-                gap-1 flex-nowrap'
-                >
-                  <div
-                  data-theme="light"
-                  className='icon'
-                  ><IconShop/></div>
-                  sideStore</div>
-              
-              </div>
+             <IconInfoSquare/>
+          <div className='flex flex-col items-center
+          gap-0 
+          '>
+            <span className='font-semibold text-[#f2f2f2]'>SideStore</span>
+            <span className='text'>Software Products</span>
+            </div>     
+          <div className='parent flex-col w-full
+          flex items-start '>
+            <Link href={"/"}
+           className='w-full'
+            >
+              <span
+               className={`${pathname==="/"? "selected":""}
+               hamburger__link
+                `}
+              ><IconHome_door/> Explore</span></Link>
+          </div>
 
-                <Link 
-                style={pathname==="/"?{...selectedStyles}:{}}
-                onClick={()=>setOpen(false)}
-                className={`hamburger__button ${theme} ${pathname==="/"?"selected":""}`}
-                href={"/"}> <IconHome_door/> Home</Link>
-                 <Link 
-                   style={{opacity:pathname==="/about"?"1":""}}
-                onClick={()=>setOpen(false)}
-                className={`hamburger__button ${theme}`}
-                href={"/about"}> <IconInfoSquare/> About</Link>
+            <div className='flex flex-col w-full items-start
+            justify-start gap-3
+            '>
+              <h4
+              className='hamburger__heading'
+              >Boutique</h4>
+              <div className='flex 
+              parent 
+              flex-col items-start w-full'>
+              <Link href={"/"} className='hamburger__product'>Product 1 </Link>
+              <Link href={"/"} className='hamburger__product'>Product 1 </Link>
+              <Link href={"/"} className='hamburger__product'>Product 1 </Link>
+              </div>
+            </div>
                 
         </nav>
     </div>

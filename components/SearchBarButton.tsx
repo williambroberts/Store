@@ -1,7 +1,7 @@
 "use client"
 import React, { useEffect, useState } from 'react'
 import IconSearch from './icons/zoom'
-import { SearchBar } from './SearchBar'
+import { SearchBar } from './Portals/SearchBarPortal'
 import Stripe from 'stripe'
 interface theProps {
    

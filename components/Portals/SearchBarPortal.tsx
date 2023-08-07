@@ -1,9 +1,9 @@
 "use client"
 import React, { useState } from 'react'
-import IconSearch from './icons/zoom';
+import IconSearch from '../icons/zoom';
 import  ReactDOM  from 'react-dom';
-import { SearchBarResult } from './SearchBarResult';
-import IconCross1 from './icons/cross';
+import { SearchBarResult } from '../SearchBarResult';
+import IconCross1 from '../icons/cross';
 interface theProps {
     prices:any;
     isOpen:boolean;
