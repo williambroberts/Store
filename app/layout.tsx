@@ -9,6 +9,7 @@ import { Footer } from '../components/footer'
 import '../styles/globals.css'
 import { Inter } from 'next/font/google'
 import NotificationProvider from '../contexts/NotificationContext'
+import { SideBar } from '../components/SideBar'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -34,6 +35,7 @@ export default function RootLayout({ children }) {
         {children}
         <Footer/>
         <Header/>
+        <SideBar/>
         <div id="portal"></div>
         <div id="notification"></div>
         </ContextConsumer>   

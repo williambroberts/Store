@@ -6,12 +6,25 @@ import IconHome_door from './icons/home';
 import IconInfoSquare from './icons/about';
 import { usePathname } from 'next/navigation';
 import { useReactTheme } from '../Theme/ThemeContext';
+import {AiOutlineHome} from "react-icons/ai"
+import { GetStripePrices } from '../app/page';
+import {SiWebauthn} from "react-icons/si"
+import {GiArchiveRegister} from "react-icons/gi"
+import { Cart } from './Cart';
 interface theProps {
-    open:boolean;
-    setOpen:Function;
+    open?:boolean;
+    setOpen?:(newValue:boolean)=>void;
 }
-export const Hamburger = ({setOpen,open}:theProps) => {
- 
+export const  Hamburger = ({setOpen,open}:theProps) => {
+    const [prices,setPrices]=useState([])
+
+    async function FetchPrices(){
+      const prices = await GetStripePrices()
+      setPrices(prices)
+    }
+  useEffect(()=>{
+   FetchPrices()
+  },[])
   const pathname = usePathname()
  
   
@@ -25,18 +38,25 @@ export const Hamburger = ({setOpen,open}:theProps) => {
           gap-0 
           '>
             <span className='font-semibold text-[#f2f2f2]'>SideStore</span>
-            <span className='text'>Software Products</span>
-            </div>     
+            <span className='text text-[#7c7f82]'>Software Products</span>
+            </div> 
+            <Cart/>    
           <div className='parent flex-col w-full
           flex items-start '>
             <Link href={"/"}
-           className='w-full'
-            >
-              <span
-               className={`${pathname==="/"? "selected":""}
-               hamburger__link
-                `}
-              ><IconHome_door/> Explore</span></Link>
+           className={`${pathname==="/"? "selected":""}
+           hamburger__link
+            `}
+            ><IconHome_door/>
+            
+              Explore
+            </Link>
+            <button className='hamburger__link'>
+             <SiWebauthn/> Login
+            </button>
+            <button className='hamburger__link'>
+             <GiArchiveRegister/> Register
+            </button>
           </div>
 
             <div className='flex flex-col w-full items-start
@@ -44,13 +64,17 @@ export const Hamburger = ({setOpen,open}:theProps) => {
             '>
               <h4
               className='hamburger__heading'
-              >Boutique</h4>
+              >products</h4>
               <div className='flex 
               parent 
               flex-col items-start w-full'>
-              <Link href={"/"} className='hamburger__product'>Product 1 </Link>
-              <Link href={"/"} className='hamburger__product'>Product 1 </Link>
-              <Link href={"/"} className='hamburger__product'>Product 1 </Link>
+             {prices?.map((price:any)=>
+             <Link 
+             className='hamburger__product'
+             href={`/product?id=${price.id}`}
+              key={price.id}>{price.product.name}</Link>
+
+             )}
               </div>
             </div>
                 

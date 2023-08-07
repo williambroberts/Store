@@ -5,9 +5,10 @@ import { ProductCard } from "../components/ProductCard";
 import {v4} from "uuid"
 
 import Animator from "../components/Animator";
+import { Emailer } from "../components/Emailer";
 
 const dotenv =require("dotenv")
-const GetStripePrices=async ()=>{
+export const GetStripePrices=async ()=>{
   
   const stripe = new Stripe('sk_test_51NJVyhDt6cUT5aTWuiobYjYMmg9RhpFdJ4b8MhPMuOs2ahr3T41eoR4Q6h8x9506DDpLyK2U89gyHiQ2cxCY5FzT00CFlik7Hj' ?? '',{
       apiVersion:'2022-11-15'
@@ -47,7 +48,7 @@ export default async function Home() {
       
       <h2
       className="
-      text-3xl font-bold 
+      text-3xl font-bold text-[#f2f2f2]
       flex flex-row items-center gap-2 py-8"
       >SideStore</h2>
       </Animator>
@@ -108,6 +109,7 @@ className="text-sm py-3 text-[var(--t-3)]"
         >Transparent</span>
       </div>
       </div>
+      <Emailer/>
     </main>
   )
 }

@@ -5,10 +5,14 @@ const NotificationPortal = () => {
     const {notification,setNotification,initialState}=useNotification()
 
     useEffect(()=>{
+      let timeout = null
         if (notification.open){
             setTimeout(()=>{
                 setNotification(initialState)
             },notification.time)
+        }
+        return ()=>{
+          clearTimeout(timeout)
         }
     },[])
   return ReactDom.createPortal(
