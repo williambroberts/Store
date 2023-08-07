@@ -75,7 +75,7 @@ export const ProductCard = ({props}:theProps) => {
           className='product__card__name'
           >{product?.name}</h2>
           <span
-          className='text-sm'
+          className='text-sm text-[#7d8084]'
           >{(unit_amount/100).toLocaleString('en-GB',{
             style:"currency",currency:"GBP"
           })}</span>
@@ -83,7 +83,7 @@ export const ProductCard = ({props}:theProps) => {
 
         <div className='flex flex-row  flex-nowrap 
         items-center w-full justify-between
-        mt-auto
+        mt-auto parent
         '>
           <button
           className='product__card__button'

@@ -72,7 +72,9 @@ export const Header = () => {
             </button>
            
             <div
-            className='header__link__container'
+            className='flex 
+            parent
+            flex-row items-center gap-2'
             >
 
            
@@ -84,7 +86,7 @@ export const Header = () => {
           
             ${pathname==="/"?"active":""}
             `}
-            href={"/"}><IconHome_door/> Home</Link>
+            href={"/"}>Home</Link>
              <Link
              data-id="header__link"
             
@@ -93,11 +95,11 @@ export const Header = () => {
             ${pathname==="/about"?"active":""}
            
             `}
-            href={"/about"}><IconInfoSquare/> About</Link>
+            href={"/about"}>About</Link>
              </div>
             <SearchBarButton/>
             
-           <div className='ml-auto'><Cart/></div>
+           <div className='ml-auto sm:flex hidden'><Cart/></div>
            {/* <ReactColorThemeButton/> */}
             </section>
             <div

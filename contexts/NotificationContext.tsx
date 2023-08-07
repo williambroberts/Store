@@ -73,7 +73,7 @@ export default NotificationProvider
 export function useNotification(): NotificationInterface {
     const NC = useContext(NotificationContext)
     if(!NC){
-        throw new Error("useBlogs must be used inside BlogsProvider")
+        throw new Error("useNotifications must be used inside NotificationPRovider")
     }
     return NC;
 }
