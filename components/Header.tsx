@@ -75,8 +75,8 @@ export const Header = () => {
             </button>
            
             <div
-            className='flex 
-            parent
+            className='sm:flex 
+            parent hidden
             flex-row items-center gap-2'
             >
 
@@ -99,6 +99,15 @@ export const Header = () => {
            
             `}
             href={"/about"}>About</Link>
+              <Link
+             data-id="header__link"
+            
+            className={`
+            header__link
+            ${pathname==="/login"?"active":""}
+           
+            `}
+            href={"/login"}>Login</Link>
              </div>
             <SearchBarButton/>
             

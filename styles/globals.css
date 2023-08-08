@@ -380,7 +380,8 @@ flex:1 1 auto;
 
 }
 footer {
-  background-color: var(--bg-2);
+  color: #ffffff;
+  background-color: #161616;
   @apply w-[100vw] h-[60px] px-4
 }
 
@@ -462,6 +463,7 @@ footer {
   position: fixed;
   top:0px;
   left:0px;
+
   background-color:var(--bg-blur);
   @apply flex flex-col
   py-16
@@ -471,13 +473,21 @@ footer {
 .search__portal {
   transition: var(--transition-1);
   width: min(90vw,480px);
-  background-color: var(--bg-1);
+  background-color:#1c1c1c;
   @apply flex flex-col items-center
   overflow-y-auto rounded-md
   ;
 }
+.search__portal.noblur {
+  filter: blur(0px);
+}
+.search__portal__reset {
+  color: #f2f2f2;
+  @apply cursor-pointer 
+}
 .search__form {
-  background-color: var(--bg-3);
+  color: #f2f2f2;
+  background-color:transparent ;
   width: min(90vw,480px);
   @apply flex flex-row items-center
   flex-nowrap gap-2 px-5 py-3 
@@ -485,7 +495,7 @@ footer {
 }
 
 .search__portal input {
-  
+  color: #f2f2f2;
   outline: none;
   border: none;
   @apply rounded-md 
@@ -615,26 +625,7 @@ footer {
     aspect-ratio: 1/1;
   }
 }
-.emailer__gradient {
- 
-}
-.emailer__input{
-  color: #f2f2f2;
-  background-color: #1c1c1c;
-@apply flex-auto px-3 py-2 text-sm
-rounded-md
-}
 
-.emailer__input:focus{
-  outline:1px solid var(--accent);
-}
-.emailer__button {
-  color: #f2f2f2;
-  background-color: #1c1c1c;
-  border: 1px solid var(--bg-4);
-@apply px-3 py-2 text-sm
-rounded-md
-}
 
 .auth__form {
   width: min(95vw,500px);
@@ -712,4 +703,52 @@ rounded-md
 .auth__container__close:hover {
   background-color: #38393B;
   color: #f2f2f2;
+}
+
+.email__banner {
+  background-color: #1c1c1c;
+  @apply flex flex-col items-center
+  justify-center w-full py-12 px-6
+  ;
+}
+
+.email__banner h2 {
+  color:#f2f2f2;
+  font-weight: 700;
+  font-size: 28px;
+}
+
+.email__banner h6 {
+  @apply text-[#7d8084]
+  mt-4 
+  font-medium
+  text-[15px];
+}
+
+.email__input{
+  
+  box-shadow: inset 0px 0px 1px 0px rgba(248, 248, 248, 0.418);
+  color: #f2f2f2;
+  background-color: #222222;
+@apply flex-auto p-3.5 text-sm
+rounded-md sm:max-w-[280px] 
+}
+
+.email__input:focus{
+  outline:1px solid var(--accent);
+}
+.email__button {
+  color: #222222;
+  background-color: #f5f5f5;
+  box-shadow: inset 0px 0px 1px 0px rgba(248, 248, 248, 0.418);
+@apply p-3.5 text-sm
+rounded-md font-bold
+}
+
+.title {
+  font-size: 48px;
+  color: #f2f2f2;
+  font-weight: 700;
+  @apply leading-tight w-full 
+  text-center
 }

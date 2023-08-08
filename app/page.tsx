@@ -6,6 +6,7 @@ import {v4} from "uuid"
 
 import Animator from "../components/Animator";
 import { Emailer } from "../components/Emailer";
+import { EmailBanner } from "../components/EmailBanner";
 
 const dotenv =require("dotenv")
 export const GetStripePrices=async ()=>{
@@ -35,7 +36,7 @@ export const GetStripePrices=async ()=>{
 export default async function Home() {
  const prices = await GetStripePrices()
   return (
-    <main className={`flex flex-col items-center px-2 py-3 gap-12
+    <main className={`flex flex-col items-center gap-12
     `}>
 
       
@@ -46,11 +47,10 @@ export default async function Home() {
       <Animator delay={0.05}>
 
       
-      <h2
+      <h1
       className="
-      text-3xl font-bold text-[#f2f2f2]
-      flex flex-row items-center gap-2 py-8"
-      >SideStore</h2>
+      title"
+      >SideStore</h1>
       </Animator>
       
       <Animator delay={0.1}>
@@ -109,7 +109,7 @@ className="text-sm py-3 text-[var(--t-3)]"
         >Transparent</span>
       </div>
       </div>
-      <Emailer/>
+      <EmailBanner/>
     </main>
   )
 }

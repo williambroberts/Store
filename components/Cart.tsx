@@ -57,7 +57,7 @@ export const Cart = () => {
           bg-[var(--bg-1)] opacity-100 left-0
           justify-center font-medium h-full
           '>
-            Checkout
+            Checkout 
           </div>
           </button>
   )

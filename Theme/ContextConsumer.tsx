@@ -10,7 +10,7 @@ const ContextConsumer = ({children}:{children:React.ReactNode}) => {
     id="CC"
     
     className='flex 
-    items-center bg-[var(--bg-1)]
+    items-center bg-black
     text-[var(--t-1)]
     flex-col w-full flex-auto'
     data-theme={theme}

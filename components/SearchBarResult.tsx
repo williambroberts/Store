@@ -6,14 +6,16 @@ import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 interface theProps {
     price:any;
+    setOpen:Function;
 }
-export const SearchBarResult = ({price}:theProps) => {
+export const SearchBarResult = ({price,setOpen}:theProps) => {
   const {setPriceObject,AddProductToCart}=useStore()
+  
   const [loaded,setLoaded]=useState<boolean>(false)
   const {product}=price
   const router = useRouter()
   const handleProduct=()=>{
-    
+    setOpen(false)
     setPriceObject(price)
     let html = document.querySelector("html")
     html.style.overflowY="auto"
@@ -34,12 +36,12 @@ const handleAddToCart = ()=>{
 
   return (
     <div className='flex flex-row w-full items-center
-    px-2 py-2 gap-2 hover:bg-[var(--bg-2)] rounded-md
+    px-2 py-2 gap-2 rounded-md bg-transparent
     duration-200 transition-all text-sm
     '>
         <div className='flex-auto'>
             <div className='flex flex-row 
-            gap-2 w-full
+            gap-2 w-full text-white
             items-between'>
             <span className='font-medium'>{price.product.name}</span>
             <span

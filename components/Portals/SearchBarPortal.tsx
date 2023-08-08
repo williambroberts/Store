@@ -28,16 +28,14 @@ export const SearchBar = ({prices,isOpen,setOpen}:theProps) => {
     <div 
    
     onClick={handleClick}
-    className='search__portal__container'
+    className={`search__portal__container ${query!==""?"":""}`}
     data-id="search">
-        <div className='search__portal'>
+        <div className={`search__portal ${query!==""?"noblur":""}`}>
 
         
         <form className='search__form
         '>
-            {/* <button 
-            formMethod='dialog' 
-            type="submit">close</button> */}
+           
            
                 <IconSearch/>
             
@@ -50,7 +48,7 @@ export const SearchBar = ({prices,isOpen,setOpen}:theProps) => {
             onChange={(e)=>setQuery((e.target.value).toLowerCase())}
             />
             <div
-            className='cursor-pointer'
+            className='search__portal__reset'
             onClick={()=>setQuery("")}
             ><IconCross1/></div>
         </form>
@@ -58,12 +56,13 @@ export const SearchBar = ({prices,isOpen,setOpen}:theProps) => {
         style={{height:`${query===""?"0px":"auto"}`}}
         className='flex flex-col items-center
         gap-2 w-full overflow-y-auto transition-all 
-        ease-in-out flex-auto
+        ease-in-out flex-auto bg-[#2b2b2b]
         duration-200
         '>
             {query===""? null:
             prices.filter((price)=>price.product.name.toLowerCase().includes(query))
             .map((price)=><SearchBarResult
+            setOpen={setOpen}
             price={price}
             key={price.id}/>
             )}
