@@ -22,6 +22,12 @@ const NotificationPortal = () => {
       {notification.type==="alert"? <div className="notification__alert">
        {notification.message}
         </div> :null}
+        {notification.type==="success"? <div className="notification__success">
+       {notification.message}
+        </div> :null}
+        {notification.type==="cancel"? <div className="notification__cancel">
+       {notification.message}
+        </div> :null}
 
     </div>,document.getElementById("notification")
   )

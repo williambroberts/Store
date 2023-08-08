@@ -49,7 +49,8 @@ export const Header = () => {
    
   return (
     <header
-    
+    style={{display:pathname==="/login"||pathname==="/register"?
+    "none":""}}
     >
         <nav
         className={
@@ -66,7 +67,9 @@ export const Header = () => {
             {modal? <CheckoutPortal/>:<div></div>}
             <button
             onClick={()=>setIsHamburger(true)}
-            className='flex flex-row sm:hidden px-3'
+            className='flex flex-row sm:hidden 
+            text-[#f2f2f2]
+            px-3'
             >
                 <IconMenuLeftAlt/>
             </button>

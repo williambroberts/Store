@@ -1,8 +1,10 @@
 "use client"
 import React from 'react'
 import IconShop from './icons/shop2'
+import { usePathname } from 'next/navigation'
 
 export const Footer = () => {
+    const pathname = usePathname()
     const scrollToTop = ()=>{
         window.scrollTo({
             top:0,
@@ -11,7 +13,9 @@ export const Footer = () => {
         })
     }
   return (
-   <footer className=''>
+   <footer
+   style={{display:pathname==="/login"||pathname==="/register"? "none":""}}
+   className=''>
     <nav className='flex
     justify-between items-center
     w-full h-full '>

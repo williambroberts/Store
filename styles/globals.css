@@ -48,6 +48,7 @@
      --t-2:#38393B;
      --t-3:#898E96;
      --t-4:#989EA6;
+     --accent:#FF4A01;
    }
    [data-theme='dark'],[data-color="dark"] {
      --invert:0;
@@ -62,6 +63,7 @@
      --t-2:#f2f2f2;
      --t-3:#7d8084;
      --t-4:#7c7f82;
+     --accent:#FF4A01;
    
    }
 
@@ -445,12 +447,13 @@ footer {
 }
 
 .search__button {
-  box-shadow: inset 0px 0px 37px 0px rgba(230, 227, 227, 0.356);
-  border: 1px solid var(--bg-3);
-  background-color: var(--bg-1);
+  /* box-shadow: inset 0px 0px 37px 0px rgba(230, 227, 227, 0.356); */
+  /* border: 1px solid var(--bg-3); */
+  /* background-color: var(--bg-1); */
+  color: #f2f2f2;
   @apply flex flex-row rounded-md
   items-center px-3 py-2 text-sm
- gap-1 
+ gap-1 ml-auto
   ;
 }
 .search__portal__container{
@@ -507,13 +510,11 @@ footer {
 
 .header__cart {
   color: var(--bg-2);
-
   box-shadow: inset 0px 0px 3px 0px rgba(255, 255, 255, 0.079);
   border: 1px solid var(--bg-3);
   @apply rounded-md w-full
   flex flex-row relative
   justify-center
-  
   items-center gap-1 px-3 py-1
   h-10
 }
@@ -560,7 +561,26 @@ footer {
   font-medium 
   ;
 }
+.notification__cancel {
+  
 
+  background-color:#161616;
+  color: whitesmoke;
+  @apply w-full h-full px-3 py-3 
+  rounded-md
+  font-medium 
+  ;
+}
+.notification__success {
+  
+
+  background-color:#161616;
+  color: whitesmoke;
+  @apply w-full h-full px-3 py-3 
+  rounded-md
+  font-medium 
+  ;
+}
 .sidebar {
   position: fixed;
   top: 0px;
@@ -604,10 +624,92 @@ footer {
 @apply flex-auto px-3 py-2 text-sm
 rounded-md
 }
+
+.emailer__input:focus{
+  outline:1px solid var(--accent);
+}
 .emailer__button {
   color: #f2f2f2;
   background-color: #1c1c1c;
   border: 1px solid var(--bg-4);
 @apply px-3 py-2 text-sm
 rounded-md
+}
+
+.auth__form {
+  width: min(95vw,500px);
+  background-color: #161616;
+  color: #FFFFFF;
+  @apply p-3 sm:p-6 md:p-12
+  rounded-md flex flex-col
+  items-center
+
+}
+.auth__form label {
+  color: #ffffff;
+  @apply mb-2 text-xs font-bold w-full
+}
+.auth__form input{
+  background-color: #2e2e2e;
+  @apply px-4 py-3 rounded-md 
+  w-full
+  text-sm mb-2
+}
+.auth__form input:focus{
+  outline: 1px solid var(--accent);
+   /* border-color: var(--accent); */
+}
+.auth__form button {
+  transition: var(--transition-1);
+  color:#ffffff ;
+  background-color: var(--accent);
+  @apply px-4 py-3 font-bold
+  text-sm mt-4 rounded-md
+} 
+.auth__form button:disabled {
+  opacity: 0.6;
+  filter: blur(1px);
+}
+
+.auth__form a {
+  color: var(--accent);
+  @apply text-xs 
+  no-underline mt-6
+  font-medium
+}
+.auth__form a:hover {
+  @apply underline  
+}
+.auth__form h1 {
+  color: #ffffff;
+  @apply text-2xl 
+  mb-4
+  font-bold 
+}
+.auth__portal {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  background-color: var(--bg-blur);
+  @apply flex flex-col items-center
+
+}
+
+.auth__container {
+  width: min(95vw,500px);
+  @apply flex flex-col items-start
+}
+
+.auth__container__close {
+  transition: var(--transition-1);
+  color: #7c7f82;
+  @apply flex 
+  text-sm font-semibold
+  items-center ml-auto p-3
+
+}
+
+.auth__container__close:hover {
+  background-color: #38393B;
+  color: #f2f2f2;
 }

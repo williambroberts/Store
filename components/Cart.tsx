@@ -55,7 +55,7 @@ export const Cart = () => {
           data-theme="dark"
           className='flex flex-row w-full absolute py-2 rounded-md
           bg-[var(--bg-1)] opacity-100 left-0
-          justify-center font-medium
+          justify-center font-medium h-full
           '>
             Checkout
           </div>
