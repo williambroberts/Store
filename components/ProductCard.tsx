@@ -45,7 +45,7 @@ export const ProductCard = ({props}:theProps) => {
   return (
     <div
     
-    className='w-full flex flex-col items-start
+    className='product__card
     
     '>  <div
     style={{backgroundImage:`url(${product.metadata.blur})`}}
@@ -60,7 +60,7 @@ export const ProductCard = ({props}:theProps) => {
         
       
       }}
-        sizes='(650px)'
+        sizes='400w'
         src={product.images[0]}
         alt={product.name}
         priority
@@ -69,13 +69,13 @@ export const ProductCard = ({props}:theProps) => {
         />
         </div>
         <div className='flex flex-nowrap items-center 
-        justify-between w-full py-2 px-2 gap-2
+        justify-between w-full py-2 px-4 gap-2
         '>
           <h2
           className='product__card__name'
           >{product?.name}</h2>
           <span
-          className='text-sm text-[#7d8084]'
+          className='product__card__price'
           >{(unit_amount/100).toLocaleString('en-GB',{
             style:"currency",currency:"GBP"
           })}</span>
@@ -83,15 +83,15 @@ export const ProductCard = ({props}:theProps) => {
 
         <div className='flex flex-row  flex-nowrap 
         items-center w-full justify-between
-        mt-auto parent
+        mt-auto parent px-4 py-3
         '>
           <button
-          className='product__card__button'
+          className='product__card__view'
           onClick={()=>handleProduct()}
           >view</button>
           <button
 
-          className='product__card__button
+          className='product__card__add
           '
           onClick={()=>handleAddToCart()}
           >

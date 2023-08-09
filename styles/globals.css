@@ -33,7 +33,9 @@
    --gradient:linear-gradient(to right, #c6ffdd, #fbd786, #f7797d);
    --gradient2: linear-gradient(to right, #005aa7, #fffde4);
 
-
+    --p1:clamp(0.5rem, 0.0455rem + 2.2727vw, 1.5rem);
+    --f1: clamp(2rem, 1.5455rem + 2.2727vw, 3rem);
+    --f2:clamp(1.5rem, 1.2727rem + 1.1364vw, 2rem);
    --br:6px;
    }
 
@@ -41,7 +43,7 @@
      --bg-1:#FFFFFF; 
      --bg-2:hsl(60, 20%, 99%);
     --bg-3: #f5f5f5;
-     --bg-4:#90909095;
+     --bg-4:#eeeeee;
      
     
      --t-1:#313547;
@@ -49,6 +51,33 @@
      --t-3:#898E96;
      --t-4:#989EA6;
      --accent:#FF4A01;
+
+     --gray0:#ffffff;
+     --gray1: #fcfcfc;
+     --gray2: #f8f8f8;
+     --gray3: #f3f3f3;
+     --gray4: #ededed;
+     --gray5: #e8e8e8;
+     --gray6: #e2e2e2;
+     --gray7: #dbdbdb;
+     --gray8: #c7c7c7;
+     --gray9: #8f8f8f;
+     --gray10: #858585;
+     --gray11: #6f6f6f;
+     --gray12: #171717;
+     --grayA1: rgba(0,0,0,.012);
+     --grayA2: rgba(0,0,0,.027);
+     --grayA3: rgba(0,0,0,.047);
+     --grayA4: rgba(0,0,0,.071);
+     --grayA5: rgba(0,0,0,.09);
+     --grayA6: rgba(0,0,0,.114);
+     --grayA7: rgba(0,0,0,.141);
+     --grayA8: rgba(0,0,0,.22);
+     --grayA9: rgba(0,0,0,.439);
+     --grayA10: rgba(0,0,0,.478);
+     --grayA11: rgba(0,0,0,.565);
+     --grayA12: rgba(0,0,0,.91);
+
    }
    [data-theme='dark'],[data-color="dark"] {
      --invert:0;
@@ -65,6 +94,34 @@
      --t-4:#7c7f82;
      --accent:#FF4A01;
    
+     --gray0:#000000;
+     --gray1: #161616;
+     --gray2: #1c1c1c;
+     --gray3: #232323;
+     --gray4: #282828;
+     --gray5: #2e2e2e;
+     --gray6: #343434;
+     --gray7: #3e3e3e;
+     --gray8: #505050;
+     --gray9: #707070;
+     --gray10: #7e7e7e;
+     --gray11: #a0a0a0;
+     --gray12: #ededed;
+     --grayA1: hsla(0,0%,100%,0);
+     --grayA2: hsla(0,0%,100%,.026);
+     --grayA3: hsla(0,0%,100%,.056);
+     --grayA4: hsla(0,0%,100%,.077);
+     --grayA5: hsla(0,0%,100%,.103);
+     --grayA6: hsla(0,0%,100%,.129);
+     --grayA7: hsla(0,0%,100%,.172);
+     --grayA8: hsla(0,0%,100%,.249);
+     --grayA9: hsla(0,0%,100%,.386);
+     --grayA10: hsla(0,0%,100%,.446);
+     --grayA11: hsla(0,0%,100%,.592);
+     --grayA12: hsla(0,0%,100%,.923);
+
+     
+
    }
 
    *{
@@ -239,10 +296,12 @@ header > nav {
   color: #f2f2f2;
 }
 main {
-  background-color: #161616;
-width: 100vw;
-flex:1 1 auto;
-@apply mt-[60px] xl:mt-0 xl:ml-[300px]
+  padding-right:var(--p1); 
+  padding-left:var(--p1);
+  background-color:var(--bg-1);
+  width: 100vw;
+  flex:1 1 auto;
+  @apply mt-[60px] xl:mt-0 xl:ml-[300px]
 
 }
 
@@ -286,22 +345,41 @@ flex:1 1 auto;
 .checkout__button:hover {
   opacity: 1;
 }
-.product__card__button {
-  /* background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-image: url("./images/pexels-photo.jpg"); */
-  background-color:#38393B;
+.product__card {
+  overflow: hidden;
+  border: 1px solid var(--bg-4);
+ @apply w-full flex 
+ flex-col rounded-lg
+ items-start
+}
+.product__card__add{
+  border: 1px solid var(--bg-4);
+  transition: var(--transition-1);
+  background-color:var(--bg-3);
   opacity:1;
-  color: #ebf2fd;
+  color: var(--t-2);
   /* transition: var(--transition-1); */
-  @apply flex flex-nowrap items-center gap-1
-  px-4 py-2 rounded-none text-sm my-2
+  @apply flex flex-nowrap 
+  items-center gap-1 font-semibold
+  px-4 py-2 rounded-md text-sm my-2
  
   ;
 }
-.product__card__button:hover{
+.product__card__add:hover,.product__card__view:hover{
   opacity: 1;
+}
+
+.product__card__view {
+  border: 1px solid var(--bg-4);
+  transition: var(--transition-1);
+  background-color:var(--bg-1);
+  opacity:1;
+  color: var(--t-2);
+  /* transition: var(--transition-1); */
+  @apply flex flex-nowrap items-center gap-1
+  px-4 py-2 rounded-md text-sm my-2
+ 
+  ;
 }
 
 
@@ -322,9 +400,9 @@ flex:1 1 auto;
 
 .skeleton {
   /* filter: blur(8px); */
-  min-height: 300px;
+  min-height: 200px;
   @apply  relative
-  rounded-md overflow-hidden
+  overflow-hidden
   
   ;
   width: 100%;
@@ -380,8 +458,8 @@ flex:1 1 auto;
 
 }
 footer {
-  color: #ffffff;
-  background-color: #161616;
+  color:var(--t-1);
+  background-color:var(--bg-3);
   @apply w-[100vw] h-[60px] px-4
 }
 
@@ -531,15 +609,18 @@ footer {
 
 .product__card__name {
 
-  color: #f2f2f2;
-  @apply font-semibold text-sm
+  color:var(--t-2);
+  @apply font-semibold text-base
   ;
   max-width: 80%;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-
+.product__card__price {
+  color: var(--t-3);
+  @apply flex text-base
+}
 .parent:hover >* {
   opacity: 0.6;
 }
@@ -599,32 +680,9 @@ footer {
   height: 100vh;
   @apply xl:flex hidden
 }
-.emailer {
-  max-width: 768px;
-  @apply flex overflow-hidden w-full
-  border border-[var(--bg-4)] rounded-md
-  sm:flex-row bg-inherit flex-col
-  
-}
 
-.emailer__image {
-  height:152px;
-  padding: 24px;
-  width: 100%;
-  border-bottom: 1px solid var(--bg-4);
-  background-color: #1c1c1c;
-  @apply flex 
-   items-center justify-center
-  
-}
-@media (width>640px){
-  .emailer__image {
-    width: 160px;
-    border-bottom: none;
-    border-right: 1px solid var(--bg-4);
-    aspect-ratio: 1/1;
-  }
-}
+
+
 
 
 .auth__form {
@@ -706,30 +764,31 @@ footer {
 }
 
 .email__banner {
-  background-color: #1c1c1c;
+  background-color: var(--bg-2);
   @apply flex flex-col items-center
-  justify-center w-full py-12 px-6
+  justify-center w-full py-12 
   ;
 }
 
 .email__banner h2 {
-  color:#f2f2f2;
+  color:var(--t-2);
   font-weight: 700;
   font-size: 28px;
 }
 
 .email__banner h6 {
-  @apply text-[#7d8084]
+  color: var(--t-3);
+  @apply 
   mt-4 
   font-medium
   text-[15px];
 }
 
 .email__input{
-  
+  border: 1px solid var(--bg-4);
   box-shadow: inset 0px 0px 1px 0px rgba(248, 248, 248, 0.418);
-  color: #f2f2f2;
-  background-color: #222222;
+  color: var(--t-2);
+  background-color:var(--bg-3);
 @apply flex-auto p-3.5 text-sm
 rounded-md sm:max-w-[280px] 
 }
@@ -738,17 +797,90 @@ rounded-md sm:max-w-[280px]
   outline:1px solid var(--accent);
 }
 .email__button {
-  color: #222222;
-  background-color: #f5f5f5;
+  color: var(--t-2);
+  background-color: var(--bg-3);
   box-shadow: inset 0px 0px 1px 0px rgba(248, 248, 248, 0.418);
 @apply p-3.5 text-sm
 rounded-md font-bold
 }
 
 .title {
-  font-size: 48px;
-  color: #f2f2f2;
+  background-color:transparent;
+  font-size: var(--f1);
+  color:var(--t-1);
   font-weight: 700;
   @apply leading-tight w-full 
   text-center
+}
+
+.hero {
+  height: 320px;
+  background-color:var(--bg-2);
+
+  @apply flex w-full flex-col items-center
+  justify-center
+
+}
+.subheading {
+  background-color: transparent;
+  font-size:24px;
+  color: var(--t-1);
+}
+.sale__container {
+  height: 200px;
+  width: 100vw;
+  background-color: var(--bg-2);
+  @apply flex flex-row items-center
+  ;
+}
+.sale {
+  width:100%;
+  row-gap: 1rem;
+  @apply grid grid-cols-1 sm:grid-cols-2
+
+}
+
+.sale__left {
+  @apply flex flex-col items-center
+   gap-1
+}
+.sale__left > h4 {
+  font-size: 24px;
+  color: var(--t-1);
+  @apply font-semibold 
+}
+.sale__left > span {
+  color: var(--t-3);
+  @apply font-normal text-sm
+}
+.sale__right {
+  margin: 0 auto;
+ 
+  @apply grid grid-cols-4 
+}
+.sale__right__box {
+  
+  @apply flex flex-col px-3
+}
+
+.sale__right__box > h4 {
+  color: var(--t-1);
+  @apply text-xl font-semibold
+}
+
+.sale__right__box > h6 {
+  color: var(--t-1);
+  @apply text-xs font-semibold
+}
+
+.button__ {
+  color: var(--t-3);
+  @apply flex flex-row items-center flex-nowrap
+  gap-2 text-sm
+}
+
+.product__container {
+  width: 100%;
+  @apply grid grid-cols-1 sm:grid-cols-2
+  lg:grid-cols-3 lg:gap-6 sm:gap-4
 }

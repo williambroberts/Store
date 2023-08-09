@@ -7,6 +7,9 @@ import {v4} from "uuid"
 import Animator from "../components/Animator";
 
 import { EmailBanner } from "../components/EmailBanner";
+import { Hero } from "../components/Hero";
+import { Sale } from "../components/Sale";
+import { AiOutlineArrowRight } from "react-icons/ai";
 
 const dotenv =require("dotenv")
 export const GetStripePrices=async ()=>{
@@ -40,32 +43,26 @@ export default async function Home() {
     `}>
 
       
-      <div className="flex flex-col items-start justify-start
-      gap-2 max-w-[768px] w-full py-3
-      ">
      
+        
       <Animator delay={0.05}>
-
-      
-      <h1
-      className="
-      title"
-      >SideStore</h1>
+      <Hero/>
       </Animator>
       
       <Animator delay={0.1}>
-      <p className="font-light">
-      Welcome to our shop, where creativity finds its canvas, and memories come to life through stunning imagery.  
-      </p>
+      
       </Animator>
      
-      </div>
-        
-      <div className={`grid max-w-[768px] w-full
-      grid-cols-1 gap-2
-      sm:grid-cols-2`}>
-
-     
+      <div className="w-full justify-between flex flex-row 
+    flex-nowrap">
+ <h2 className="subheading">Latest Products</h2>
+ <button
+ className="button__"
+ >View all <AiOutlineArrowRight/></button>
+    </div>  
+     <div className="product__container">
+  
+    
      {prices?.map((price,index)=>{
       return (
         <Animator key={v4()} delay={(index+2)*0.13}>
@@ -75,7 +72,7 @@ export default async function Home() {
       )
      })}
       </div>
-
+     <Sale/>
      <div
      className="w-full flex flex-col
      py-3 max-w-[768px]
