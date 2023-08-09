@@ -60,7 +60,7 @@ export const ProductCard = ({props}:theProps) => {
         
       
       }}
-        sizes='400w'
+        sizes='400px'
         src={product.images[0]}
         alt={product.name}
         priority

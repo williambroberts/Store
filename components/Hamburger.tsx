@@ -37,8 +37,8 @@ export const  Hamburger = ({setOpen,open}:theProps) => {
           <div className='flex flex-col items-center
           gap-0 
           '>
-            <span className='font-semibold text-[#f2f2f2]'>SideStore</span>
-            <span className='text text-[#7c7f82]'>Software Products</span>
+            <span className='font-semibold text-[var(--t-2)]'>E-commerce</span>
+            <span className='text text-[var(--t-3)]'>Powerhouse Store</span>
             </div> 
             <Cart/>    
           <div className='parent flex-col w-full

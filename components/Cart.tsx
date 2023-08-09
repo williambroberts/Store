@@ -41,7 +41,7 @@ export const Cart = () => {
             onClick={()=>handleModal()}>
                 
                 <span
-                className='text-xl font-semibold text-white'
+                className='text-xl font-semibold '
                 >{<IconEcommerce_cart_content/>}</span>
                 
                 <Counter/>
@@ -52,7 +52,7 @@ export const Cart = () => {
           })}</span>
           <div
           style={{display:viewCheckout?"":"none"}}
-          data-theme="dark"
+          
           className='flex flex-row w-full absolute py-2 rounded-md
           bg-[var(--bg-1)] opacity-100 left-0
           justify-center font-medium h-full

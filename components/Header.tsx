@@ -68,7 +68,7 @@ export const Header = () => {
             <button
             onClick={()=>setIsHamburger(true)}
             className='flex flex-row sm:hidden 
-            text-[#f2f2f2]
+            text-[var(--t-1)]
             px-3'
             >
                 <IconMenuLeftAlt/>

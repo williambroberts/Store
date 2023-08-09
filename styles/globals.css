@@ -218,7 +218,7 @@ text-base xl:max-h-0
 }
 
 header > nav {
-  background-color:#1c1c1c;
+  background-color:transparent;
   width: 100vw;
   height: 60px;
   border-bottom: 1px solid var(--bg-4);
@@ -238,9 +238,9 @@ header > nav {
   left: 0px;
   transition: var(--transition-1);
   transform: translate(-300px,0px);
-  background-color: #1c1c1c;
+  background-color: var(--bg-2);
   z-index: 1;
-  color: #f2f2f2;
+  color: var(--t-2);
   width:min(90vw,300px);
   border-right: 1px solid var(--bg-4);
   height: 100vh;
@@ -263,13 +263,13 @@ header > nav {
 }
 .hamburger__link {
   transition: var(--transition-1);
-  color:#7c7f82;
+  color:var(--t-3);
   @apply  flex gap-2 px-3 py-2 w-full 
   
   items-center
 }
 .hamburger__link.selected {
-  color: #f2f2f2;
+  color: var(--t-1);
   text-decoration: dotted underline;
   
   /* background-color: #2b2b2b;
@@ -277,10 +277,10 @@ header > nav {
   @apply rounded-md */
 }
 .hamburger__link:hover {
-  color: #f2f2f2;
+  color: var(--t-1);
 }
 .hamburger__heading {
-  color: #7c7f82;
+  color: var(--t-3);
   @apply uppercase text-xs
   px-3
 }
@@ -289,11 +289,11 @@ header > nav {
   text-overflow: ellipsis;
   white-space: nowrap;
   transition: var(--transition-1);
-  color: #7c7f82;
+  color: var(--t-3);
   @apply px-3 py-1 w-full 
 }
 .hamburger__product:hover{
-  color: #f2f2f2;
+  color: var(--t-2);
 }
 main {
   padding-right:var(--p1); 
@@ -529,7 +529,7 @@ footer {
   /* box-shadow: inset 0px 0px 37px 0px rgba(230, 227, 227, 0.356); */
   /* border: 1px solid var(--bg-3); */
   /* background-color: var(--bg-1); */
-  color: #f2f2f2;
+  color: var(--t-1);
   @apply flex flex-row rounded-md
   items-center px-3 py-2 text-sm
  gap-1 ml-auto
@@ -551,7 +551,7 @@ footer {
 .search__portal {
   transition: var(--transition-1);
   width: min(90vw,480px);
-  background-color:#1c1c1c;
+  background-color:var(--bg-2);
   @apply flex flex-col items-center
   overflow-y-auto rounded-md
   ;
@@ -560,11 +560,11 @@ footer {
   filter: blur(0px);
 }
 .search__portal__reset {
-  color: #f2f2f2;
+  color: var(--t-2);
   @apply cursor-pointer 
 }
 .search__form {
-  color: #f2f2f2;
+  color: var(--t-2);
   background-color:transparent ;
   width: min(90vw,480px);
   @apply flex flex-row items-center
@@ -573,7 +573,7 @@ footer {
 }
 
 .search__portal input {
-  color: #f2f2f2;
+  color: var(--t-2);
   outline: none;
   border: none;
   @apply rounded-md 
@@ -582,17 +582,17 @@ footer {
 
 .header__link {
   transition: var(--transition-1);
-  color: #7c7f82;
+  color: var(--t-3);
   @apply flex items-center 
   text-sm
   gap-2;
 }
 
 .header__link.active {
-  color: #f2f2f2;
+  color: var(--t-1);
 }
 .header__link:hover {
-  color: #f2f2f2;
+  color: var(--t-1);
 }
 
 
