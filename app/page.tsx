@@ -5,7 +5,7 @@ import { ProductCard } from "../components/ProductCard";
 import {v4} from "uuid"
 
 import Animator from "../components/Animator";
-import { Emailer } from "../components/Emailer";
+
 import { EmailBanner } from "../components/EmailBanner";
 
 const dotenv =require("dotenv")
