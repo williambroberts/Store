@@ -4,7 +4,7 @@ import { useReactTheme } from './ThemeContext'
 
 
 const ContextConsumer = ({children}:{children:React.ReactNode}) => {
-    const {theme}=useReactTheme()
+    const {theme,isGreyScale}=useReactTheme()
     return (
     <div 
     id="CC"

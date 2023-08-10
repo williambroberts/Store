@@ -19,6 +19,7 @@ import { useReactTheme } from '../Theme/ThemeContext'
 import { useNotification } from '../contexts/NotificationContext'
 import NotificationPortal from './Portals/NotificationPortal'
 import { Cart } from './Cart'
+import { GreyScaleButton } from '../Theme/GreyScaleButton'
 
 
 
@@ -114,6 +115,7 @@ export const Header = () => {
 
             <SearchBarButton/>
             <ReactColorThemeButton/>
+            <GreyScaleButton/>
            <div className='ml-auto sm:flex hidden'><Cart/></div>
             </section>
             <div

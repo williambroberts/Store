@@ -52,8 +52,7 @@ export default async function Home() {
       
     
      
-      <div className="w-full justify-between flex flex-row 
-    flex-nowrap">
+      <div className="container__">
  <h2 className="subheading">Latest Products</h2>
  <button
  className="button__"

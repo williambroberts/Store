@@ -76,7 +76,7 @@ const [position,setPosition]=useState<any>({x:0,y:0})
       onClick={toggleFullScreen}
        style={{backgroundImage:`url(${product?.metadata.blur})`}}
       className={`w-full flex
-      
+      rounded-lg
       aspect-video skeleton ${loaded? "loaded":""}`}>
       <Image
       // style={{transform:zoom?`scale(2)`:""}}

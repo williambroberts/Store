@@ -6,6 +6,8 @@ interface ReactThemeContextValues {
     theme:string;
     setTheme:Function;
     updateTheme:Function;
+    isGreyScale:boolean;
+    setIsGreyScale:Function;
 }
 const ReactThemeContext = createContext<ReactThemeContextValues|undefined>(undefined)
 
@@ -36,7 +38,7 @@ function getInitialTheme(){
 const ReactThemeProvider = ({children}:{children:React.ReactNode}) => {
   //const [theme,setTheme]=useLocalStorage("color-theme","dark")
   const [theme,setTheme]=useState(getInitialTheme)
-
+  const [isGreyScale,setIsGreyScale]=useLocalStorage("greyscale",false)
   const updateTheme = (value)=>{
     let newValue = value
     if (value==="system"){
@@ -58,6 +60,7 @@ const ReactThemeProvider = ({children}:{children:React.ReactNode}) => {
   const ThemeValues={
     updateTheme:updateTheme,
     theme:theme,setTheme:setTheme,
+    setIsGreyScale:setIsGreyScale,isGreyScale:isGreyScale,
   }
     return (
    <ReactThemeContext.Provider value={ThemeValues}>
