@@ -2,8 +2,8 @@ import React, { memo, useState } from 'react'
 import IconDeleteBin6Line from './icons/delete';
 import useStore from '../zustand/store';
 import Image from 'next/image';
-import IconBxCartAdd from './icons/miniCartPlus';
-import IconCartMinus from './icons/miniCartMinus';
+import {BsCartPlus} from "react-icons/bs"
+import {BsCartDash} from "react-icons/bs"
 import IconTag from './icons/tag';
 import IconSearch from './icons/zoom';
 import IconCross1 from './icons/cross';
@@ -75,11 +75,11 @@ const CheckoutItem = ({props,index}:theProps) => {
         <button
         className='checkout__button'
         onClick={handleAddToCart}
-        ><IconBxCartAdd/></button>
+        ><BsCartPlus/></button>
         <button
         className='checkout__button'
         onClick={handleMinus}
-        ><IconCartMinus/></button>
+        ><BsCartDash/></button>
         <button
         className='checkout__button'
         onClick={handleDelete}

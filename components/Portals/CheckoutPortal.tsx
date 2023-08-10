@@ -122,7 +122,7 @@ const CheckoutPortal = () => {
          className='text-base flex flex-row items-center
          gap-2  w-full justify-center mt-8
          text-white px-4 py-2 rounded-md
-         bg-[var(--purple3)]
+         bg-[var(--accent)]
          '
           onClick={handleCheckout}
           ><IconCcStripe/>Checkout</button>

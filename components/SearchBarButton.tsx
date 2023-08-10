@@ -59,6 +59,7 @@ export const SearchBarButton = ({}:theProps) => {
     mx-2
     justify-start flex flex-row'>
  <button 
+ aria-label='search products'
  onClick={open}
  className='
  search__button'>

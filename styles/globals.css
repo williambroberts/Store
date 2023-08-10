@@ -213,7 +213,7 @@ header {
   
   @apply flex flex-row items-center
   justify-center xl:overflow-hidden
-text-base xl:max-h-0
+text-base 
   ;
 }
 
@@ -296,12 +296,11 @@ header > nav {
   color: var(--t-2);
 }
 main {
-  padding-right:var(--p1); 
-  padding-left:var(--p1);
+  
   background-color:var(--bg-1);
-  width: 100vw;
+  width:min(1280px,100vw);
   flex:1 1 auto;
-  @apply mt-[60px] xl:mt-0 xl:ml-[300px]
+  @apply mt-[60px] 
 
 }
 
@@ -323,9 +322,6 @@ main {
   items-center flex-nowrap px-2 py-1
   ;
 }
-.checkout__item:hover {
-  background-color: var(--bg-3);
-}
 
 
 .checkout__button{
@@ -344,7 +340,14 @@ main {
 
 .checkout__button:hover {
   opacity: 1;
+  background-color: var(--bg-3);
 }
+.product__desc {
+  color: var(--t-3);
+
+  @apply tracking-tight text-sm leading-7
+}
+
 .product__card {
   overflow: hidden;
   border: 1px solid var(--bg-4);
@@ -359,7 +362,7 @@ main {
   opacity:1;
   color: var(--t-2);
   /* transition: var(--transition-1); */
-  @apply flex flex-nowrap 
+  @apply flex flex-nowrap  justify-center
   items-center gap-1 font-semibold
   px-4 py-2 rounded-md text-sm my-2
  
@@ -376,7 +379,9 @@ main {
   opacity:1;
   color: var(--t-2);
   /* transition: var(--transition-1); */
-  @apply flex flex-nowrap items-center gap-1
+  @apply flex flex-nowrap
+  justify-center
+  items-center gap-1
   px-4 py-2 rounded-md text-sm my-2
  
   ;
@@ -402,7 +407,7 @@ main {
   /* filter: blur(8px); */
   min-height: 200px;
   @apply  relative
-  overflow-hidden
+  overflow-hidden rounded-lg
   
   ;
   width: 100%;
@@ -458,9 +463,11 @@ main {
 
 }
 footer {
+  padding-right:var(--p1); 
+  padding-left:var(--p1);
   color:var(--t-1);
   background-color:var(--bg-3);
-  @apply w-[100vw] h-[60px] px-4
+  @apply w-[100vw] h-[60px] 
 }
 
 .Animator {
@@ -517,9 +524,11 @@ footer {
 }
 
 .about__icon {
+  margin: 0 0.5rem;
   border: 1px solid var(--bg-4);
   background-color: var(--bg-3);
   color: var(--t-2);
+  height: min-content;
   @apply flex px-2 py-1 text-sm
   justify-center items-center
   rounded-md opacity-70 flex-nowrap
@@ -584,7 +593,7 @@ footer {
   transition: var(--transition-1);
   color: var(--t-3);
   @apply flex items-center 
-  text-sm
+  text-sm px-3
   gap-2;
 }
 
@@ -597,7 +606,7 @@ footer {
 
 
 .header__cart {
-  color: var(--bg-2);
+  color: var(--t-2);
   box-shadow: inset 0px 0px 3px 0px rgba(255, 255, 255, 0.079);
   border: 1px solid var(--bg-3);
   @apply rounded-md w-full
@@ -678,7 +687,7 @@ footer {
   left: 0px;
   width:min(300px,90vw);
   height: 100vh;
-  @apply xl:flex hidden
+  @apply  hidden
 }
 
 
@@ -687,19 +696,19 @@ footer {
 
 .auth__form {
   width: min(95vw,500px);
-  background-color: #161616;
-  color: #FFFFFF;
+  background-color: var(--bg-2);
+  color: var(--t-1);
   @apply p-3 sm:p-6 md:p-12
   rounded-md flex flex-col
   items-center
 
 }
 .auth__form label {
-  color: #ffffff;
+  color: var(--t-1);
   @apply mb-2 text-xs font-bold w-full
 }
 .auth__form input{
-  background-color: #2e2e2e;
+  background-color: var(--bg-3);
   @apply px-4 py-3 rounded-md 
   w-full
   text-sm mb-2
@@ -710,7 +719,7 @@ footer {
 }
 .auth__form button {
   transition: var(--transition-1);
-  color:#ffffff ;
+  color:var(--t-1) ;
   background-color: var(--accent);
   @apply px-4 py-3 font-bold
   text-sm mt-4 rounded-md
@@ -730,7 +739,7 @@ footer {
   @apply underline  
 }
 .auth__form h1 {
-  color: #ffffff;
+  color: var(--t-1);
   @apply text-2xl 
   mb-4
   font-bold 
@@ -751,7 +760,7 @@ footer {
 
 .auth__container__close {
   transition: var(--transition-1);
-  color: #7c7f82;
+  color: var(--t-3);
   @apply flex 
   text-sm font-semibold
   items-center ml-auto p-3
@@ -759,11 +768,13 @@ footer {
 }
 
 .auth__container__close:hover {
-  background-color: #38393B;
-  color: #f2f2f2;
+  background-color: var(--bg-2);
+  color: var(--t-1);
 }
 
 .email__banner {
+  padding-right:var(--p1); 
+  padding-left:var(--p1);
   background-color: var(--bg-2);
   @apply flex flex-col items-center
   justify-center w-full py-12 
@@ -814,6 +825,8 @@ rounded-md font-bold
 }
 
 .hero {
+  padding-right:var(--p1); 
+  padding-left:var(--p1);
   height: 320px;
   background-color:var(--bg-2);
 
@@ -829,9 +842,14 @@ rounded-md font-bold
 .sale__container {
   height: 200px;
   width: 100vw;
+  padding-right:var(--p1); 
+  padding-left:var(--p1);
   background-color: var(--bg-2);
   @apply flex flex-row items-center
   ;
+}
+.sale__container.light {
+  background-color: var(--bg-1);
 }
 .sale {
   width:100%;
@@ -862,7 +880,10 @@ rounded-md font-bold
   
   @apply flex flex-col px-3
 }
-
+.sale__right.light {
+  row-gap: 1rem;
+  @apply lg:grid-cols-4 grid grid-cols-2
+}
 .sale__right__box > h4 {
   color: var(--t-1);
   @apply text-xl font-semibold
@@ -883,4 +904,41 @@ rounded-md font-bold
   width: 100%;
   @apply grid grid-cols-1 sm:grid-cols-2
   lg:grid-cols-3 lg:gap-6 sm:gap-4
+}
+.theme__button {
+transition: var(--transition-1);
+  @apply ml-auto px-3 py-3 
+  mx-2 relative
+  rounded-md
+}
+
+.theme__button:hover {
+  background-color: var(--bg-3);
+}
+
+.theme__button__menu{
+  z-index: 10;
+  top:42px;
+  left: -86px;
+  background-color: var(--bg-1);
+  color: var(--t-1);
+  border: 1px solid var(--bg-4);
+  @apply hidden flex-col p-1
+  items-start absolute rounded-md
+}
+
+.theme__button__menu>button {
+  color: var(--t-1);
+ 
+  transition: var(--transition-1);
+  width: 118px;
+  @apply text-sm cursor-pointer
+  px-2 py-1.5 text-left 
+  rounded-sm
+}
+.theme__button__menu>button:hover {
+background-color: var(--bg-3);
+}
+.theme__button__menu[data-state="true"]{
+  display: flex;
 }

@@ -11,6 +11,8 @@ import IconSearch from '../../components/icons/zoom'
 import Animator from '../../components/Animator'
 import { FetchMore } from '../../components/FetchMore'
 import { useSearchParams } from 'next/navigation'
+import { AiOutlineArrowLeft } from 'react-icons/ai'
+import { EmailBanner } from '../../components/EmailBanner'
 //import { Metadata } from 'next'
 
 
@@ -58,9 +60,15 @@ const [position,setPosition]=useState<any>({x:0,y:0})
       //console.log(e.clientX,e.clientY)
     }
     return (  
-    <main className='max-w-[768px] px-2 py-8
-    flex flex-col items-start justify-start'>
-     <Animator delay={0}>
+    <main className='max-w-[768px] px-2 py-24
+    flex flex-col items-start justify-start gap-4'>
+<Animator delay={0}>
+<h1
+        className='title'
+        >{product?.name}</h1>
+</Animator>
+
+     <Animator delay={0.13}>
 
     
       <div
@@ -94,40 +102,41 @@ const [position,setPosition]=useState<any>({x:0,y:0})
       py-4
       flex flex-col items-start '>
         
-        <span
-        className='font-medium '
-        >{product?.name}</span>
-        <span
-        className='flex flex-row items-center flex-nowrap
-        gap-1 
-        '
-        ><IconTag/>{(unit_amount/100).toLocaleString('en-GB',{
-          currency:"GBP",style:"currency"
-        })} <i
-        className='text-sm font-light opacity-70'
-        >per unit</i></span>
-        <p>{product?.description}</p>
+       
+       
+        <p className='product__desc'>{product?.description}</p>
+        <div className='grid grid-cols-2
+        gap-2 w-full
+       '>
+
+        
         <button
-          className='product__card__button
+          className='product__card__add flex-auto
           '
           onClick={handleAddToCart}
           >
             <IconHandbag/>
             Add to cart</button>
+            <span className='product__card__view flex-auto
+        '
+        ><IconTag/>{(unit_amount/100).toLocaleString('en-GB',{
+          currency:"GBP",style:"currency"
+        })}</span>
+        </div>
       </div> 
    
       </Animator>
       <Animator delay={0.26}>
 
       
-      <Link href="/"
-      className='flex flex-row items-center
-      gap-1 px-2 underline
+      <Link href="/"  
+      className='button__
       '>
-        <IconBackward/>
+        <AiOutlineArrowLeft/>
         See all</Link>
         </Animator>
         <FetchMore searchParams={searchParams}/>
+        <EmailBanner/>
     </main>
   )
 }

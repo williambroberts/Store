@@ -1,8 +1,9 @@
 "use client"
 import React, { createContext,useContext,useState } from 'react'
+import { useLocalStorage } from '../hooks/useLocalStorage';
 
 interface ReactThemeContextValues {
-    theme:"light"|"dark";
+    theme:string;
     setTheme:Function;
     updateTheme:Function;
 }
@@ -33,17 +34,27 @@ function getInitialTheme(){
 }
 
 const ReactThemeProvider = ({children}:{children:React.ReactNode}) => {
-  const [theme,setTheme]=useState<any>(()=>{
-    
-   
-    return "light"
-  })
-  
+  //const [theme,setTheme]=useLocalStorage("color-theme","dark")
+  const [theme,setTheme]=useState(getInitialTheme)
+
   const updateTheme = (value)=>{
-    setTheme(value)
-    localStorage && localStorage?.setItem("color-theme",value)
+    let newValue = value
+    if (value==="system"){
+      newValue=getSystemTheme()
+    }
+    
+    setTheme(newValue)
+    localStorage && localStorage?.setItem("color-theme",newValue)
   }
-  
+  function getSystemTheme(){
+    let q = '(prefers-color-scheme: dark)'
+    let m = window.matchMedia(q)
+    if (m.media!==q ||m.matches){
+      return "dark"
+    }else if (m.matches===false){
+      return "light"
+    }
+  }
   const ThemeValues={
     updateTheme:updateTheme,
     theme:theme,setTheme:setTheme,

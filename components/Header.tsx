@@ -66,6 +66,7 @@ export const Header = () => {
             {notification.open? <NotificationPortal/> :<div></div>}
             {modal? <CheckoutPortal/>:<div></div>}
             <button
+            aria-label='menu'
             onClick={()=>setIsHamburger(true)}
             className='flex flex-row sm:hidden 
             text-[var(--t-1)]
@@ -109,10 +110,11 @@ export const Header = () => {
             `}
             href={"/login"}>Login</Link>
              </div>
+             
+
             <SearchBarButton/>
-            
+            <ReactColorThemeButton/>
            <div className='ml-auto sm:flex hidden'><Cart/></div>
-           {/* <ReactColorThemeButton/> */}
             </section>
             <div
             style={{display:isHamburger?"":"none"}}

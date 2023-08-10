@@ -10,6 +10,7 @@ import { EmailBanner } from "../components/EmailBanner";
 import { Hero } from "../components/Hero";
 import { Sale } from "../components/Sale";
 import { AiOutlineArrowRight } from "react-icons/ai";
+import { OurProducts } from "../components/OurProducts";
 
 const dotenv =require("dotenv")
 export const GetStripePrices=async ()=>{
@@ -49,9 +50,7 @@ export default async function Home() {
       <Hero/>
       </Animator>
       
-      <Animator delay={0.1}>
-      
-      </Animator>
+    
      
       <div className="w-full justify-between flex flex-row 
     flex-nowrap">
@@ -73,39 +72,7 @@ export default async function Home() {
      })}
       </div>
      <Sale/>
-     <div
-     className="w-full flex flex-col
-     py-3 max-w-[768px]
-     ">
-
-    
-      <h3 className="flex 
-      py-3
-      font-medium text-xl">
-About our products
-</h3>
-<span
-className="text-sm py-3 text-[var(--t-3)]"
->Curating top quality photographs for you</span>
-      <div className="flex flex-row items-center
-      gap-2 flex-wrap
-      ">
-       
-        
-        <span
-        className="about__icon"
-        >Flexible</span>
-         <span
-        className="about__icon"
-        >Professional</span>
-         <span
-        className="about__icon"
-        >Fast Delivery</span>
-         <span
-        className="about__icon"
-        >Transparent</span>
-      </div>
-      </div>
+     <OurProducts/>
       <EmailBanner/>
     </main>
   )
