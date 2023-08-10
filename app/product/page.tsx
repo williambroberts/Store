@@ -99,7 +99,7 @@ const [position,setPosition]=useState<any>({x:0,y:0})
       <Animator delay={0.13}>
      
       <div className='
-      py-4
+      py-4 w-full
       flex flex-col items-start '>
         
        

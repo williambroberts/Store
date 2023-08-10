@@ -543,7 +543,7 @@ footer {
   /* border: 1px solid var(--bg-3); */
   /* background-color: var(--bg-1); */
   color: var(--t-1);
-  transition: var(--transition-1)
+  transition: var(--transition-1);
   @apply flex flex-row rounded-md
   items-center px-3 py-2 text-sm
  gap-1 ml-auto font-medium
@@ -954,4 +954,12 @@ background-color: var(--bg-3);
   padding-left:var(--p1);
   @apply flex flex-row 
   gap-4 w-full justify-between
+}
+
+.context__consumer {
+  width: 100vw;
+  min-height: 100dvh;
+  background-color: var(--bg-1);
+  flex: 1 1 auto;
+  @apply flex flex-col items-center
 }
