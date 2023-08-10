@@ -14,6 +14,10 @@ export const GreyScaleButton = () => {
     onClick={()=>handleClick()}
     className='theme__button'
     aria-label='grey scale'
-    ><VscSymbolColor/></button>
+    ><VscSymbolColor/>
+    <div 
+    style={{display:isGreyScale?"none":""}}
+    className='color__dot'></div>
+    </button>
   )
 }

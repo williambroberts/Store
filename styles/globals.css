@@ -216,7 +216,7 @@ header {
   color: var(--t-1);
   
   @apply flex flex-row items-center
-  justify-center xl:overflow-hidden
+  justify-center
 text-base 
   ;
 }
@@ -556,18 +556,30 @@ footer {
   top:0px;
   left:0px;
 
-  background-color:var(--bg-blur);
+  background-color:transparent;
   @apply flex flex-col
-  py-16
+  py-16 relative
   items-center;
 
 }
+.search__portal__container >div:nth-child(1){
+  width: 100vw;
+  position: absolute;
+  height: 100vh;
+  inset: 0;
+  background-color: rgba(26, 23, 23, 0.3);
+  backdrop-filter: blur(5px);
+}
+
 .search__portal {
+  outline: 1px solid var(--bg-4);
   transition: var(--transition-1);
   width: min(90vw,480px);
+  
   background-color:var(--bg-2);
   @apply flex flex-col items-center
-  overflow-y-auto rounded-md
+  z-10
+  overflow-y-auto rounded-md relative
   ;
 }
 .search__portal.noblur {
@@ -711,12 +723,13 @@ footer {
 .auth__form label {
   color: var(--t-1);
   @apply mb-2 text-xs font-bold w-full
+  mt-2
 }
 .auth__form input{
   background-color: var(--bg-3);
   @apply px-4 py-3 rounded-md 
   w-full
-  text-sm mb-2
+  text-sm 
 }
 .auth__form input:focus{
   outline: 1px solid var(--accent);
@@ -727,13 +740,23 @@ footer {
   color:var(--t-1) ;
   background-color: var(--accent);
   @apply px-4 py-3 font-bold
-  text-sm mt-4 rounded-md
+  text-sm mt-6 rounded-md 
 } 
 .auth__form button:disabled {
   opacity: 0.6;
   filter: blur(1px);
 }
-
+.view__password {
+  right: 0px;
+  color: var(--t-1);
+  cursor: pointer;
+  font-weight: 700;
+  background-color: transparent;
+  @apply px-2 text-sm absolute
+}
+.view__password:active {
+transform: scale(1.2);
+}
 .auth__form a {
   color: var(--accent);
   @apply text-xs 
@@ -916,18 +939,25 @@ rounded-md font-bold
   @apply grid grid-cols-1 sm:grid-cols-2
   lg:grid-cols-3 lg:gap-6 sm:gap-4
 }
-.theme__button {
+.theme__button, .dropdown__button {
 transition: var(--transition-1);
   @apply ml-auto px-3 py-3 
   mx-2 relative
   rounded-md
 }
-
+.color__dot {
+  width: 2px;
+  height: 2px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  @apply rounded-full bg-red-600
+}
 .theme__button:hover,.search__button:hover {
   background-color: var(--bg-3);
 }
 
-.theme__button__menu{
+.theme__button__menu, .dropdown__menu{
   z-index: 10;
   top:42px;
   left: -86px;
@@ -938,7 +968,7 @@ transition: var(--transition-1);
   items-start absolute rounded-md
 }
 
-.theme__button__menu>button {
+.theme__button__menu>button, .dropdown__menu>a {
   color: var(--t-1);
  
   transition: var(--transition-1);
@@ -947,10 +977,10 @@ transition: var(--transition-1);
   px-2 py-1.5 text-left 
   rounded-sm
 }
-.theme__button__menu>button:hover {
+.theme__button__menu>button:hover, .dropdown__menu>a:hover {
 background-color: var(--bg-3);
 }
-.theme__button__menu[data-state="true"]{
+.theme__button__menu[data-state="true"],.dropdown__menu[data-state="true"]{
   display: flex;
 }
 .container__ {
@@ -992,10 +1022,44 @@ background-color: var(--bg-3);
 }
 
 .faq__about {
-  max-width: 652px;
+  width: min(652px,100%);
   @apply flex flex-col items-start
-  gap-3
+  gap-3 font-medium
 }
-.faq__about > h2 {
-  
+
+.faq__list {
+  @apply flex flex-col items-center
+  ;
+  width: min(652px,100%);
+
+}
+.accordion {
+  cursor: pointer;
+  width: min(652px,100%);
+  overflow: hidden;
+  border: 1px solid var(--bg-4);
+  transition: var(--transition-1);
+  @apply flex flex-col items-start
+ rounded-md flex-auto px-4 py-3
+
+}
+
+
+.accordion__question {
+  color: var(--t-1);
+  @apply font-medium justify-between
+   text-sm flex flex-row gap-2
+   flex-nowrap w-full
+}
+.accordion__answer {
+  color: var(--t-3);
+  max-height: 0px;
+ 
+  transition: max-height 0.2s ease-out;
+  @apply tracking-tight leading-5
+  text-sm flex-auto
+}
+
+.accordion__answer.open{
+ 
 }

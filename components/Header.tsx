@@ -20,6 +20,7 @@ import { useNotification } from '../contexts/NotificationContext'
 import NotificationPortal from './Portals/NotificationPortal'
 import { Cart } from './Cart'
 import { GreyScaleButton } from '../Theme/GreyScaleButton'
+import { HeaderMenu } from './HeaderMenu'
 
 
 
@@ -110,6 +111,7 @@ export const Header = () => {
            
             `}
             href={"/login"}>Login</Link>
+            <HeaderMenu/>
              </div>
              
 

@@ -30,6 +30,7 @@ export const SearchBar = ({prices,isOpen,setOpen}:theProps) => {
     onClick={handleClick}
     className={`search__portal__container ${query!==""?"":""}`}
     data-id="search">
+        <div></div>
         <div className={`search__portal ${query!==""?"noblur":""}`}>
 
         
