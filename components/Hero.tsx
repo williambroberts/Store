@@ -1,13 +1,15 @@
 import React from 'react'
-
-export const Hero = () => {
+interface theProps {
+  text:string;
+}
+export const Hero = ({text}:theProps) => {
   return (
     <div className='hero'>
         <h1
         className='title'
         aria-label=''
         role=''
-        >E-Commerce Powerhouse.</h1>
+        >{text}</h1>
     </div>
   )
 }

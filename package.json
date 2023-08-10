@@ -17,6 +17,7 @@
     "react-dom": "18.2.0",
     "react-icons": "^4.10.1",
     "stripe": "^12.16.0",
+    "use-local-storage": "^3.0.0",
     "uuid": "^9.0.0",
     "zustand": "^4.3.9"
   },

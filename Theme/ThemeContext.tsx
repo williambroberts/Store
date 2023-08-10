@@ -1,6 +1,6 @@
 "use client"
 import React, { createContext,useContext,useState } from 'react'
-import { useLocalStorage } from '../hooks/useLocalStorage';
+import useLocalStorage from 'use-local-storage';
 
 interface ReactThemeContextValues {
     theme:string;

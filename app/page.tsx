@@ -47,7 +47,7 @@ export default async function Home() {
      
         
       <Animator delay={0.05}>
-      <Hero/>
+      <Hero text="E-Commerce Powerhouse."/>
       </Animator>
       
     

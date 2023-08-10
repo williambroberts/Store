@@ -274,7 +274,7 @@ header > nav {
 }
 .hamburger__link.selected {
   color: var(--t-1);
-  text-decoration: dotted underline;
+  text-decoration:none;
   
   /* background-color: #2b2b2b;
   border: 1px solid var(--bg-4);
@@ -813,13 +813,17 @@ rounded-md sm:max-w-[280px]
   outline:1px solid var(--accent);
 }
 .email__button {
+  transition: var(--transition-1);
   color: var(--t-2);
   background-color: var(--bg-3);
+  border:1px solid transparent;
   box-shadow: inset 0px 0px 1px 0px rgba(248, 248, 248, 0.418);
 @apply p-3.5 text-sm
 rounded-md font-bold
 }
-
+.email__button:hover {
+  border: 1px solid var(--bg-4);
+}
 .title {
   background-color:transparent;
   font-size: var(--f1);
@@ -962,4 +966,36 @@ background-color: var(--bg-3);
   background-color: var(--bg-1);
   flex: 1 1 auto;
   @apply flex flex-col items-center
+}
+.not__found {
+  padding-right:var(--p1); 
+  padding-left:var(--p1);
+  min-width: 100vw;
+  min-height: 100dvh;
+  @apply flex flex-col 
+  justify-center items-center
+  flex-auto gap-2
+}
+
+.not__found span {
+  text-align: center;
+  color: var(--t-3);
+  width: min(500px,90vw);
+}
+
+.faq__{
+  padding-right:var(--p1); 
+  padding-left:var(--p1);
+  @apply 
+  items-center gap-4
+  flex flex-col 
+}
+
+.faq__about {
+  max-width: 652px;
+  @apply flex flex-col items-start
+  gap-3
+}
+.faq__about > h2 {
+  
 }
