@@ -48,14 +48,15 @@ html.greyscale {
      --bg-2:hsl(60, 20%, 99%);
     --bg-3: #f5f5f5;
      --bg-4:#eeeeee;
+     --bg-5:#c2c2c2;
      
     
      --t-1:#313547;
      --t-2:#38393B;
      --t-3:#898E96;
      --t-4:#989EA6;
-     --accent:#FF4A01;
-
+     /* --accent:#FF4A01; */
+    --accent:#00aaff;
      --gray0:#ffffff;
      --gray1: #fcfcfc;
      --gray2: #f8f8f8;
@@ -91,7 +92,8 @@ html.greyscale {
      --bg-2:#1c1c1c;
      --bg-3:#2b2b2b;
      --bg-4:#393939;
-   
+     --bg-5:#333333;
+
      --t-1:#ffffff;
      --t-2:#f2f2f2;
      --t-3:#7d8084;
@@ -351,7 +353,34 @@ main {
 
   @apply tracking-tight text-sm leading-7
 }
+.suggest__card {
+  height: 320px;
+  overflow: hidden;
+  background-color: var(--bg-2);
+  border: 1px solid var(--bg-4);
+ @apply w-full flex 
+ flex-col rounded-lg gap-4
+ items-center justify-center
+}
+.suggest__card>button {
+  height: 56px;
+  transition: var(--transition-1);
+  aspect-ratio: 1/1;
+  color: var(--t-2);
+  background-color: var(--bg-3);
+  border: 1px solid var(--bg-4);
+  @apply flex flex-row items-center
+justify-center rounded-full
 
+}
+.suggest__card>button:hover{
+  border-color: var(--bg-5);
+  background-color: var(--bg-4);
+}
+.suggest__card>span {
+  color: var(--t-3);
+  @apply text-base
+}
 .product__card {
   overflow: hidden;
   border: 1px solid var(--bg-4);
@@ -853,7 +882,7 @@ rounded-md font-bold
   color:var(--t-1);
   font-weight: 700;
   @apply leading-tight w-full 
-  text-center
+  text-center pb-8
 }
 
 .hero {
@@ -1018,7 +1047,7 @@ background-color: var(--bg-3);
   padding-left:var(--p1);
   @apply 
   items-center gap-4
-  flex flex-col 
+  flex flex-col py-12
 }
 
 .faq__about {
@@ -1028,7 +1057,9 @@ background-color: var(--bg-3);
 }
 
 .faq__list {
-  @apply flex flex-col items-center
+  @apply flex flex-col 
+  gap-4
+  items-center
   ;
   width: min(652px,100%);
 
@@ -1037,29 +1068,116 @@ background-color: var(--bg-3);
   cursor: pointer;
   width: min(652px,100%);
   overflow: hidden;
-  border: 1px solid var(--bg-4);
   transition: var(--transition-1);
-  @apply flex flex-col items-start
- rounded-md flex-auto px-4 py-3
+  background-color: var(--bg-2);
+  border: 1px solid var(--bg-4);
+  @apply 
+ rounded-md  relative
 
 }
 
-
-.accordion__question {
+.accordion:hover {
+  border-color: var(--bg-5);
+}
+.accordion > label {
   color: var(--t-1);
-  @apply font-medium justify-between
-   text-sm flex flex-row gap-2
-   flex-nowrap w-full
-}
-.accordion__answer {
-  color: var(--t-3);
-  max-height: 0px;
- 
-  transition: max-height 0.2s ease-out;
-  @apply tracking-tight leading-5
-  text-sm flex-auto
+  @apply flex justify-between 
+  font-bold cursor-pointer
+  text-sm w-full  px-4 py-3
 }
 
-.accordion__answer.open{
- 
+.accordion > label > div{
+  transition: var(--transition-1);
+  @apply flex flex-row items-center
+  justify-center
+}
+.accordion > input {
+  position: absolute;
+  opacity: 0 !important;
+  z-index: -1;
+}
+
+.accordion > div {
+  color: var(--t-3);
+  max-height: 0;
+    transition:all 0.3s ease-out 0s;
+    @apply tracking-tight font-normal
+    px-4 pb-0
+    text-sm
+}
+.accordion > input:checked~div {
+  max-height: 100vh;
+  @apply pb-3
+
+}
+
+.accordion > input:checked ~ label>div{
+  transform:rotate(135deg) ;
+}
+
+.suggest__portal{
+  transform: translate(0%,-50%);
+  background-color: var(--bg-1);
+  width: min(90vw,400px);
+  height: min-content;
+  @apply p-6 rounded-lg flex flex-col gap-4
+}
+.suggest__portal__container {
+  width: 100vw;
+  height: 100vw;
+  background-color:transparent;
+  @apply flex flex-col items-center
+  justify-center relative
+}
+
+.suggest__portal__container::before{
+content: "";
+inset: 0;
+position: absolute;
+backdrop-filter: blur(5px);
+background-color: rgba(26, 23, 23, 0.3);
+z-index: -1;
+}
+.suggest__portal > p {
+  color: var(--t-2);
+  @apply text-sm font-medium
+}
+
+.suggest__portal h3{
+  color: var(--t-1);
+  @apply text-sm font-bold
+}
+
+.suggest__portal button.close {
+  color: var(--t-1);
+  transition: var(--transition-1);
+  @apply w-10 h-10 rounded-md cursor-pointer
+  font-semibold text-lg flex flex-row items-center
+  justify-center
+}
+.suggest__portal button.close:hover {
+  background-color: var(--bg-3);
+}
+
+.suggest__portal  form {
+  @apply flex flex-col gap-4
+}
+
+.suggest__portal input[type="text"]{
+  background-color: var(--bg-2);
+  border: 1px solid var(--bg-3);
+  @apply px-3 py-2 text-sm h-10
+  rounded-md
+}
+.suggest__portal input[type="text"]:focus{
+border: none;
+outline: 2px solid var(--accent);
+outline-offset: 1px;
+}
+.suggest__portal button.submit {
+  background-color: var(--t-1);
+  color: var(--bg-1);
+  @apply w-full px-3 py-2 text-sm
+  rounded-md h-10
+  font-semibold
 }

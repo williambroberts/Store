@@ -11,7 +11,8 @@ import { Hero } from "../components/Hero";
 import { Sale } from "../components/Sale";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import { OurProducts } from "../components/OurProducts";
-
+import { SuggestionCard } from "../components/SuggestionCard";
+//1687321829
 const dotenv =require("dotenv")
 export const GetStripePrices=async ()=>{
   
@@ -21,7 +22,7 @@ export const GetStripePrices=async ()=>{
   const prices = await stripe.prices.list({
       // limit: 3,
       active:true,
-      created:{gt:1687321829},
+      created:{gt:1691788125},
       expand: ['data.product']
       
         
@@ -69,6 +70,9 @@ export default async function Home() {
        
       )
      })}
+     <Animator delay={(prices.length+2)*0.13}>
+      <SuggestionCard/>
+     </Animator>
       </div>
      <Sale/>
      <OurProducts/>

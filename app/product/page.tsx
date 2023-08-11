@@ -13,6 +13,7 @@ import { FetchMore } from '../../components/FetchMore'
 import { useSearchParams } from 'next/navigation'
 import { AiOutlineArrowLeft } from 'react-icons/ai'
 import { EmailBanner } from '../../components/EmailBanner'
+import { useNotification } from '../../contexts/NotificationContext'
 //import { Metadata } from 'next'
 
 
@@ -28,6 +29,7 @@ export default  function ProductPage(){
    const [zoom,setZoom]=useState<boolean>(false)
 const [open,setOpen]=useState<boolean>(false)
 const [position,setPosition]=useState<any>({x:0,y:0})
+const {setNotification}=useNotification()
   const toggleFullScreen = ()=>{
     setOpen((prev)=>!prev)
     //console.log(document?.fullscreenElement)
@@ -45,6 +47,13 @@ const [position,setPosition]=useState<any>({x:0,y:0})
    
   }
     const handleAddToCart = ()=>{
+      setNotification({
+        time:3000,
+        type:"alert",
+        open:true,
+        message:`Added ${product.name} ✓`
+  
+      })
       const newItem = {
         quantity:1,
         id:id,
@@ -63,7 +72,7 @@ const [position,setPosition]=useState<any>({x:0,y:0})
     <main className='max-w-[768px] px-2 py-24
     flex flex-col items-start justify-start gap-4'>
 <Animator delay={0}>
-<h1
+<h1 
         className='title'
         >{product?.name}</h1>
 </Animator>

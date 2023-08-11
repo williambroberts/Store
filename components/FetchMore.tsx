@@ -11,7 +11,7 @@ const GetStripePrices=async ()=>{
     const prices = await stripe.prices.list({
         // limit: 3,
         active:true,
-        created:{gt:1687321829},
+        created:{gt:1691788125},
         expand: ['data.product']
         
           

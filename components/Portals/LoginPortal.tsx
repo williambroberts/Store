@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDom from 'react-dom'
 import {MdClose} from "react-icons/md"
+import { LoginForm } from '../Auth/LoginForm'
 export const LoginPortal = () => {
   return ReactDom.createPortal(
     <div className='auth__portal'>
@@ -10,7 +11,7 @@ export const LoginPortal = () => {
             ><MdClose/></button>
             
         </div>
-
+            <LoginForm/>
     </div>,document.getElementById("portal")
   )
 }
