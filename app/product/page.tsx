@@ -105,7 +105,30 @@ const {setNotification}=useNotification()
       </button>
       </div>
       </Animator>
-      <Animator delay={0.13}>
+
+
+      <Animator delay={0.1}>
+        <div className="flex flex-nowrap gap-4 py-6">
+          <div className="product__category">Mockups</div>
+          <div className="product__category">Digital</div>
+        </div>
+      </Animator>
+      <Animator delay={0.2}>
+        <div className='flex flex-col items-start'>
+        <p className='product__desc'>{product?.description}</p>
+          <div className='product__info'>
+              <h3>Whats included?</h3>
+              <ul>
+                <li>High quality digital mockup</li>
+                <li>Compatible with Adobe photoshop</li>
+                <li>Dimensions 1980-1280px</li>
+                <li>Download file-ZIP</li>
+              </ul>
+          </div>
+        </div>
+    
+      </Animator>
+      <Animator delay={0.3}>
      
       <div className='
       py-4 w-full
@@ -113,7 +136,7 @@ const {setNotification}=useNotification()
         
        
        
-        <p className='product__desc'>{product?.description}</p>
+       
         <div className='grid grid-cols-2
         gap-2 w-full
        '>
@@ -135,7 +158,7 @@ const {setNotification}=useNotification()
       </div> 
    
       </Animator>
-      <Animator delay={0.26}>
+      <Animator delay={0.4}>
 
       
       <Link href="/"  
