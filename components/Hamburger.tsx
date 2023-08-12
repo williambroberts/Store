@@ -7,7 +7,7 @@ import IconInfoSquare from './icons/about';
 import { usePathname } from 'next/navigation';
 import { useReactTheme } from '../Theme/ThemeContext';
 import {AiOutlineHome} from "react-icons/ai"
-import { GetStripePrices } from '../app/page';
+import { GetStripePrices } from '../Functions/ClientFunctions';
 import {SiWebauthn} from "react-icons/si"
 import {GiArchiveRegister} from "react-icons/gi"
 import { Cart } from './Cart';
