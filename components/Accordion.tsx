@@ -6,7 +6,7 @@ interface theProps {
     answer:string;
 }
 export const Accordion = ({question,answer}:theProps) => {
-    const [open,setOpen]=useState<boolean>(false)
+    
     const id = React.useId()
   return (
     <div className='accordion'>

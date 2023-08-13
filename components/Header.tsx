@@ -14,7 +14,7 @@ import { PersistReset } from './PersistReset'
 import { SearchBarButton } from './SearchBarButton'
 import IconHome_door from './icons/home'
 import IconInfoSquare from './icons/about'
-import { usePathname } from 'next/navigation'
+import { usePathname, useSearchParams } from 'next/navigation'
 import { useReactTheme } from '../Theme/ThemeContext'
 import { useNotification } from '../contexts/NotificationContext'
 import NotificationPortal from './Portals/NotificationPortal'
@@ -28,13 +28,13 @@ export const Header = () => {
   const {theme}=useReactTheme()
   const {notification,setNotification}=useNotification()
     const {modal,setModal,count,total}=useStore()
-   
+    const searchParams = useSearchParams()
   
     const [isHamburger,setIsHamburger]=useState<boolean>(false)
     const pathname=usePathname()
+  
    
-    
-   
+ 
 
     useEffect(()=>{
       let htmlTag = document.querySelector("html")

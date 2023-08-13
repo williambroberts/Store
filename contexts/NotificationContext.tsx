@@ -1,5 +1,5 @@
 "use client"
-import { useRouter, useSearchParams } from 'next/navigation';
+import {  useSearchParams } from 'next/navigation';
 import React, { createContext, useContext, useEffect, useState } from 'react'
 import useStore from '../zustand/store';
 interface NotificationInterface {
@@ -22,7 +22,7 @@ const initialState =  {
 
 const NotificationContext = createContext<NotificationInterface|undefined>(undefined)
 const NotificationProvider = ({children}:ChildrenProp) => {
-    const router = useRouter()
+    
     const {ResetCart}=useStore()
     const searchParams = useSearchParams()
     const [notification,setNotification]=useState(initialState)

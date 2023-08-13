@@ -710,20 +710,17 @@ footer {
 .notification__cancel {
   
 
-  background-color:#161616;
-  color: whitesmoke;
+ 
+  
   @apply w-full h-full px-3 py-3 
-  rounded-md
+  rounded-md bg-red-100 text-red-700
   font-medium 
   ;
 }
 .notification__success {
   
-
-  background-color:#161616;
-  color: whitesmoke;
   @apply w-full h-full px-3 py-3 
-  rounded-md
+  rounded-md bg-green-100 text-green-700
   font-medium 
   ;
 }
@@ -966,7 +963,7 @@ rounded-md font-bold
   padding-left:var(--p1);
   width: 100%;
   @apply grid grid-cols-1 sm:grid-cols-2
-  lg:grid-cols-3 lg:gap-6 sm:gap-4
+  lg:grid-cols-3 lg:gap-6 gap-4 
 }
 .theme__button, .dropdown__button {
 transition: var(--transition-1);
@@ -1116,7 +1113,7 @@ background-color: var(--bg-3);
 }
 
 .suggest__portal{
-  transform: translate(0%,-50%);
+  /* transform: translate(0%,-50%); */
   background-color: var(--bg-1);
   width: min(90vw,400px);
   height: min-content;
@@ -1124,7 +1121,7 @@ background-color: var(--bg-3);
 }
 .suggest__portal__container {
   width: 100vw;
-  height: 100vw;
+  height: 100vh;
   background-color:transparent;
   @apply flex flex-col items-center
   justify-center relative

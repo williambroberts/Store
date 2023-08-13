@@ -1,3 +1,4 @@
+import { useSearchParams } from "next/navigation";
 import Stripe from "stripe";
 
 const dotenv =require("dotenv")
@@ -24,4 +25,10 @@ const GetStripePrices=async ()=>{
   return prices.data
 }
 
+
+
+
 export {GetStripePrices}
+
+
+

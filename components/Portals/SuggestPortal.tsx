@@ -12,7 +12,7 @@ export const SuggestPortal = ({open,setOpen}:theProps) => {
     document.documentElement.style.overflowY="auto"
   }
   const shut = (e)=>{
-    console.log(e.target)
+    //console.log(e.target)
     if (e.target.className==="suggest__portal__container"){
       setOpen(false)
       document.documentElement.style.overflowY="auto"

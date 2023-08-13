@@ -8,7 +8,7 @@ export const SuggestionCard = () => {
     const handleClick = ()=>{
       if (open){return}
       setOpen(true)
-      console.log(open)
+      //console.log(open)
       document.documentElement.style.overflowY="hidden"
     }
   return (
