@@ -20,6 +20,8 @@ const CheckoutPortal = () => {
  
   const handleReset = ()=>{
     setModal()
+    let htmlTag = document.querySelector("html")
+    htmlTag.style.overflowY="auto"
     ResetCart()
   }
     const handleCheckout = async ()=>{
@@ -47,6 +49,8 @@ const CheckoutPortal = () => {
           
           window.location.assign(data)
           setModal()
+          let htmlTag = document.querySelector("html")
+          htmlTag.style.overflowY="auto"
          }
          )
          .catch((err)=>console.log(err))

@@ -3,16 +3,14 @@ import useStore from '../zustand/store'
 import { useNotification } from '../contexts/NotificationContext'
 import { Counter } from './Counter'
 import IconEcommerce_cart_content from './icons/CartFull'
+import { useHtmlOverflow } from '../hooks/useHtmlOverflow'
 
 export const Cart = () => {
     const [viewCheckout,setViewCheckout]=useState<boolean>(false)
     const {modal,setModal,count,total}=useStore()
     const {setNotification}=useNotification()
+    //const [dummy,setDummy]=useHtmlOverflow(modal)
     const handleModal = ()=>{
-        //
-        
-          
-        
         if (count===0){
           setNotification({
             time:3000,type:"alert",
@@ -21,17 +19,20 @@ export const Cart = () => {
           })
           return
         }
+        let htmlTag = document.querySelector("html")
+        htmlTag.style.overflowY="hidden"
+
         setModal()
        }
-    useEffect(()=>{
-        let htmlTag = document.querySelector("html")
-        if (modal){
-          htmlTag.style.overflowY="hidden"
-        }else if (!modal){
-          htmlTag.style.overflowY="scroll"
-        }
-       },[modal])
-
+   
+      //  useEffect(()=>{
+      //   let htmlTag = document.querySelector("html")
+      //   if (modal){
+      //     htmlTag.style.overflowY="hidden"
+      //   }else if (!modal){
+      //     htmlTag.style.overflowY="scroll"
+      //   }
+      //  },[modal])
   return (
     <button 
             onMouseEnter={()=>setViewCheckout(true)}

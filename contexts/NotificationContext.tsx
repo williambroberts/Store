@@ -29,7 +29,7 @@ const NotificationProvider = ({children}:ChildrenProp) => {
        
 
     useEffect(()=>{
-        const stripe  = searchParams.get("stripe")
+        const stripe  = searchParams?.get("stripe")
         if (stripe==="success"|| stripe==="cancel"){
            const newUrl = `${window.location.origin}`
            window.history.replaceState(null,'',newUrl)

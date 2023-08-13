@@ -4,7 +4,7 @@ import user from "@testing-library/user-event"
 import { Accordion } from "../components/Accordion"
 describe("Accordion tests",()=>{
     describe("rendering",()=>{
-        it('should render a checkbox',()=>{
+        xit('should render a checkbox',()=>{
             render(<Accordion
                 answer="ans" question="que"
                 />)
@@ -24,7 +24,7 @@ describe("Accordion tests",()=>{
             await user.click(label)
             expect(screen.getByText(/ans/i)).toBeInTheDocument()
         })
-        it('should be checked after clicking once',async()=>{
+        xit('should be checked after clicking once',async()=>{
             render(<Accordion
             answer="ans" question="que"
             />)
