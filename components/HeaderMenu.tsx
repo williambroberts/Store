@@ -28,7 +28,7 @@ export const HeaderMenu = () => {
         data-state={open}
         className='dropdown__menu'>
             <Link href="/support" className=''>Support</Link>
-            {/* <Link href="/support" className=''>About</Link> */}
+            <Link href="/contact" className=''>Contact</Link>
         </div>
     </button>
   )

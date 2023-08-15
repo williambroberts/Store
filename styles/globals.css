@@ -1309,3 +1309,16 @@ outline-offset: 1px;
 .more__link {
   @apply flex flex-row w-full
 }
+.contact__form__container {
+  width: 100vw;
+  padding-right:var(--p1); 
+  padding-left:var(--p1);
+  @apply flex flex-col items-center gap-4 py-6
+}
+.contact__form__container > h3 {
+  color: var(--t-1); 
+  @apply font-semibold text-3xl w-full text-start
+}
+.contact__form {
+  @apply flex flex-col items-center w-full gap-4
+}
