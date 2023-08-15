@@ -1348,3 +1348,9 @@ outline-offset: 1px;
   w-full
   font-bold
 }
+
+.contact__form input:focus, .contact__form textarea:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+  border: none;
+}
