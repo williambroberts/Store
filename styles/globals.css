@@ -1210,7 +1210,63 @@ outline-offset: 1px;
 
 .about__container {
   width: 100%;
-
+  padding-right:var(--p1); 
+  padding-left:var(--p1);
   @apply grid grid-cols-1
-   lg:grid-cols-2 gap-4 py-6
+   md:grid-cols-2 gap-4 py-6
+}
+
+.marquee__wrapper {
+  width: 100vw;
+  padding-right:var(--p1); 
+  padding-left:var(--p1);
+  @apply flex flex-col items-center
+  gap-4
+}
+.marquee__wrapper h2 {
+  color: var(--t-1);
+  @apply font-bold text-sm
+}
+.marquee__container {
+  --item-width:240px;
+  width:min(652px,100%);
+  height: 128px;
+  @apply overflow-hidden relative
+  py-4
+}
+.marquee {
+  top: 0px;
+  
+  transform: translate(100%,0%);
+  height:100%;
+  width: min-content;
+  position: absolute;
+  
+  animation: marquee 20s linear 0s infinite ;
+  @apply flex flex-row  
+  items-center gap-0
+}
+.marquee__container:hover >.marquee{
+  animation-play-state: paused;
+}
+@keyframes marquee {
+  0% {
+    transform: translate(100%,0%);
+  }
+  100% {
+    transform: translate(-100%,0%);
+  }
+
+}
+.marquee2 {
+  margin-left:0px;
+  background-color: lightcyan;
+  animation-delay: 10s;
+}
+.marquee > div {
+  height:100%;
+  width:var(--item-width);
+  border: 1px solid lightsalmon;
+  border: 1px solid var(--bg-4);
+  @apply flex flex-col gap-4 p-4 rounded-md
 }

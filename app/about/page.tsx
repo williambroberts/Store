@@ -6,6 +6,7 @@ import { EmailBanner } from '../../components/EmailBanner'
 import { About } from './Components/About'
 import { Reviews } from './Components/Reviews'
 import { ReachOut } from './Components/ReachOut'
+import { Marquee } from './Components/Marquee'
 
 const AboutPage = () => {
   return (
@@ -18,7 +19,7 @@ const AboutPage = () => {
         <About/>
       </Animator>
       <Animator delay={0.2}>
-        <Reviews/>
+        <Marquee/>
 </Animator>
 <Animator delay={0.3}>
     <ReachOut/>
