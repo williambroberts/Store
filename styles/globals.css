@@ -1234,6 +1234,27 @@ outline-offset: 1px;
   @apply overflow-hidden relative
   py-4
 }
+.marquee__container::before {
+  position: absolute;
+  left: 0px;
+  z-index: 10;
+  top: 0px;
+  content: "";
+  height: 100%;
+  width:3rem;
+  background: linear-gradient(to right, var(--bg-1), transparent);
+}
+.marquee__container::after {
+  z-index: 10;
+  position: absolute;
+  content: "";
+  height: 100%;
+  right: 0px;
+  top: 0px;
+  width:3rem;
+  
+  background: linear-gradient(to left, var(--bg-1), transparent);
+}
 .marquee {
   top: 0px;
   
@@ -1242,11 +1263,12 @@ outline-offset: 1px;
   width: min-content;
   position: absolute;
   
-  animation: marquee 20s linear 0s infinite ;
+  animation: marquee 40s linear -20s infinite ;
   @apply flex flex-row  
-  items-center gap-0
+  items-center gap-4 pr-4
 }
 .marquee__container:hover >.marquee{
+  transition: var(--transition-1);
   animation-play-state: paused;
 }
 @keyframes marquee {
@@ -1260,13 +1282,26 @@ outline-offset: 1px;
 }
 .marquee2 {
   margin-left:0px;
-  background-color: lightcyan;
-  animation-delay: 10s;
+  
+  animation-delay: 0s;
 }
-.marquee > div {
+.marquee__item {
   height:100%;
   width:var(--item-width);
-  border: 1px solid lightsalmon;
+  
   border: 1px solid var(--bg-4);
   @apply flex flex-col gap-4 p-4 rounded-md
+}
+
+.marquee__item > h3 {
+  color: var(--t-1);
+  @apply font-medium text-sm
+}
+.marquee__item > p {
+  color: var(--t-3);
+  overflow-wrap: break-word;
+  
+  overflow: hidden;
+  text-overflow: ellipsis;
+  @apply font-normal text-sm
 }

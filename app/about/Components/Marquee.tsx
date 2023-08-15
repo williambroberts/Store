@@ -8,13 +8,26 @@ export const Marquee = () => {
     <div className='marquee__container'>
         <section className='marquee'>
           
-          {names.map(item=>(<div key={v4()}>{item}</div>))}
+         {names.map(item=>(<MarqueeItem key={v4()}/>))}
         </section>
         <section className='marquee marquee2'>
-        {names.map(item=>(<div key={v4()}>{item}</div>))}
+        {names.map(item=>(<MarqueeItem key={v4()}/>))}
         </section>
     </div>
     </aside>
 
+  )
+}
+
+interface itemProps {
+  heading?:String;
+  body?:String;
+}
+const MarqueeItem = ({heading,body}:itemProps)=>{
+  return(
+    <div className='marquee__item'>
+      <h3>{heading || "Heading"}</h3>
+      <p>{body ||"A really good product. Very nice. Love it 💛"}</p>
+    </div>
   )
 }
