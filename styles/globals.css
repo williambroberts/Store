@@ -1305,3 +1305,7 @@ outline-offset: 1px;
   text-overflow: ellipsis;
   @apply font-normal text-sm
 }
+
+.more__link {
+  @apply flex flex-row w-full
+}
