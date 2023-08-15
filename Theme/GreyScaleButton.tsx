@@ -15,9 +15,9 @@ export const GreyScaleButton = () => {
     className='theme__button'
     aria-label='grey scale'
     ><VscSymbolColor/>
-    <div 
+    {/* <div 
     style={{display:isGreyScale?"none":""}}
-    className='color__dot'></div>
+    className='color__dot'></div> */}
     </button>
   )
 }

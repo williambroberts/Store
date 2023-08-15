@@ -25,14 +25,7 @@ export const Cart = () => {
         setModal()
        }
    
-      //  useEffect(()=>{
-      //   let htmlTag = document.querySelector("html")
-      //   if (modal){
-      //     htmlTag.style.overflowY="hidden"
-      //   }else if (!modal){
-      //     htmlTag.style.overflowY="scroll"
-      //   }
-      //  },[modal])
+      
   return (
     <button 
             onMouseEnter={()=>setViewCheckout(true)}

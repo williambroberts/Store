@@ -9,7 +9,7 @@ export const OurProducts = () => {
    
     <div className='sale__left'>
     <h3 className="flex 
-      py-0
+      py-0 text-[var(--t-1)]
       font-medium text-xl">
     About our products
     </h3>

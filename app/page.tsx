@@ -25,36 +25,44 @@ export default async function Home() {
       
      
         
-      <Animator delay={0.05}>
+      <Animator delay={0.0}>
       <Hero text="E-Commerce Powerhouse."/>
       </Animator>
       
     
-     
-      <div className="container__">
+     <Animator delay={0.1}>
+     <div className="container__">
  <h2 className="subheading">Latest Products</h2>
- <button
+ {/* <button
  className="button__"
- >View all <AiOutlineArrowRight/></button>
-    </div>  
+ >View all <AiOutlineArrowRight/></button> */}
+    </div> 
+     </Animator>
+ 
      <div className="product__container">
   
     
      {prices?.map((price,index)=>{
       return (
-        <Animator key={v4()} delay={(index+2)*0.13}>
+        <Animator key={v4()} delay={(index+2)*0.1}>
  <ProductCard props={price} />
         </Animator>
        
       )
      })}
-     <Animator delay={(prices.length+2)*0.13}>
+     <Animator delay={(prices.length+2)*0.1}>
       <SuggestionCard/>
      </Animator>
       </div>
-     <Sale/>
-     <OurProducts/>
+      <Animator delay={(prices.length+3)*0.1}>
+      <Sale/>
+      </Animator>
+    <Animator delay={(prices.length+4)*0.1}>
+    <OurProducts/>
+    </Animator>
+    <Animator delay={(prices.length+4)*0.1}>
       <EmailBanner/>
+      </Animator>
     </main>
   )
 }
