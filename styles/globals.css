@@ -1042,9 +1042,9 @@ background-color: var(--bg-3);
 .faq__{
   padding-right:var(--p1); 
   padding-left:var(--p1);
-  @apply 
+  @apply  w-full 
   items-center gap-4
-  flex flex-col py-12
+  flex flex-col py-16
 }
 
 .faq__about {
@@ -1097,7 +1097,7 @@ background-color: var(--bg-3);
 .accordion > div {
   color: var(--t-3);
   max-height: 0;
-    transition:all 0.3s ease-out 0s;
+    transition:all 0.3s ease-in-out 0s;
     @apply tracking-tight font-normal
     px-4 pb-0
     text-sm
@@ -1210,7 +1210,7 @@ outline-offset: 1px;
 
 .about__container {
   width: 100%;
-  
+
   @apply grid grid-cols-1
    lg:grid-cols-2 gap-4 py-6
 }

@@ -2,6 +2,8 @@ import React from 'react'
 import { Hero } from '../../components/Hero'
 import { Accordion } from '../../components/Accordion'
 import {v4} from "uuid"
+import Animator from '../../components/Animator'
+import { EmailBanner } from '../../components/EmailBanner'
 const SupportPage = () => {
     const questions = ["How do I place an order?",
       "What payment methods do you accept?",
@@ -11,7 +13,10 @@ const SupportPage = () => {
      " How can I contact customer support?"]
   return (
     <main>
+        <Animator delay={0.0}>
         <Hero text='Help &amp; Support'/>
+        </Animator>
+      <Animator delay={0.1}>     
         <section
         className='faq__'>
             <div className='faq__about'>
@@ -20,7 +25,7 @@ const SupportPage = () => {
                 '>Frequently Asked Questions</h2>
                 <span
                 className='font-normal text-[var(--t-3)]
-                text-sm
+                text-sm py-4
                 '
                 >Everything you need to know about products, billing and more.</span>
             </div>
@@ -36,6 +41,10 @@ const SupportPage = () => {
                 )}
             </div>
         </section>
+        </Animator>
+        <Animator delay={0.2}>
+            <EmailBanner/>
+        </Animator>
     </main>
   )
 }
