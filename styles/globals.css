@@ -292,7 +292,7 @@ header > nav {
 .hamburger__heading {
   color: var(--t-3);
   @apply uppercase text-xs
-  px-3
+  px-3 mb-3
 }
 .hamburger__product {
   overflow: hidden;
@@ -300,7 +300,7 @@ header > nav {
   white-space: nowrap;
   transition: var(--transition-1);
   color: var(--t-3);
-  @apply px-3 py-1 w-full 
+  @apply px-3 py-1 w-full text-left
 }
 .hamburger__product:hover{
   color: var(--t-2);
@@ -1267,7 +1267,7 @@ outline-offset: 1px;
   width: min-content;
   position: absolute;
   
-  animation: marquee 40s linear -20s infinite ;
+  animation: marquee 60s linear -30s infinite ;
   @apply flex flex-row  
   items-center gap-4 pr-4
 }
@@ -1311,7 +1311,16 @@ outline-offset: 1px;
 }
 
 .more__link {
-  @apply flex flex-row w-full
+  border: 1px solid var(--bg-4);
+  background-color: var(--bg-3);
+  color: var(--t-1);
+  transition: var(--transition-1);
+  @apply flex flex-row w-full px-5 py-4 
+  text-sm  items-center justify-between rounded-md
+}
+.more__link:hover {
+  border-color: var(--bg-5);
+  @apply px-6
 }
 .contact__form__container {
   width: 100vw;
@@ -1353,4 +1362,27 @@ outline-offset: 1px;
   outline: 2px solid var(--accent);
   outline-offset: 1px;
   border: none;
+}
+
+div:has(.hamburger__heading) > button {
+  font-style: inherit;
+  transition: var(--transition-1);
+  color: var(--t-3);
+  @apply leading-5 h-10 relative 
+  font-medium text-sm px-3 cursor-pointer
+}
+
+.hamburger__button > span {
+  @apply gap-1 inline-flex items-center
+  cursor-pointer
+}
+.hamburger__button:not(.unactive):hover {
+  cursor: pointer;
+  color: var(--t-1);
+}
+
+
+.hamburger__button.unactive {
+  filter: blur(2px);
+  cursor: auto;
 }

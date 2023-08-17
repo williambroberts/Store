@@ -6,9 +6,10 @@ export const ReachOut = () => {
   return (
     <article className='about__container'>
         <h2 className='subheading'>More</h2>
-        <section className='flex flex-col gap-4'>
+        <section className='flex flex-col gap-4 parent'>
           <MoreLink href='/' heading='View our products'/>
-          <MoreLink href='/' heading='See our FAQ'/>
+          <MoreLink href='/support' heading='See our FAQ'/>
+          <MoreLink href='/contact' heading='Get in touch'/>
         </section>
     </article>
   )

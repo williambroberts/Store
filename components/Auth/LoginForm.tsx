@@ -12,6 +12,7 @@ export const LoginForm = () => {
     }
   return (
     <form 
+    data-testid="auth-form"
     onSubmit={handleLogin}
     className='auth__form'>
       <h1>Login</h1>
@@ -27,6 +28,7 @@ export const LoginForm = () => {
         <div className='flex flex-row flex-nowrap 
         relative w-full items-center'>
         <input 
+        data-testid="pw"
         name='pw' id='pw'
         type={type} value={pw} onChange={(e)=>setPw(e.target.value)}/>
         <div 

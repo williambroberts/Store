@@ -4,20 +4,26 @@ import React, { useEffect, useState } from 'react'
 import IconShop from './icons/shop2';
 import IconHome_door from './icons/home';
 import IconInfoSquare from './icons/about';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useReactTheme } from '../Theme/ThemeContext';
-import {AiOutlineHome} from "react-icons/ai"
+import {AiOutlineContacts, AiOutlineHome} from "react-icons/ai"
 import { GetStripePrices } from '../Functions/ClientFunctions';
 import {SiWebauthn} from "react-icons/si"
+import {BiSupport} from "react-icons/bi"
 import {GiArchiveRegister} from "react-icons/gi"
 import { Cart } from './Cart';
+import { BsArrowLeft, BsArrowRight, BsInfoSquare } from 'react-icons/bs';
+import useStore from '../zustand/store';
 interface theProps {
     open?:boolean;
     setOpen?:(newValue:boolean)=>void;
 }
 export const  Hamburger = ({setOpen,open}:theProps) => {
     const [prices,setPrices]=useState([])
-
+    const [start,setStart]=useState<number>(0)
+    const {setPriceObject}=useStore()
+    const pagnationLength=5
+   
     async function FetchPrices(){
       const prices = await GetStripePrices()
       setPrices(prices)
@@ -26,14 +32,20 @@ export const  Hamburger = ({setOpen,open}:theProps) => {
    FetchPrices()
   },[])
   const pathname = usePathname()
- 
+  const handleProduct=(props)=>{
+     
+    setPriceObject(props)
+    setOpen(false)
+    window.location.assign(`/product?id=${props.id}`)
+   
+}
   
   return (
     <div className={`hamburger ${open? "open":""}`}>
-        <nav className='flex flex-col pt-10 p-6
-        items-center w-full gap-10 h-[100vh] text-sm
+        <nav className='flex flex-col pt-10 p-6 pb-10 
+        items-center w-full gap-8 h-[100vh] text-sm
         '>  
-             <IconInfoSquare/>
+            
           <div className='flex flex-col items-center
           gap-0 
           '>
@@ -49,33 +61,57 @@ export const  Hamburger = ({setOpen,open}:theProps) => {
             `}
             ><IconHome_door/>
             
-              Explore
+              Home
             </Link>
-            <button className='hamburger__link'>
+            <Link  href="/login" className='hamburger__link'>
              <SiWebauthn/> Login
-            </button>
-            <button className='hamburger__link'>
+            </Link>
+            <Link href="/register" className='hamburger__link'>
              <GiArchiveRegister/> Register
-            </button>
+            </Link>
+            <Link href="/about" className='hamburger__link'>
+             <BsInfoSquare/> About
+            </Link>
+            <Link href="/support" className='hamburger__link'>
+             <BiSupport/> Support
+            </Link>
+            <Link href="/contact" className='hamburger__link'>
+             <AiOutlineContacts/> Contact
+            </Link>
           </div>
 
             <div className='flex flex-col w-full items-start
-            justify-start gap-3
+            justify-start gap-0
             '>
               <h4
               className='hamburger__heading'
               >products</h4>
-              <div className='flex 
-              parent 
+              <button
+              disabled={start===0}
+              className={`hamburger__button ${start===0? "unactive":""}`}
+              onClick={()=>setStart(s=>s-pagnationLength)}
+              ><span><BsArrowLeft/> previous</span></button>
+              <div 
+              data-testid="products"
+              className='flex 
+              parent overflow-y-auto
               flex-col items-start w-full'>
-             {prices?.map((price:any)=>
-             <Link 
+             {prices?.slice(start,start+pagnationLength).map((price:any)=>
+             <button 
+             onClick={()=>handleProduct(price)}
+             aria-label='product link'
              className='hamburger__product'
-             href={`/product?id=${price.id}`}
-              key={price.id}>{price.product.name}</Link>
+            //  href={`/product?id=${price.id}`}
+              key={price.id}>{price.product.name}</button>
 
              )}
               </div>
+              
+              <button
+              disabled={(start+pagnationLength)>=prices.length}
+              className={`hamburger__button ${(start+pagnationLength)>=prices.length? "unactive":""}`}
+              onClick={()=>setStart(s=>s+pagnationLength)}
+              ><span>more <BsArrowRight/></span></button>
             </div>
                 
         </nav>

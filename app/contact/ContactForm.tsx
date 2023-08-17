@@ -1,17 +1,15 @@
-import React from 'react'
-import { useNotification } from '../../contexts/NotificationContext'
+"use client"
+
+
 
 export const ContactForm = () => {
-  const {setNotification}=useNotification()
-  function handleSubmit (){
-    setNotification({type:"alert",time:3000,open:true,message:"Message sent ✔"})
-  }
+  
   return (
     <section className='contact__form__container'>
         <h3>Message Us</h3>
-        <form onSubmit={handleSubmit}
+        <form
         aria-label='contact'
-        action={`https://formsubmit.co/williambrobertsemail@gmail.com`} className='contact__form' method='POST'>
+        action={`https://formsubmit.co/489a8eabf364548a8643846759ca5731`} className='contact__form' method='POST'>
             <div className='grid grid-cols-1 md:grid-cols-2 w-full gap-4'>
                 <input 
                 data-testid="ip-name"
