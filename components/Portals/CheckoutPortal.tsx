@@ -1,6 +1,6 @@
 
 "use client"
-import React, {  useState } from 'react'
+import React, {  useEffect, useState } from 'react'
 import ReactDom from 'react-dom'
 import useStore from '../../zustand/store'
 import CheckoutItem  from '../CheckoutItem'
@@ -17,7 +17,18 @@ const CheckoutPortal = () => {
     const {setModal,cart,total,ResetCart,count}=useStore()
     const {theme}=useReactTheme()
     
- 
+  useEffect(()=>{
+    if (total===0){
+      setModal()
+      document.documentElement.style.overflowY="auto"
+    }
+  },[total])
+
+  function handleBack(){
+    
+    setModal()
+    document.documentElement.style.overflowY="auto"
+  }
   const handleReset = ()=>{
     setModal()
     let htmlTag = document.querySelector("html")
@@ -56,7 +67,9 @@ const CheckoutPortal = () => {
          .catch((err)=>console.log(err))
     }
   return ReactDom.createPortal(
-    <main className='checkout__portal'>
+    <main 
+    data-theme="light"
+    className='checkout__portal'>
       <div className='flex flex-col items-center
       justify-between px-0 py-1 mt-32 mb-20'>
       
@@ -77,7 +90,7 @@ const CheckoutPortal = () => {
         grid w-full'>
 <button
       className="checkout__button white"
-      onClick={()=>setModal()}
+      onClick={()=>handleBack()}
       >Back</button>
        <button
      className='checkout__button'

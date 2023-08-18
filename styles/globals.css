@@ -958,10 +958,13 @@ rounded-md font-bold
 
 .button__ {
   color: var(--t-3);
+  transition: var(--transition-1);
   @apply flex flex-row items-center flex-nowrap
   gap-2 text-sm
 }
-
+.button__:hover {
+  transform: scale(0.9);
+}
 .product__container {
   padding-right:var(--p1); 
   padding-left:var(--p1);
@@ -1385,4 +1388,39 @@ div:has(.hamburger__heading) > button {
 .hamburger__button.unactive {
   filter: blur(2px);
   cursor: auto;
+}
+
+.padder {
+  padding-right:var(--p1); 
+  padding-left:var(--p1);
+}
+.contact__option__container {
+  padding-right:var(--p1); 
+  padding-left:var(--p1);
+  @apply grid grid-cols-1 sm:grid-cols-2 gap-4
+  w-full py-6 
+}
+.contact__option {
+  border: 1px solid var(--bg-3);
+@apply flex
+items-center w-full
+flex-col gap-3 rounded-lg p-4
+}
+
+.contact__option h3 {
+  color: var(--t-1);
+  @apply text-xl font-semibold 
+} 
+.contact__option p {
+    color: var(--t-3);
+    overflow-wrap: break-word;
+    @apply leading-5 text-sm
+}
+
+.contact__option button {
+  color: var(--t-1);
+  border:1px solid var(--bg-4);
+  @apply flex items-center 
+  text-sm rounded-md h-10 min-w-[100px]
+  font-semibold px-3 py-3 justify-center
 }

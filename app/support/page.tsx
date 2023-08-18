@@ -4,6 +4,7 @@ import { Accordion } from '../../components/Accordion'
 import {v4} from "uuid"
 import Animator from '../../components/Animator'
 import { EmailBanner } from '../../components/EmailBanner'
+import { ContactOption } from '../contact/ContactOptions'
 const SupportPage = () => {
     const questions = ["How do I place an order?",
       "What payment methods do you accept?",
@@ -41,8 +42,19 @@ const SupportPage = () => {
                 )}
             </div>
         </section>
+        
         </Animator>
         <Animator delay={0.2}>
+            <div className=' faq__list padder ml-auto mr-auto py-6 '>
+            <section className='contact__option'>
+            <h3>Message</h3>
+            <p>Can&apos;t find an answer to your question?</p>
+            <button>Contact Us</button>
+        </section>
+            </div>
+       
+        </Animator>
+        <Animator delay={0.3}>
             <EmailBanner/>
         </Animator>
     </main>

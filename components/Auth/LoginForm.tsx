@@ -2,12 +2,15 @@
 import Link from 'next/link'
 import React, { useState } from 'react'
 import { AiOutlineEye } from 'react-icons/ai'
-
+export const testWrapper = {
+  run:()=>{}
+}
 export const LoginForm = () => {
     const [email,setEmail]=useState("")
     const [pw,setPw]=useState("")
     const [type,setType]=useState<"password"|"text">("password")
     const handleLogin = (e)=>{
+      testWrapper.run()
       e.preventDefault()
     }
   return (

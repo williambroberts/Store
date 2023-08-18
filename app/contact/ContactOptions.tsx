@@ -31,12 +31,12 @@ interface itemProps {
     body:string;
     button:string;
 }
-const ContactOption = ({heading,button,body}:itemProps)=>{
+export const ContactOption = ({heading,button,body}:itemProps)=>{
     return (
         <section className='contact__option'>
             <h3>{heading}</h3>
             <p>{body}</p>
-            <button >{button}</button>
+            <button>{button}</button>
         </section>
     )
 }
