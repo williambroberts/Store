@@ -7,13 +7,13 @@ export const Marquee = () => {
     <aside className='marquee__wrapper'>
       <h2>What our customers say</h2>
     <div className='marquee__container'>
-        <section className='marquee'>
+        <div className='marquee'>
           
          {reviews.map((item,index)=>(<MarqueeItem key={v4()} heading={reviews[index]?.heading} body={reviews[index]?.body}/>))}
-        </section>
-        <section className='marquee marquee2'>
+        </div>
+        <div className='marquee marquee2'>
         {reviews.map((item,index)=>(<MarqueeItem key={v4()} heading={reviews[index]?.heading} body={reviews[index]?.body}/>))}
-        </section>
+        </div>
     </div>
     </aside>
 
