@@ -837,7 +837,7 @@ transform: scale(1.2);
   padding-left:var(--p1);
   background-color: var(--bg-2);
   @apply flex flex-col items-center
-  justify-center w-full py-12 
+  justify-center w-full py-12 relative
   ;
 }
 
