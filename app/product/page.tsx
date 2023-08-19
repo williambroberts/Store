@@ -69,22 +69,24 @@ const {setNotification}=useNotification()
       //console.log(e.clientX,e.clientY)
     }
     return (  
-    <main className='max-w-[768px] px-2 py-24
+    <main className='py-24
     flex flex-col items-start justify-start gap-4'>
 <Animator delay={0}>
 <h1 
         className='title'
         >{product?.name}</h1>
 </Animator>
+      <section className='grid grid-cols-1 lg:grid-cols-2 gap-4 w-full padder'>
 
-     <Animator delay={0.13}>
+      
+     <Animator delay={0.13} >
 
     
       <div
       data-id="image" 
       onClick={toggleFullScreen}
        style={{backgroundImage:`url(${product?.metadata.blur})`}}
-      className={`w-full flex
+      className={`w-full flex ml-auto mr-auto 
       rounded-lg
       aspect-video skeleton ${loaded? "loaded":""}`}>
       <Image
@@ -106,15 +108,17 @@ const {setNotification}=useNotification()
       </div>
       </Animator>
 
+      <section>
 
+    
       <Animator delay={0.1}>
-        <div className="flex flex-nowrap gap-4 py-6">
+        <div className="flex flex-nowrap gap-4 py-6 ">
           <div className="product__category">Mockups</div>
           <div className="product__category">Digital</div>
         </div>
       </Animator>
       <Animator delay={0.2}>
-        <div className='flex flex-col items-start'>
+        <div className='flex flex-col items-start '>
         <p className='product__desc'>{product?.description}</p>
           <div className='product__info'>
               <h3>Whats included?</h3>
@@ -128,10 +132,12 @@ const {setNotification}=useNotification()
         </div>
     
       </Animator>
+      </section>
+      </section>
       <Animator delay={0.3}>
      
       <div className='
-      py-4 w-full
+      py-4 w-full padder
       flex flex-col items-start '>
         
        
@@ -162,7 +168,7 @@ const {setNotification}=useNotification()
 
       
       <Link href="/"  
-      className='button__
+      className='button__ padder
       '>
         <AiOutlineArrowLeft/>
         See all</Link>

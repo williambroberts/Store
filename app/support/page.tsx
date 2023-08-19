@@ -1,11 +1,15 @@
+"use client"
 import React from 'react'
 import { Hero } from '../../components/Hero'
 import { Accordion } from '../../components/Accordion'
 import {v4} from "uuid"
 import Animator from '../../components/Animator'
 import { EmailBanner } from '../../components/EmailBanner'
-import { ContactOption } from '../contact/ContactOptions'
+
 const SupportPage = () => {
+    const handleClick = ()=>{
+        window.location.assign("/contact")
+    }
     const questions = ["How do I place an order?",
       "What payment methods do you accept?",
      " How long does shipping take?",
@@ -49,7 +53,7 @@ const SupportPage = () => {
             <section className='contact__option'>
             <h3>Message</h3>
             <p>Can&apos;t find an answer to your question?</p>
-            <button>Contact Us</button>
+            <button onClick={handleClick}>Contact Us</button>
         </section>
             </div>
        

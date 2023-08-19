@@ -19,7 +19,7 @@ const GetStripePrices=async ()=>{
       },{
         apiKey:'sk_test_51NJVyhDt6cUT5aTWuiobYjYMmg9RhpFdJ4b8MhPMuOs2ahr3T41eoR4Q6h8x9506DDpLyK2U89gyHiQ2cxCY5FzT00CFlik7Hj'
       });
-    console.log(prices.data[0],"") 
+    //console.log(prices.data[0],"") 
     if (prices.data.length===0){
       return null
     } 
@@ -39,10 +39,10 @@ export const FetchMore = ({searchParams}:theProps) => {
    },[])
     
   return (
-    <div className='w-full max-w-[768px] grid grid-cols-1
-    sm:grid-cols-2 gap-2 py-3
+    <div className='w-full grid grid-cols-1
+    sm:grid-cols-2 gap-2 py-3 padder lg:grid-cols-3 grid-rows-1 overflow-hidden
     '>
-            {prices?.filter((price)=>price.id!==searchParams.get("id")).slice(0,2).map((price,index)=>
+            {prices?.filter((price)=>price.id!==searchParams.get("id")).slice(0,3).map((price,index)=>
             <Animator delay={index*0.13} key={price.id}>
                 <ProductCard props={price} />
             </Animator>

@@ -60,7 +60,8 @@ input, button, textarea, select {
      --t-3:#898E96;
      --t-4:#989EA6;
      /* --accent:#FF4A01; */
-    --accent:#00aaff;
+    /* --accent:#00aaff; */
+    --accent:#898E96;
      --gray0:#ffffff;
      --gray1: #fcfcfc;
      --gray2: #f8f8f8;
@@ -504,6 +505,7 @@ footer {
   padding-left:var(--p1);
   color:var(--t-1);
   background-color:var(--bg-3);
+  border-top: 1px solid var(--bg-4);
   @apply w-[100vw] h-[60px] 
 }
 
@@ -883,7 +885,7 @@ rounded-md font-bold
   color:var(--t-1);
   font-weight: 700;
   @apply leading-tight w-full 
-  text-center pb-8
+  text-center pb-8 z-10
 }
 
 .hero {
@@ -891,10 +893,51 @@ rounded-md font-bold
   padding-left:var(--p1);
   height: 320px;
   background-color:var(--bg-2);
-
+  position: relative;
   @apply flex w-full flex-col items-center
   justify-center
 
+}
+.lines {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  left:0px;
+  @apply flex flex-nowrap gap-0 overflow-hidden pr-12
+}
+.line {
+  transition: var(--transition-1);
+  transform: rotate(0deg);
+  min-width:1px;
+  position: relative;
+  height: 100%;
+  width: 1px;
+  background-color: var(--bg-4);
+  @apply ml-12
+}
+.line:hover {
+  animation-play-state: paused;
+}
+.line__after {
+  content: "";
+  display: block;
+  width: 1px;
+  height: 32px;
+  top: -50%;
+  position: absolute;
+  background: linear-gradient(to bottom, var(--bg-1) 0%, var(--t-1) 75%, var(--t-1) 100%);
+  animation: drop 7s 0s infinite forwards;
+  animation-timing-function: ease-in-out;
+}
+@keyframes drop {
+  0%{
+    top: -50%;
+  }
+  
+  100%{
+    top: 110%;
+  }
 }
 .subheading {
   background-color: transparent;
@@ -907,6 +950,8 @@ rounded-md font-bold
   padding-right:var(--p1); 
   padding-left:var(--p1);
   background-color: var(--bg-2);
+  border-top: 1px solid var(--bg-4);
+  border-bottom: 1px solid var(--bg-4);
   @apply flex flex-row items-center
   ;
 }
