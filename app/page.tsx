@@ -1,17 +1,14 @@
 // "use client"
 
-
-import { ProductCard } from "../components/ProductCard";
-import {v4} from "uuid"
 import { GetStripePrices } from "../Functions/ClientFunctions";
 import Animator from "../components/Animator";
 
 import { EmailBanner } from "../components/EmailBanner";
 import { Hero } from "../components/Hero";
 import { Sale } from "../components/Sale";
-import { AiOutlineArrowRight } from "react-icons/ai";
 import { OurProducts } from "../components/OurProducts";
-import { SuggestionCard } from "../components/SuggestionCard";
+import { ProductContainer } from "../components/ProductContainer";
+
 //1687321829
 
 
@@ -38,22 +35,8 @@ export default async function Home() {
  >View all <AiOutlineArrowRight/></button> */}
     </div> 
      </Animator>
- 
-     <div className="product__container">
-  
+        <ProductContainer prices={prices}/>
     
-     {prices?.map((price,index)=>{
-      return (
-        <Animator key={v4()} delay={(index+2)*0.1}>
- <ProductCard props={price} />
-        </Animator>
-       
-      )
-     })}
-     <Animator delay={(prices.length+2)*0.1}>
-      <SuggestionCard/>
-     </Animator>
-      </div>
       <Animator delay={(prices.length+3)*0.1}>
       <Sale/>
       </Animator>

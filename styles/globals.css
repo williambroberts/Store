@@ -1014,6 +1014,7 @@ rounded-md font-bold
   padding-right:var(--p1); 
   padding-left:var(--p1);
   width: 100%;
+  position: relative;
   @apply grid grid-cols-1 sm:grid-cols-2
   lg:grid-cols-3 lg:gap-6 gap-4 
 }
@@ -1468,4 +1469,25 @@ flex-col gap-3 rounded-lg p-4
   @apply flex items-center 
   text-sm rounded-md h-10 min-w-[100px]
   font-semibold px-3 py-3 justify-center
+}
+
+.pagnation {
+  color: var(--t-1);
+  width: min(90vw,400px);
+  @apply flex flex-row
+  justify-center text-sm
+  flex-nowrap gap-4 ml-auto mr-auto
+}
+.pagnation button {
+  transition: var(--transition-1);
+
+}
+.pagnation__left:hover,.pagnation__right:hover {
+
+}
+
+.pagnation button.active {
+  color: var(--bg-1);
+  background-color: var(--t-2);
+  @apply h-8 w-8 rounded-md
 }
