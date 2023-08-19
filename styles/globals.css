@@ -33,7 +33,7 @@
    --gradient:linear-gradient(to right, #c6ffdd, #fbd786, #f7797d);
    --gradient2: linear-gradient(to right, #005aa7, #fffde4);
 
-    --p1:clamp(0.5rem, 0.0455rem + 2.2727vw, 1.5rem);
+    --p1:clamp(0.5rem, -0.6364rem + 5.6818vw, 3rem);
     --f1: clamp(2rem, 1.5455rem + 2.2727vw, 3rem);
     --f2:clamp(1.5rem, 1.2727rem + 1.1364vw, 2rem);
    --br:6px;

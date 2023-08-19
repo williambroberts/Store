@@ -1,13 +1,16 @@
 "use client"
 import Link from 'next/link'
 import React, { useState } from 'react'
-
+export const testWwrapper = {
+  run:()=>{}
+}
 export const RegisterForm = () => {
     const [email,setEmail]=useState("")
     const [pw,setPw]=useState("")
     const [pw2,setPw2]=useState("")
 
     const handleLogin = (e)=>{
+      testWwrapper.run()
       e.preventDefault()
     }
   return (
