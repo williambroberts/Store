@@ -5,7 +5,7 @@ type theProps ={
 export const Hero = ({text}:theProps) => {
   let nums = Array(60).fill(1)
   nums = nums.map(i=>{
-    return Math.floor(Math.random() * 10)
+    return Math.floor(Math.random() * 100)/10
   })
   return (
     <div className='hero'>
