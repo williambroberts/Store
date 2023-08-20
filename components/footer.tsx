@@ -2,7 +2,8 @@
 import React from 'react'
 import IconShop from './icons/shop2'
 import { usePathname } from 'next/navigation'
-import { AiFillGithub } from 'react-icons/ai'
+import { AiFillGithub, AiFillInstagram, AiOutlineTwitter } from 'react-icons/ai'
+import { BiLogoFacebookCircle } from 'react-icons/bi'
 
 export const Footer = () => {
     const pathname = usePathname()
@@ -31,6 +32,9 @@ export const Footer = () => {
         <div
         className='font-light text-sm opacity-70'
         >© 2023</div>
+        <div className='flex flex-row text-sm flex-nowrap items-center
+        gap-2 px-2
+        '><AiFillInstagram/> <BiLogoFacebookCircle/> <AiOutlineTwitter/></div>
     </nav>
    </footer>
   )

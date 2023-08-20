@@ -41,9 +41,9 @@ const handleAddToCart = ()=>{
     '>
         <div className='flex-auto'>
             <div className='flex flex-row 
-            gap-2 w-full text-white
+            gap-2 w-full text-[var(--t-1)]
             items-between'>
-            <span className='font-medium'>{price.product.name}</span>
+            <span className='font-medium px-2'>{price.product.name}</span>
             <span
             className='ml-auto px-2'
             >{(price.unit_amount/100).toLocaleString('en-GB',{

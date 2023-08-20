@@ -57,7 +57,7 @@ export const SearchBar = ({prices,isOpen,setOpen}:theProps) => {
         style={{height:`${query===""?"0px":"auto"}`}}
         className='flex flex-col items-center
         gap-2 w-full overflow-y-auto transition-all 
-        ease-in-out flex-auto bg-[#2b2b2b]
+        ease-in-out flex-auto bg-[var(--bg-1)]
         duration-200
         '>
             {query===""? null:

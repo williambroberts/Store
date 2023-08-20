@@ -203,7 +203,7 @@ input, button, textarea, select {
      top:0px;
      left:0px;
      
-     @apply flex flex-col
+     @apply flex flex-col z-20
      items-center justify-center   ;  
      
    }
@@ -425,7 +425,11 @@ justify-center rounded-full
   ;
 }
 
-
+.product__card__button {
+  color: var(--t-2);
+  @apply flex flex-row flex-nowrap items-center gap-1
+  font-semibold text-sm px-2 py-2
+}
 
 
 
@@ -593,7 +597,7 @@ footer {
 
   background-color:transparent;
   @apply flex flex-col
-  py-16 relative
+  py-16 relative z-30
   items-center;
 
 }
