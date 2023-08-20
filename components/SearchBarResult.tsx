@@ -4,13 +4,14 @@ import IconHandbag from './icons/bag';
 import useStore from '../zustand/store';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
+import { useNotification } from '../contexts/NotificationContext';
 interface theProps {
     price:any;
     setOpen:Function;
 }
 export const SearchBarResult = ({price,setOpen}:theProps) => {
   const {setPriceObject,AddProductToCart}=useStore()
-  
+  const {setNotification}=useNotification()
   const [loaded,setLoaded]=useState<boolean>(false)
   const {product}=price
   const router = useRouter()
@@ -22,6 +23,13 @@ export const SearchBarResult = ({price,setOpen}:theProps) => {
     router.push(`/product?id=${price.id}`)
 }
 const handleAddToCart = ()=>{
+  setNotification({
+    time:3000,
+    type:"alert",
+    open:true,
+    message:`Added ${product.name} ✓`
+
+  })
   const newItem = {
     quantity:1,
     id:price.id,
