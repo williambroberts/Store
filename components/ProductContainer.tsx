@@ -1,7 +1,7 @@
 "use client"
 
 import {v4} from "uuid"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { ProductCard } from "./ProductCard"
 import Animator from "./Animator"
 import { SuggestionCard } from "./SuggestionCard"
@@ -9,12 +9,21 @@ type theProps = {
     prices:any;
 }
 export const ProductContainer = ({prices}) => {
+  
     const [start,setStart]=useState<number>(0)
     const PAG = 6
     const pages = Math.floor(prices.length/PAG)+1
     const arr = Array(pages).fill(1)
+    useEffect(()=>{
+      let lp =document.querySelector('[data-id="latestProducts"]')
+      //window.scrollBy({ top: -30,behavior:"instant"})
+      lp.scrollIntoView({behavior:"instant"})
+      
+    },[start])
   return (
-    <div className="w-full grid grid-cols-1 gap-4">
+    <div 
+    data-id="pw"
+    className="w-full grid grid-cols-1 gap-4">
 
   
     <div className="product__container">

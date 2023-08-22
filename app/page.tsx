@@ -28,8 +28,14 @@ export default async function Home() {
       
     
      <Animator delay={0.1}>
+     <div
+      data-id="latestProducts"
+      ></div>
      <div className="container__">
- <h2 className="subheading">Latest Products</h2>
+     
+ <h2 
+ 
+ className="subheading">Latest Products</h2>
  {/* <button
  className="button__"
  >View all <AiOutlineArrowRight/></button> */}
