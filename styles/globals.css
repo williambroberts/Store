@@ -189,7 +189,7 @@ input, button, textarea, select {
    }
   #notification {
     width:100vw;
-
+    z-index: 100;
     position: fixed;
     bottom:24px; 
    
@@ -618,11 +618,11 @@ footer {
 .search__portal {
   outline: 1px solid var(--bg-4);
   transition: var(--transition-1);
-  width: min(90vw,480px);
+  width: min(95vw,480px);
   
   background-color:var(--bg-2);
   @apply flex flex-col items-center
-  z-10
+  z-10 overflow-x-hidden
   overflow-y-auto rounded-md relative
   ;
 }
@@ -636,7 +636,7 @@ footer {
 .search__form {
   color: var(--t-2);
   background-color:transparent ;
-  width: min(90vw,480px);
+  width: min(95vw,480px);
   @apply flex flex-row items-center
   flex-nowrap gap-2 px-5 py-3 
   rounded-md
