@@ -22,7 +22,7 @@ export const  Hamburger = ({setOpen,open}:theProps) => {
     const [prices,setPrices]=useState([])
     const [start,setStart]=useState<number>(0)
     const {setPriceObject}=useStore()
-    const pagnationLength=5
+    const pagnationLength=4
    
     async function FetchPrices(){
       const prices = await GetStripePrices()
@@ -59,23 +59,34 @@ export const  Hamburger = ({setOpen,open}:theProps) => {
            className={`${pathname==="/"? "selected":""}
            hamburger__link
             `}
+            onClick={()=>setOpen(false)}
             ><IconHome_door/>
             
               Home
             </Link>
-            <Link  href="/login" className='hamburger__link'>
+            <Link 
+             onClick={()=>setOpen(false)}
+            href="/login" className='hamburger__link'>
              <SiWebauthn/> Login
             </Link>
-            <Link href="/register" className='hamburger__link'>
+            <Link 
+             onClick={()=>setOpen(false)}
+            href="/register" className='hamburger__link'>
              <GiArchiveRegister/> Register
             </Link>
-            <Link href="/about" className='hamburger__link'>
+            <Link 
+             onClick={()=>setOpen(false)}
+            href="/about" className='hamburger__link'>
              <BsInfoSquare/> About
             </Link>
-            <Link href="/support" className='hamburger__link'>
+            <Link 
+             onClick={()=>setOpen(false)}
+            href="/support" className='hamburger__link'>
              <BiSupport/> Support
             </Link>
-            <Link href="/contact" className='hamburger__link'>
+            <Link 
+             onClick={()=>setOpen(false)}
+            href="/contact" className='hamburger__link'>
              <AiOutlineContacts/> Contact
             </Link>
           </div>
