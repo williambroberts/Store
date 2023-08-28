@@ -1,7 +1,7 @@
 "use client"
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
-import IconShop from './icons/shop2';
+import {BsCartCheck} from "react-icons/bs"
 import IconHome_door from './icons/home';
 import IconInfoSquare from './icons/about';
 import { usePathname, useRouter } from 'next/navigation';
@@ -14,6 +14,7 @@ import {GiArchiveRegister} from "react-icons/gi"
 import { Cart } from './Cart';
 import { BsArrowLeft, BsArrowRight, BsInfoSquare } from 'react-icons/bs';
 import useStore from '../zustand/store';
+import { useNotification } from '../contexts/NotificationContext';
 interface theProps {
     open?:boolean;
     setOpen?:(newValue:boolean)=>void;
@@ -21,13 +22,17 @@ interface theProps {
 export const  Hamburger = ({setOpen,open}:theProps) => {
     const [prices,setPrices]=useState([])
     const [start,setStart]=useState<number>(0)
-    const {setPriceObject}=useStore()
+    const {setPriceObject,count,setModal}=useStore()
     const pagnationLength=4
+    const {setNotification} = useNotification()
    
     async function FetchPrices(){
       const prices = await GetStripePrices()
       setPrices(prices)
     }
+
+
+
   useEffect(()=>{
    FetchPrices()
   },[])
@@ -40,6 +45,22 @@ export const  Hamburger = ({setOpen,open}:theProps) => {
    
 }
   
+const handleModal = ()=>{
+  if (count===0){
+    setNotification({
+      time:3000,type:"alert",
+      message:"Basket is Empty ✘",
+      open:true,
+    })
+    return
+  }
+  let htmlTag = document.querySelector("html")
+  htmlTag.style.overflowY="hidden"
+
+  setModal()
+ }
+
+
   return (
     <div className={`hamburger ${open? "open":""}`}>
         <nav className='flex flex-col pt-10 p-6 pb-10 
@@ -55,6 +76,13 @@ export const  Hamburger = ({setOpen,open}:theProps) => {
             <Cart/>    
           <div className='parent flex-col w-full
           flex items-start '>
+            <button
+            className='hamburger__link'
+            onClick={handleModal}
+            >
+              <BsCartCheck/>
+              checkout
+            </button>
             <Link href={"/"}
            className={`${pathname==="/"? "selected":""}
            hamburger__link

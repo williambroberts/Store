@@ -1079,6 +1079,18 @@ background-color: var(--bg-3);
   gap-4 w-full justify-between
 }
 
+.close__{
+  display: block;
+  cursor: pointer;
+  z-index: 10;
+  background-color:transparent;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  height:100dvh ;
+
+}
 .context__consumer {
   width: 100vw;
   min-height: 100dvh;
