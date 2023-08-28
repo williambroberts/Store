@@ -1,6 +1,8 @@
+"use client"
 import { Component, ErrorInfo } from "react";
 
 import React from 'react'
+import { BiCommentError } from "react-icons/bi";
 type errorChildProps = {
     error?:Error
 }
@@ -9,11 +11,13 @@ export const ErrorChild = ({error}:errorChildProps) => {
         window.history.go(0)
     }
   return (
-    <div>
+    <main className="flex-auto padder flex flex-col items-center">
         
-        {error?.message}
-        <button onClick={reload}>reload/return</button>
-        </div>
+            <h1 className="text-base">An unexpected error has occured </h1>
+        <button 
+        className="product__card__button"
+        onClick={reload}>Go back</button>
+        </main>
   )
 }
 

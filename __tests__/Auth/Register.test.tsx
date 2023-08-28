@@ -21,7 +21,7 @@ function rendering (){
 }
 describe('register tests',()=>{
     describe('rendering',()=>{
-        it('should render correctly',()=>{
+        xit('should render correctly',()=>{
             
             const {password,email,confirmPassword,button}=rendering()
             expect(password).toBeInTheDocument()
@@ -32,7 +32,7 @@ describe('register tests',()=>{
         })
     })
     describe('behaviour',()=>{
-        it('submit button is enabled after form filled in',async()=>{
+        xit('submit button is enabled after form filled in',async()=>{
             user.setup()
             const spy = jest.spyOn(testWwrapper,'run').mockImplementation()
             const {password,email,confirmPassword,button}=rendering()

@@ -1,5 +1,5 @@
 "use client"
-import React, { createContext,useContext,useState } from 'react'
+import React, { createContext,useContext } from 'react'
 import useLocalStorage from 'use-local-storage';
 
 interface ReactThemeContextValues {
@@ -37,7 +37,7 @@ function getInitialTheme(){
 
 const ReactThemeProvider = ({children}:{children:React.ReactNode}) => {
   //const [theme,setTheme]=useLocalStorage("color-theme","dark")
-  const [theme,setTheme]=useState(getInitialTheme)
+  const [theme,setTheme]=React.useState(getInitialTheme)
   const [isGreyScale,setIsGreyScale]=useLocalStorage("greyscale",false)
   const updateTheme = (value)=>{
     let newValue = value
@@ -74,7 +74,7 @@ export default ReactThemeProvider
 export function useReactTheme(): ReactThemeContextValues {
     const RTC = useContext(ReactThemeContext)
     if(!RTC){
-        throw new Error("useBlogs must be used inside BlogsProvider")
+        throw new Error("RTC must be used inside its provider")
     }
     return RTC;
 }

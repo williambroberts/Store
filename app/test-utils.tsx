@@ -11,12 +11,13 @@ import { SideBar } from '../components/SideBar'
 
 const AllTheProviders = ({children}: {children: React.ReactNode}) => {
   return (
+    
     <ReactThemeProvider>
           <NotificationProvider>
           <ContextConsumer>
         {children}
         <Footer/>
-        <Header/>
+        {/* <Header/> */}
         <SideBar/>
         <div id="portal"></div>
         <div id="notification"></div>

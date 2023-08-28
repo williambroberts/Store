@@ -10,32 +10,21 @@ const ReactColorThemeButton = () => {
     const {updateTheme,theme}=useReactTheme()
     const [open,setOpen]=useState<boolean>(false)
 
-    const close = (e:any)=>{
-      console.log("closed",open)
-      
-      let menu = document.querySelector('.theme__button__menu')
-      let rect= menu.getBoundingClientRect()
-      console.log(e.clientX,rect.left,rect.right)
-      if (e.clientX <rect.left || e.clientX > rect.right
-        || e.clientY < rect.top || e.clientY > rect.bottom){
-          setOpen(false)
-          console.log("ran closed")
-          document.removeEventListener("mousedown",close)
-          return
-        }
-    }
+    
       const handleOpen = (e)=>{
+        console.log(e.target.tagName)
         if (e.target.className==="close__"){return}
-        console.log("handleOpen")
+        if (e.target.tagName==='BUTTON'){return}
+        //console.log("handleOpen")
         setOpen(true)
         document.documentElement.style.overflowY="hidden"
         //document.documentElement.style.pointerEvents="none"
         //document.addEventListener('mousedown',close)
       }
       const handleClose = (e)=>{
-        console.log(e.target,"close")
+        console.log(e.target,"close",e.target.tagName)
         setOpen(false)
-        console.log(e.target)
+        //console.log(e.target)
         document.documentElement.style.overflowY="auto"
       }
 
@@ -47,22 +36,25 @@ const ReactColorThemeButton = () => {
       return (
 
 
-        <button 
-        
+        <div 
+        role='button'
+        data-testid="themeButton"
         aria-label='dark mode menu'
         className={`theme__button ${theme==="light"? "light":"dark"}`} 
         onClick={(e)=>handleOpen(e)}>
           {theme==="dark"? <BsMoonFill/> :<BsSun/> }
           <div
-          style={{display:open?"block":"none"}}
+          data-testid="close__"
+          style={{display:open?"flex":"none"}}
           onClick={handleClose}
           className='close__'
           // data-state={open}
           ></div>
             <div
-           
-            className={`theme__button__menu `}
+           data-testid="themeMenu"
+            className={`theme__button__menu`}
             data-state={open}
+            style={{display:open?"flex":"none"}}
             >
                 <button
                 
@@ -70,7 +62,7 @@ const ReactColorThemeButton = () => {
                 <button onClick={()=>handleUpdate("dark")}>Dark</button>
                 <button onClick={()=>handleUpdate("system")}>System</button>
             </div>
-          </button>
+          </div>
           
       )
     

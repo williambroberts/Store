@@ -1,4 +1,4 @@
-
+"use client"
 
 export const ErrorFallback = () => {
     const reload = ()=>{
@@ -6,9 +6,11 @@ export const ErrorFallback = () => {
         window.history.go(0)
     }
   return (
-    <div>ErrorFallback
-
-    <button onClick={reload}>reload /return</button>
+    <div>
+            <h1>An unexpected Error has occured</h1>
+    <button
+    className=""
+    onClick={reload}>go back</button>
     </div>
   )
 }

@@ -97,11 +97,11 @@ const handleModal = ()=>{
             href="/login" className='hamburger__link'>
              <SiWebauthn/> Login
             </Link>
-            <Link 
+            {/* <Link 
              onClick={()=>setOpen(false)}
             href="/register" className='hamburger__link'>
              <GiArchiveRegister/> Register
-            </Link>
+            </Link> */}
             <Link 
              onClick={()=>setOpen(false)}
             href="/about" className='hamburger__link'>

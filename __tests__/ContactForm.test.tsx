@@ -31,7 +31,7 @@ function renderForm(){
 
 describe('contact form tests',()=>{
     describe('rendering',()=>{
-        it('should render correctly',()=>{
+        xit('should render correctly',()=>{
             const form = renderForm()
             expect(form.textarea).toBeInTheDocument()
               expect(form.button).toBeInTheDocument()

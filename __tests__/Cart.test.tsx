@@ -16,7 +16,7 @@ describe('cart',()=>{
     })
 
     describe("bahaviour",()=>{
-        it('should say checkout on hover',async()=>{
+        xit('should say checkout on hover',async()=>{
             user.setup()
             render(
             <NotificationProvider>

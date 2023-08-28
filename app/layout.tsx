@@ -10,6 +10,8 @@ import '../styles/globals.css'
 import { Inter } from 'next/font/google'
 import NotificationProvider from '../contexts/NotificationContext'
 import { SideBar } from '../components/SideBar'
+import ErrorBoundary, { ErrorChild } from '../utils/Errors/ErrorBoundary'
+import { ErrorFallback } from '../utils/Errors/ErrorFallback'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -25,7 +27,7 @@ export default function RootLayout({ children }) {
       <body
      
       className={`${inter.className}`}>
-   
+        <ErrorBoundary>
         <ReactThemeProvider>
           <NotificationProvider>
           <ContextConsumer>
@@ -38,6 +40,8 @@ export default function RootLayout({ children }) {
         </ContextConsumer>   
         </NotificationProvider>
         </ReactThemeProvider>   
+      
+        </ErrorBoundary>
         </body>
     </html>
   )

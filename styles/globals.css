@@ -1053,7 +1053,8 @@ transition: var(--transition-1);
   background-color: var(--bg-1);
   color: var(--t-1);
   border: 1px solid var(--bg-4);
-  @apply hidden flex-col p-1
+  display: none;
+  @apply  flex-col p-1
   items-start absolute rounded-md
 }
 
