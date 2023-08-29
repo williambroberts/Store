@@ -16,7 +16,10 @@ import { ErrorFallback } from '../utils/Errors/ErrorFallback'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'sideStore',
+  title: {
+    default:"sideStore",
+    template:" %s | SS"
+  },
   description: 'An online photograph store with premium photos  ',
 }
 
