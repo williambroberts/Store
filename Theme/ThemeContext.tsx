@@ -12,7 +12,7 @@ interface ReactThemeContextValues {
 const ReactThemeContext = createContext<ReactThemeContextValues|undefined>(undefined)
 
 function getInitialTheme(){
-  console.log("🧧🧧🧧🧧")
+  
   try {
     const persistedThemePreference =  localStorage?.getItem("color-theme")
     const hasPersistedThemePreference = typeof(persistedThemePreference)==="string"

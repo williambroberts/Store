@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import ReactDom from "react-dom"
+import styles from "./SuggestPortal.module.css"
 import {CgCloseO} from "react-icons/cg"
 interface theProps {
   open:boolean;
@@ -38,7 +39,7 @@ export const SuggestPortal = ({open,setOpen}:theProps) => {
             
           </div>
           <p>If you wish to suggest a product you would like to see, please use the form below.</p>
-            <form>
+            <form className={styles.form} action={`https://formsubmit.co/williambrobertsemail@gmail.com`} method='POST'>
     <input type='text' value={data.name} onChange={(e)=>setData((prev)=>({...prev,name:e.target.value}))}
     placeholder='Your name' id="name"/>
   <input type='text' value={data.email} onChange={(e)=>setData((prev)=>({...prev,email:e.target.value}))}

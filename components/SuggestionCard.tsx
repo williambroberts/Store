@@ -1,7 +1,7 @@
 "use client"
 import React, { useState } from 'react'
 import { AiOutlinePlus } from 'react-icons/ai'
-import { SuggestPortal } from './Portals/SuggestPortal'
+import { SuggestPortal } from './Portals/SuggestPortal/SuggestPortal'
 
 export const SuggestionCard = () => {
     const [open,setOpen]=useState<boolean>(false)
