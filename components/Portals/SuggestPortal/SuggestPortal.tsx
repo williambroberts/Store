@@ -2,17 +2,19 @@ import React, { useState } from 'react'
 import ReactDom from "react-dom"
 import styles from "./SuggestPortal.module.css"
 import {CgCloseO} from "react-icons/cg"
+import { useNotification } from '../../../contexts/NotificationContext';
 interface theProps {
   open:boolean;
   setOpen:Function;
 }
 export const SuggestPortal = ({open,setOpen}:theProps) => {
   const [data,setData]=useState({name:"",email:"",idea:""})
+  const {setNotification}=useNotification()
   const handleClose = ()=>{
     setOpen(false)
     document.documentElement.style.overflowY="auto"
   }
-  const shut = (e)=>{
+  const shut = (e:any)=>{
     //console.log(e.target)
     if (e.target.className==="suggest__portal__container"){
       setOpen(false)
@@ -20,8 +22,15 @@ export const SuggestPortal = ({open,setOpen}:theProps) => {
     }
   }
 
-  const handleSubmit = (e)=>{
+  const handleSubmit = (e:any)=>{
     e.preventDefault()
+    setNotification({
+      time:3000,type:"success",
+      message:"Suggestion has been made ✓",
+      open:true,
+    })
+    return
+    
   }
   return ReactDom.createPortal(
     <div 
@@ -39,15 +48,16 @@ export const SuggestPortal = ({open,setOpen}:theProps) => {
             
           </div>
           <p>If you wish to suggest a product you would like to see, please use the form below.</p>
-            <form className={styles.form} action={`https://formsubmit.co/williambrobertsemail@gmail.com`} method='POST'>
-    <input type='text' value={data.name} onChange={(e)=>setData((prev)=>({...prev,name:e.target.value}))}
-    placeholder='Your name' id="name" name='name'/>
-  <input type='text' value={data.email} onChange={(e)=>setData((prev)=>({...prev,email:e.target.value}))}
-    placeholder='Your email' id="email" name='email'/>
-      <input type='text' value={data.idea} onChange={(e)=>setData((prev)=>({...prev,idea:e.target.value}))}
-    placeholder='Your idea' id="idea" name='suggestion'/>
+            <form 
+            onSubmit={handleSubmit}
+            className={styles.form} action={`https://formsubmit.co/williambrobertsemail@gmail.com`} method='POST'>
+    <input required type='text' value={data.name} onChange={(e)=>setData((prev)=>({...prev,name:e.target.value}))}
+    placeholder='Your name' id="name" name='name' />
+  <input  required type='text' value={data.email} onChange={(e)=>setData((prev)=>({...prev,email:e.target.value}))}
+    placeholder='Your email' id="email" name='email' />
+      <input required type='text' value={data.idea} onChange={(e)=>setData((prev)=>({...prev,idea:e.target.value}))}
+    placeholder='Your idea' id="idea" name='suggestion' />
     <button 
-    onClick={handleSubmit}
     className='submit'>Submit</button>
             </form>
         </div>
