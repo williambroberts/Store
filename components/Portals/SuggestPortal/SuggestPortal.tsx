@@ -23,7 +23,7 @@ export const SuggestPortal = ({open,setOpen}:theProps) => {
   }
 
   const handleSubmit = (e:any)=>{
-    e.preventDefault()
+    
     setNotification({
       time:3000,type:"success",
       message:"Suggestion has been made ✓",
