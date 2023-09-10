@@ -10,9 +10,9 @@ import '../styles/globals.css'
 import { Inter } from 'next/font/google'
 import NotificationProvider from '../contexts/NotificationContext'
 import { SideBar } from '../components/SideBar'
-import ErrorBoundary, { ErrorChild } from '../utils/Errors/ErrorBoundary'
-import { ErrorFallback } from '../utils/Errors/ErrorFallback'
+import ErrorBoundary  from '../utils/Errors/ErrorBoundary'
 
+import { QueryProvider } from '../contexts/QueryProvider'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
@@ -31,6 +31,7 @@ export default function RootLayout({ children }) {
      
       className={`${inter.className}`}>
         <ErrorBoundary>
+          <QueryProvider>
         <ReactThemeProvider>
           <NotificationProvider>
           <ContextConsumer>
@@ -43,7 +44,7 @@ export default function RootLayout({ children }) {
         </ContextConsumer>   
         </NotificationProvider>
         </ReactThemeProvider>   
-      
+        </QueryProvider>
         </ErrorBoundary>
         </body>
     </html>
