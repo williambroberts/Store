@@ -50,7 +50,7 @@ export const SuggestPortal = ({open,setOpen}:theProps) => {
           <p>If you wish to suggest a product you would like to see, please use the form below.</p>
             <form 
             onSubmit={handleSubmit}
-            className={styles.form} action={`https://formsubmit.co/williambrobertsemail@gmail.com`} method='POST'>
+            className={styles.form} action={`https://formsubmit.co/489a8eabf364548a8643846759ca5731`} method='POST'>
     <input required type='text' value={data.name} onChange={(e)=>setData((prev)=>({...prev,name:e.target.value}))}
     placeholder='Your name' id="name" name='name' />
   <input  required type='text' value={data.email} onChange={(e)=>setData((prev)=>({...prev,email:e.target.value}))}
