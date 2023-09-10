@@ -64,7 +64,7 @@ const handleModal = ()=>{
   return (
     <div className={`hamburger ${open? "open":""}`}>
         <nav className='flex flex-col pt-10 p-6 pb-10 
-        items-center w-full gap-8 h-[100vh] text-sm
+        items-center w-full gap-8 h-[100vh] text-sm z-20
         '>  
             
           <div className='flex flex-col items-center
