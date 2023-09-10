@@ -12,7 +12,7 @@ const ReactColorThemeButton = () => {
 
     
       const handleOpen = (e)=>{
-        console.log(e.target.tagName)
+        //console.log(e.target.tagName)
         if (e.target.className==="close__"){return}
         if (e.target.tagName==='BUTTON'){return}
         //console.log("handleOpen")
@@ -22,7 +22,7 @@ const ReactColorThemeButton = () => {
         //document.addEventListener('mousedown',close)
       }
       const handleClose = (e)=>{
-        console.log(e.target,"close",e.target.tagName)
+        //console.log(e.target,"close",e.target.tagName)
         setOpen(false)
         //console.log(e.target)
         document.documentElement.style.overflowY="auto"
