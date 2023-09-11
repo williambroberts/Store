@@ -22,21 +22,26 @@ export const LoginForm = () => {
     onSuccess:(data)=>{
       if (data.status && data.status!==200){
         setNotification({
-          time:3000,type:"error",message:data.message,open:true
+          time:3000,type:"cancel",message:data.message,open:true
         })
       }
       console.log(data)
       if (data.status===200 && data.success){
         const user = {email:data.user_email,isAuth:true}
        setUser(user)
-        localStorage.setItem('isAuth',JSON.stringify(user))
+       setNotification({
+        time:3000,type:"success",message:"Logged in succesfully",open:true
+      })
+        localStorage.setItem('user',JSON.stringify(user))
+        //router.push("/")
       }
      
     },
     onError:(error)=>{
       setNotification({
-        time:3000,type:"error",message:"An error has occured",open:true
+        time:3000,type:"cancel",message:"An error has occured",open:true
       })
+      setPw("")
     }
     
   })

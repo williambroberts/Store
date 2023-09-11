@@ -26,7 +26,7 @@ function getFirstVisitState(){
     try {
         let value = localStorage.getItem('firstVisit')
         if (value){
-            let res = Boolean(JSON.stringify(value))
+            let res = Boolean(JSON.parse(value))
             
             return false
         }

@@ -6,7 +6,7 @@ import IconHome_door from './icons/home';
 import IconInfoSquare from './icons/about';
 import { usePathname, useRouter } from 'next/navigation';
 import { useReactTheme } from '../Theme/ThemeContext';
-import {AiOutlineContacts, AiOutlineHome} from "react-icons/ai"
+import {AiOutlineContacts, AiOutlineHome, AiOutlineLogout} from "react-icons/ai"
 import { GetStripePrices } from '../Functions/ClientFunctions';
 import {SiWebauthn} from "react-icons/si"
 import {BiSupport} from "react-icons/bi"
@@ -15,6 +15,8 @@ import { Cart } from './Cart';
 import { BsArrowLeft, BsArrowRight, BsInfoSquare } from 'react-icons/bs';
 import useStore from '../zustand/store';
 import { useNotification } from '../contexts/NotificationContext';
+import { useAuth } from '../contexts/AuthProvider';
+import { Logoutbutton } from './Auth/Logoutbutton';
 interface theProps {
     open?:boolean;
     setOpen?:(newValue:boolean)=>void;
@@ -25,7 +27,7 @@ export const  Hamburger = ({setOpen,open}:theProps) => {
     const {setPriceObject,count,setModal}=useStore()
     const pagnationLength=4
     const {setNotification} = useNotification()
-   
+   const {user}=useAuth()
     async function FetchPrices(){
       const prices = await GetStripePrices()
       setPrices(prices)
@@ -92,11 +94,11 @@ const handleModal = ()=>{
             
               Home
             </Link>
-            <Link 
+            {user?.isAuth?<div className='hamburger__link'><AiOutlineLogout/><Logoutbutton/></div>:<Link 
              onClick={()=>setOpen(false)}
             href="/login" className='hamburger__link'>
              <SiWebauthn/> Login
-            </Link>
+            </Link>}
             {/* <Link 
              onClick={()=>setOpen(false)}
             href="/register" className='hamburger__link'>

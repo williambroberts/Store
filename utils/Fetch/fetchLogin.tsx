@@ -1,4 +1,6 @@
-const origin = "http://localhost:5000"
+import { origin } from "../base";
+
+
 export type payloadType = {
     email:string;
     password:string;
@@ -18,8 +20,8 @@ export const fetchLogin = async (payload:payloadType)=>{
         data = await res.json()
         return data
     }catch(e){
-        console.trace()
-        console.warn(e)
+        //console.trace()
+        //console.warn(e)
         return e
     }
 }

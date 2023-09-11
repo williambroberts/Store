@@ -13,6 +13,7 @@ import IconBackward from '../icons/back'
 import IconEcommerce_cart_remove from '../icons/CartX'
 import { useReactTheme } from '../../Theme/ThemeContext'
 import IconPadlock from '../icons/padlock'
+import { fetchIsAuth } from '../../utils/Fetch/fetchIsAuth'
 const CheckoutPortal = () => {
     const {setModal,cart,total,ResetCart,count}=useStore()
     const {theme}=useReactTheme()
@@ -46,18 +47,22 @@ const CheckoutPortal = () => {
         }
         
       })
+      const isAuthRes = await fetchIsAuth()
+      const isAuth = await isAuthRes.json()
+      console.log(isAuth)
       
       const options = {
         method: 'POST',
         headers: {
           "Content-Type": "application/json",
         },
-        body:JSON.stringify({line_items,origin:origin})
+        body:JSON.stringify({line_items,origin:origin,isAuth:isAuth})
 
       }
         fetch(url,options).then((res)=>res.json())
          .then((data)=>{
-          
+          console.log(data)
+          //todo if data =origin = store origin ie fail
           window.location.assign(data)
           setModal()
           let htmlTag = document.querySelector("html")
@@ -124,7 +129,7 @@ const CheckoutPortal = () => {
           justify-between font-medium text-base'>
             <span
             className=''
-            >Total</span>
+            >Pre discount total</span>
           <span
           className={``}
           >
@@ -135,6 +140,7 @@ const CheckoutPortal = () => {
             style:"currency",currency:"GBP"
           })}</span>
          </div>
+         <div className='text-sm'>Any discount will be applied at checkout</div>
           <button
          className='text-base flex flex-row items-center
          gap-2  w-full justify-center mt-8

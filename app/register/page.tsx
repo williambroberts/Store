@@ -4,7 +4,7 @@ import React from 'react'
 
 import Link from 'next/link'
 import { MdClose } from 'react-icons/md'
-import { RegisterForm } from '../../components/Auth/RegisterForm'
+import { RegisterForm } from '../../components/Auth/Register/RegisterForm'
 
 const RegisterPage = () => {
     

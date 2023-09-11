@@ -1,7 +1,7 @@
 import {render,screen} from "@testing-library/react"
-import { RegisterForm } from "../../components/Auth/RegisterForm"
+import { RegisterForm } from "../../components/Auth/Register/RegisterForm"
 import user from "@testing-library/user-event"
-import {testWwrapper} from "../../components/Auth/RegisterForm"
+import {testWwrapper} from "../../components/Auth/Register/RegisterForm"
 
 
 

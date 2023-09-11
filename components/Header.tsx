@@ -21,12 +21,15 @@ import { Cart } from './Cart'
 import { GreyScaleButton } from '../Theme/GreyScaleButton'
 import { HeaderMenu } from './HeaderMenu'
 import { FirstVisitPortal } from './Portals/FirstVisitPortal/FirstVisitPortal'
+import { useAuth } from '../contexts/AuthProvider'
+import { Logoutbutton } from './Auth/Logoutbutton'
 
 
 
 export const Header = () => {
   const {theme}=useReactTheme()
   const {notification,firstVisit}=useNotification()
+  const {user}=useAuth()
     const {modal}=useStore()
     
   
@@ -56,7 +59,7 @@ export const Header = () => {
 
    
 
-   
+   console.warn(user,firstVisit)
   return (
     <header
     style={{display:pathname==="/login"||pathname==="/register"?
@@ -72,7 +75,7 @@ export const Header = () => {
             <PersistReset/>
            
          
-           {firstVisit? <FirstVisitPortal/>:<div></div>}
+           {firstVisit===true? <FirstVisitPortal/>:<div></div>}
             {notification.open? <NotificationPortal/> :<div></div>}
             {modal? <CheckoutPortal/>:<div></div>}
             <button
@@ -110,15 +113,13 @@ export const Header = () => {
            
             `}
             href={"/about"}>About</Link>
-              <Link
+             {user?.isAuth?<div className='header__link'><Logoutbutton/></div>: <Link
              data-id="header__link"
-            
             className={`
             header__link
             ${pathname==="/login"?"active":""}
-           
             `}
-            href={"/login"}>Login</Link>
+            href={"/login"}>Login</Link> }
             <HeaderMenu/>
              </div>
              

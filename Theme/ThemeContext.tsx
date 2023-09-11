@@ -27,7 +27,7 @@ function getInitialTheme(){
         return mql.matches? 'dark':'light'
     }
   }catch (err){
-    console.log(err)
+    //console.log(err)
   }
   
    
