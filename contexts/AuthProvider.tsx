@@ -8,9 +8,22 @@ type authContextValues = {
 const authContext = createContext<authContextValues|undefined>(undefined)
 
 
+function getInitialAuthState(){
+    //todo check local storage
+    // if local check server for session
+    // update accordingly
+    let user = null
+    try {
+        user = localStorage.getItem("isAuth")
+        if (user){
+            
+        }
+    }catch(e){
 
+    }
+}
 export const AuthProvider = ({children}:{children:React.ReactNode}) => {
-    const [user,setUser]=useState(null)
+    const [user,setUser]=useState(getInitialAuthState)
     
     const authValues = {
         user:user,setUser:setUser

@@ -47,13 +47,13 @@ export const FirstVisitPortal = () => {
         </div>
       </div>
       <div className='flex items-center w-full justify-between'>
-      <Link href={"/login"} className='product__card__add'>Login</Link>
-      <Link href={"/register"} className='product__card__view'>Register</Link>
+      <Link href={"/login"} className='product__card__add' onClick={handleClose}>Login</Link>
+      <Link href={"/register"} className='product__card__view' onClick={handleClose}>Register</Link>
       </div>
       
 
     </article>
-    </main>,document.documentElement
+    </main>,document?.documentElement
   
   )
 }

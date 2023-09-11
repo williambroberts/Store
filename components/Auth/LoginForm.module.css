@@ -1,0 +1,8 @@
+.demo {
+    transition: var(--transition-1);
+    @apply w-full items-center justify-start text-xs uppercase
+    cursor-pointer py-1 flex-nowrap flex
+}
+.demo:hover {
+    @apply opacity-80
+}

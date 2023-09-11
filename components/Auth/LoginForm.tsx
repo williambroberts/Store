@@ -5,27 +5,40 @@ import React, { useState } from 'react'
 import { AiOutlineEye } from 'react-icons/ai'
 import { fetchLogin } from '../../utils/Fetch/fetchLogin'
 import { useRouter } from 'next/navigation'
+import styles from "./LoginForm.module.css"
+import {PiSelectionForegroundDuotone} from "react-icons/pi"
+import { useNotification } from '../../contexts/NotificationContext'
+import { useAuth } from '../../contexts/AuthProvider'
 export const testWrapper = {
   run:()=>{}
 }
 export const LoginForm = () => {
+  const {setNotification}=useNotification()
+  const {setUser}=useAuth()
   const router = useRouter()
   const postMutation = useMutation({
     mutationFn:fetchLogin,
     mutationKey:['login'],
     onSuccess:(data)=>{
-      //save to auth state
-      //redirect home
+      if (data.status && data.status!==200){
+        setNotification({
+          time:3000,type:"error",message:data.message,open:true
+        })
+      }
       console.log(data)
-      let cookies = document.cookie
-      //console.log(cookies)
-     // router.push("/")
-     //todo handle errors but good request
+      if (data.status===200 && data.success){
+        const user = {email:data.user_email,isAuth:true}
+       setUser(user)
+        localStorage.setItem('isAuth',JSON.stringify(user))
+      }
      
     },
     onError:(error)=>{
-      
+      setNotification({
+        time:3000,type:"error",message:"An error has occured",open:true
+      })
     }
+    
   })
     const [email,setEmail]=useState("bill@email.com")
     const [pw,setPw]=useState("274759")
@@ -37,6 +50,7 @@ export const LoginForm = () => {
       postMutation.mutate(payload)
 
     }
+   
   return (
     <form 
     data-testid="auth-form"
@@ -45,13 +59,13 @@ export const LoginForm = () => {
       <h1>Login</h1>
         <label 
         className=''
-        htmlFor='email'>Email</label>
+        htmlFor='email'>Email</label><span className={styles.demo} onClick={()=>setEmail("demo@email.com")}>Click to use demo:demo@email.com <PiSelectionForegroundDuotone/></span>
         <input 
         className='' autoComplete='on'
         name='email' id='email'
         type='email' value={email} onChange={(e)=>setEmail(e.target.value)}/>
         
-        <label htmlFor='pw'>Password</label>
+        <label htmlFor='pw'>Password</label><span className={styles.demo} onClick={()=>setPw("Demo1234")}>Click to use demo:Demo1234 <PiSelectionForegroundDuotone/></span>
         <div className='flex flex-row flex-nowrap 
         relative w-full items-center'>
         <input 
@@ -70,7 +84,7 @@ export const LoginForm = () => {
       <button
       disabled={pw.length===0||email.length===0}
       className=''
-      >Login</button>
+      >{postMutation.isLoading?<span>Loading</span>:<span>Login</span>}</button>
       <Link
       href="/"
       >Forgot Password</Link>

@@ -45,7 +45,7 @@ export const Header = () => {
       }
     },[isHamburger])
     useEffect(()=>{
-      console.log(firstVisit)
+      
        let htmlTag = document.querySelector("html")
       if (firstVisit){
         htmlTag.style.overflowY="hidden"
