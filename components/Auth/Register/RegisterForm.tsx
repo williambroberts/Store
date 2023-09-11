@@ -35,7 +35,9 @@ const handleRequirements = (data:dataType)=>{
   if (emailPattern.test(data.email)){
     requirements.emailFormat=true
   }
-
+  if (data.password){
+    requirements.password=true
+  }
   
   if (passwordLength.test(data.password)){
     count++
@@ -52,6 +54,9 @@ const handleRequirements = (data:dataType)=>{
   if (passwordUppercase.test(data.password)){
     count++
     requirements.uppercase=true
+  }
+  if (data.password === data.confirm && data.password.length){
+    requirements.confirm=true
   }
   let isValid = false
   if (requirements.email && requirements.emailFormat && requirements.confirm && requirements.password && count >=3){
@@ -103,7 +108,7 @@ export const RegisterForm = () => {
     useEffect(()=>{
      const res:any = handleRequirements({email:email,password:pw,confirm:pw2})
       setIsValid(res.isValid)
-      
+      console.log(res.requirements)
       setRequirements(res.requirements)
     },[email,pw,pw2])
 

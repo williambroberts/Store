@@ -58,7 +58,7 @@ export const LoginForm = () => {
     }
    useEffect(()=>{
     let demo = searchParams.get("demo")
-    if (demo){
+    if (demo==="true"){
       setEmail("demo@email.com")
       setPw("Demo1234")
       setNotification({
