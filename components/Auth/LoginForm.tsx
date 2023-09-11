@@ -1,17 +1,41 @@
 "use client"
+import { useMutation } from '@tanstack/react-query'
 import Link from 'next/link'
 import React, { useState } from 'react'
 import { AiOutlineEye } from 'react-icons/ai'
+import { fetchLogin } from '../../utils/Fetch/fetchLogin'
+import { useRouter } from 'next/navigation'
 export const testWrapper = {
   run:()=>{}
 }
 export const LoginForm = () => {
-    const [email,setEmail]=useState("")
-    const [pw,setPw]=useState("")
+  const router = useRouter()
+  const postMutation = useMutation({
+    mutationFn:fetchLogin,
+    mutationKey:['login'],
+    onSuccess:(data)=>{
+      //save to auth state
+      //redirect home
+      console.log(data)
+      let cookies = document.cookie
+      //console.log(cookies)
+     // router.push("/")
+     //todo handle errors but good request
+     
+    },
+    onError:(error)=>{
+      
+    }
+  })
+    const [email,setEmail]=useState("bill@email.com")
+    const [pw,setPw]=useState("274759")
     const [type,setType]=useState<"password"|"text">("password")
-    const handleLogin = (e)=>{
+    const handleLogin = (e:React.FormEvent<HTMLFormElement>)=>{
       testWrapper.run()
       e.preventDefault()
+      const payload = {email:email,password:pw}
+      postMutation.mutate(payload)
+
     }
   return (
     <form 
@@ -23,7 +47,7 @@ export const LoginForm = () => {
         className=''
         htmlFor='email'>Email</label>
         <input 
-        className=''
+        className='' autoComplete='on'
         name='email' id='email'
         type='email' value={email} onChange={(e)=>setEmail(e.target.value)}/>
         
@@ -32,7 +56,7 @@ export const LoginForm = () => {
         relative w-full items-center'>
         <input 
         data-testid="pw"
-        name='pw' id='pw'
+        name='pw' id='pw' autoComplete='off'
         type={type} value={pw} onChange={(e)=>setPw(e.target.value)}/>
         <div 
         role='button'

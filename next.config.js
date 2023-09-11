@@ -3,9 +3,9 @@ const nextConfig = {
     // experimental: {
     //     serverActions: false,
     //   },
-      optimization:{
-        mergeDuplicateChunks:true,
-      },
+      // optimization:{
+      //   mergeDuplicateChunks:true,
+      // },
       images: {
         remotePatterns: [
           {

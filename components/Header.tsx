@@ -9,11 +9,10 @@ import { Hamburger } from './Hamburger'
 import ReactColorThemeButton from '../Theme/ThemeButton'
 
 
-import { Counter } from './Counter'
+
 import { PersistReset } from './PersistReset'
 import { SearchBarButton } from './SearchBarButton'
-import IconHome_door from './icons/home'
-import IconInfoSquare from './icons/about'
+
 import { usePathname, useSearchParams } from 'next/navigation'
 import { useReactTheme } from '../Theme/ThemeContext'
 import { useNotification } from '../contexts/NotificationContext'
@@ -21,14 +20,15 @@ import NotificationPortal from './Portals/NotificationPortal'
 import { Cart } from './Cart'
 import { GreyScaleButton } from '../Theme/GreyScaleButton'
 import { HeaderMenu } from './HeaderMenu'
+import { FirstVisitPortal } from './Portals/FirstVisitPortal/FirstVisitPortal'
 
 
 
 export const Header = () => {
   const {theme}=useReactTheme()
-  const {notification,setNotification}=useNotification()
-    const {modal,setModal,count,total}=useStore()
-    const searchParams = useSearchParams()
+  const {notification,firstVisit}=useNotification()
+    const {modal}=useStore()
+    
   
     const [isHamburger,setIsHamburger]=useState<boolean>(false)
     const pathname=usePathname()
@@ -44,7 +44,15 @@ export const Header = () => {
         htmlTag.style.overflowY="scroll"
       }
     },[isHamburger])
-    
+    useEffect(()=>{
+      console.log(firstVisit)
+       let htmlTag = document.querySelector("html")
+      if (firstVisit){
+        htmlTag.style.overflowY="hidden"
+      }else if (!isHamburger){
+        htmlTag.style.overflowY="scroll"
+      }
+    },[firstVisit])
 
    
 
@@ -64,7 +72,7 @@ export const Header = () => {
             <PersistReset/>
            
          
-          
+           {firstVisit? <FirstVisitPortal/>:<div></div>}
             {notification.open? <NotificationPortal/> :<div></div>}
             {modal? <CheckoutPortal/>:<div></div>}
             <button

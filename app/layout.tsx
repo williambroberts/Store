@@ -13,6 +13,7 @@ import { SideBar } from '../components/SideBar'
 import ErrorBoundary  from '../utils/Errors/ErrorBoundary'
 
 import { QueryProvider } from '../contexts/QueryProvider'
+import { AuthProvider } from '../contexts/AuthProvider'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
@@ -34,6 +35,7 @@ export default function RootLayout({ children }) {
           <QueryProvider>
         <ReactThemeProvider>
           <NotificationProvider>
+            <AuthProvider>    
           <ContextConsumer>
         {children}
         <Footer/>
@@ -42,6 +44,7 @@ export default function RootLayout({ children }) {
         <div id="portal"></div>
         <div id="notification"></div>
         </ContextConsumer>   
+        </AuthProvider>
         </NotificationProvider>
         </ReactThemeProvider>   
         </QueryProvider>

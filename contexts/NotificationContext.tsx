@@ -7,6 +7,8 @@ interface NotificationInterface {
     notification:any;
     initialState:any;
     setNotification:(newNotification:any)=>void;
+    firstVisit:boolean;
+    setFirstVisit:Function;
 }
 type ChildrenProp = {
     children:React.ReactNode | any;
@@ -19,10 +21,22 @@ const initialState =  {
     time:3000,
 
 }
-
+function getFirstVisitState(){
+    
+    try {
+        let value = localStorage.getItem('firstVisit')
+        if (value){
+            return Boolean(JSON.stringify(value))
+        }
+        
+    }catch(e){
+        //
+    }
+    return true
+}
 const NotificationContext = createContext<NotificationInterface|undefined>(undefined)
 const NotificationProvider = ({children}:ChildrenProp) => {
-    
+    const [firstVisit,setFirstVisit]=useState<boolean>(getFirstVisitState)
     const {ResetCart}=useStore()
     const searchParams = useSearchParams()
     const [notification,setNotification]=useState(initialState)
@@ -58,7 +72,7 @@ const NotificationProvider = ({children}:ChildrenProp) => {
         notification:notification,
         setNotification:setNotification,
         notificationHandler:notificationHandler,
-        initialState:initialState,
+        initialState:initialState,setFirstVisit:setFirstVisit,firstVisit:firstVisit
     }
 
   return (

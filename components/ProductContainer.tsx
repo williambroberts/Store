@@ -48,7 +48,7 @@ export const ProductContainer = ({prices}) => {
         style={{visibility:`${start===0? "hidden":"visible"}`}}
         className={`pagnation__left`}>previous</button>
             {arr.map((item,index)=>
-            <button 
+            <button key={index}
             className={`${start/6===index?"active":""}`}
             onClick={()=>setStart(index*6)}
             >{index+1}</button>)}
