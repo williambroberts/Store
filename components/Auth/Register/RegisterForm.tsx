@@ -72,7 +72,7 @@ export const RegisterForm = () => {
         setNotification({
           time:3000,type:"success",message:"Success, please login",open:true
         })
-        //router.push("/login")
+        router.push("/login")
       }else {
         console.log(data)
         setNotification({
@@ -91,6 +91,10 @@ export const RegisterForm = () => {
     }
     
   })
+
+    const handleDemo = ()=>{
+      router.push(`/login?demo=true`)
+    }
     const [email,setEmail]=useState("")
     const [pw,setPw]=useState("")
     const [pw2,setPw2]=useState("")
@@ -99,7 +103,7 @@ export const RegisterForm = () => {
     useEffect(()=>{
      const res:any = handleRequirements({email:email,password:pw,confirm:pw2})
       setIsValid(res.isValid)
-      console.log(res.requirements)
+      
       setRequirements(res.requirements)
     },[email,pw,pw2])
 
@@ -111,18 +115,43 @@ export const RegisterForm = () => {
       postMutation.mutate(payload)
     }
   return (
-    <section>
-      <div>
-        <span>Email</span>
-        <div>
-          Email entered {requirements?.email? <BsFillBagCheckFill/>:<BiSolidErrorCircle/>}
-        </div>
-      </div>
-
+    <section className={styles.section}>
+     
     <form 
     onSubmit={handleLogin}
     className='auth__form'>
       <h1>Register</h1>
+      <div className='w-full grid grid-cols-2'>
+
+     
+<div className={styles.criteria}>
+    <h3>Email</h3>
+  <div className='flex flex-nowrap w-full items-center gap-2'>
+     Is entered {requirements?.email? <abbr><BsFillBagCheckFill/></abbr>:<i><BiSolidErrorCircle/></i> }
+  </div>
+  <div className='flex flex-nowrap w-full items-center gap-2'>
+    Has valid format {requirements?.emailFormat?<abbr><BsFillBagCheckFill/></abbr>:<i><BiSolidErrorCircle/></i>}
+  </div>
+</div>
+<div className={styles.criteria}>
+    <h3>Password</h3>
+  <div className='flex flex-nowrap w-full items-center gap-2'>
+    8+ characters {requirements?.length? <abbr><BsFillBagCheckFill/></abbr>:<i><BiSolidErrorCircle/></i> }
+  </div>
+  <div className='flex flex-nowrap w-full items-center gap-2'>
+    1+ uppercase letter {requirements?.uppercase?<abbr><BsFillBagCheckFill/></abbr>:<i><BiSolidErrorCircle/></i>}
+  </div>
+  <div className='flex flex-nowrap w-full items-center gap-2'>
+    1+ lowercase letter {requirements?.lowercase?<abbr><BsFillBagCheckFill/></abbr>:<i><BiSolidErrorCircle/></i>}
+  </div>
+  <div className='flex flex-nowrap w-full items-center gap-2'>
+    1+ number {requirements?.number?<abbr><BsFillBagCheckFill/></abbr>:<i><BiSolidErrorCircle/></i>}
+  </div>
+  <div className='flex flex-nowrap w-full items-center gap-2'>
+    Confirm matches {requirements?.confirm?<abbr><BsFillBagCheckFill/></abbr>:<i><BiSolidErrorCircle/></i>}
+  </div>
+</div>
+</div>
         <label 
         className=''
         htmlFor='email'>Email</label>
@@ -149,6 +178,9 @@ export const RegisterForm = () => {
       <Link href="/login">
       Have an account already? Sign In
       </Link>
+      <span className={styles.demo} onClick={handleDemo}>
+        Sign in with Demo account
+      </span>
     </form>
     </section>
   )

@@ -75,7 +75,7 @@ export const Header = () => {
             <PersistReset/>
            
          
-           {firstVisit===true? <FirstVisitPortal/>:<div></div>}
+           {/* {firstVisit===true? <FirstVisitPortal/>:<div></div>} */}
             {notification.open? <NotificationPortal/> :<div></div>}
             {modal? <CheckoutPortal/>:<div></div>}
             <button

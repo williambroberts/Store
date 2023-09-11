@@ -1,0 +1,25 @@
+.criteria {
+    
+    @apply flex flex-col  gap-0 text-sm
+}
+
+.criteria abbr {
+    
+    @apply text-green-900 bg-green-50
+}
+
+.criteria i {
+    @apply text-red-900 bg-red-50 rounded-md
+}
+.criteria h3 {
+    @apply font-bold text-sm uppercase rounded-md
+}
+
+.demo {
+    color: var(--t-3);
+    @apply text-xs 
+}
+
+.demo:hover {
+    @apply underline underline-offset-1 cursor-pointer
+}

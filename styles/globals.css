@@ -728,14 +728,14 @@ footer {
  
   
   @apply w-full h-full px-3 py-3 
-  rounded-md bg-red-100 text-red-700
+  rounded-md bg-red-50 text-red-900
   font-medium 
   ;
 }
 .notification__success {
   
   @apply w-full h-full px-3 py-3 
-  rounded-md bg-green-100 text-green-700
+  rounded-md bg-green-50 text-green-900
   font-medium 
   ;
 }
@@ -756,7 +756,7 @@ footer {
   width: min(95vw,500px);
   background-color: var(--bg-2);
   color: var(--t-1);
-  @apply p-3 sm:p-6 md:p-12
+  @apply px-0 py-3 sm:p-6 md:p-12
   rounded-md flex flex-col
   items-center
 

@@ -1,10 +1,10 @@
 "use client"
 import { useMutation } from '@tanstack/react-query'
 import Link from 'next/link'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { AiOutlineEye } from 'react-icons/ai'
 import { fetchLogin } from '../../utils/Fetch/fetchLogin'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import styles from "./LoginForm.module.css"
 import {PiSelectionForegroundDuotone} from "react-icons/pi"
 import { useNotification } from '../../contexts/NotificationContext'
@@ -16,6 +16,7 @@ export const LoginForm = () => {
   const {setNotification}=useNotification()
   const {setUser}=useAuth()
   const router = useRouter()
+  const searchParams = useSearchParams()
   const postMutation = useMutation({
     mutationFn:fetchLogin,
     mutationKey:['login'],
@@ -55,7 +56,16 @@ export const LoginForm = () => {
       postMutation.mutate(payload)
 
     }
-   
+   useEffect(()=>{
+    let demo = searchParams.get("demo")
+    if (demo){
+      setEmail("demo@email.com")
+      setPw("Demo1234")
+      setNotification({
+        type:"success",time:3000,message:"Ready to sign in ",open:true
+      })
+    }
+   },[])
   return (
     <form 
     data-testid="auth-form"
