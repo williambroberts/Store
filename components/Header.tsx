@@ -1,6 +1,6 @@
 "use client"
 import Link from 'next/link'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'  
 import useStore from '../zustand/store'
 import CheckoutPortal from './Portals/CheckoutPortal'
 
@@ -13,7 +13,7 @@ import ReactColorThemeButton from '../Theme/ThemeButton'
 import { PersistReset } from './PersistReset'
 import { SearchBarButton } from './SearchBarButton'
 
-import { usePathname, useSearchParams } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import { useReactTheme } from '../Theme/ThemeContext'
 import { useNotification } from '../contexts/NotificationContext'
 import NotificationPortal from './Portals/NotificationPortal'
@@ -23,6 +23,7 @@ import { HeaderMenu } from './HeaderMenu'
 import { FirstVisitPortal } from './Portals/FirstVisitPortal/FirstVisitPortal'
 import { useAuth } from '../contexts/AuthProvider'
 import { Logoutbutton } from './Auth/Logoutbutton'
+import { refreshApi } from '../utils/Fetch/fetchAwake'
 
 
 
@@ -35,7 +36,9 @@ export const Header = () => {
   
     const [isHamburger,setIsHamburger]=useState<boolean>(false)
     const pathname=usePathname()
-  
+    useEffect(()=>{
+      refreshApi()
+    },[])
    
  
 
@@ -59,7 +62,7 @@ export const Header = () => {
 
    
 
-   console.warn(user,firstVisit)
+   //console.warn(user,firstVisit)
   return (
     <header
     style={{display:pathname==="/login"||pathname==="/register"?
@@ -75,7 +78,7 @@ export const Header = () => {
             <PersistReset/>
            
          
-           {/* {firstVisit===true? <FirstVisitPortal/>:<div></div>} */}
+           
             {notification.open? <NotificationPortal/> :<div></div>}
             {modal? <CheckoutPortal/>:<div></div>}
             <button

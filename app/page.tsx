@@ -8,6 +8,7 @@ import { Hero } from "../components/Hero";
 import { Sale } from "../components/Sale";
 import { OurProducts } from "../components/OurProducts";
 import { ProductContainer } from "../components/ProductContainer";
+import { FirstVisitDialog } from "../components/Dialogs/FirstVisitDialog";
 
 //1687321829
 
@@ -52,6 +53,7 @@ export default async function Home() {
     <Animator delay={(prices.length+4)*0.1}>
       <EmailBanner/>
       </Animator>
+      <FirstVisitDialog/>
     </main>
   )
 }

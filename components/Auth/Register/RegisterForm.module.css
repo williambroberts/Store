@@ -5,11 +5,11 @@
 
 .criteria abbr {
     
-    @apply text-green-900 bg-green-50
+    @apply text-green-900 
 }
 
 .criteria i {
-    @apply text-red-900 bg-red-50 rounded-md
+    @apply text-red-900  rounded-md
 }
 .criteria h3 {
     @apply font-bold text-sm uppercase rounded-md

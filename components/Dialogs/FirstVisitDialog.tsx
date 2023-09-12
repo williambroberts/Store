@@ -1,18 +1,20 @@
 "use client"
-import Link from 'next/link'
-import React from 'react'
-import ReactDom from 'react-dom' 
-import styles from "./FirstVisitPortal.module.css"
+import React, { useEffect } from 'react'
+import styles from "./FirstVisitDialog.module.css"
+import { useNotification } from '../../contexts/NotificationContext'
 import { AiOutlineClose } from 'react-icons/ai'
-import { useNotification } from '../../../contexts/NotificationContext'
+import mobile from "../../public/pexels-leonid-altman-12883025.jpg"
+import laptop from "../../public/pexels-leonid-altman-12883031.jpg"
 import Image from 'next/image'
-import mobile from "../../../public/pexels-leonid-altman-12883025.jpg"
-import laptop from "../../../public/pexels-leonid-altman-12883031.jpg"
-export const FirstVisitPortal = () => {
-  const {setFirstVisit}=useNotification()
+import Link from 'next/link'
+export const FirstVisitDialog = () => {
+    const {setFirstVisit}=useNotification()
   const handleClose = ()=>{
     localStorage.setItem('firstVisit',JSON.stringify(false))
     setFirstVisit(false)
+    let d = document.querySelector('dialog')
+    d.close()
+    console.log(d)
   }
   const handleClick = (e:any)=>{
     let article = document.querySelector('[data-id="fta"]')
@@ -22,11 +24,41 @@ export const FirstVisitPortal = () => {
       ){
       localStorage.setItem('firstVisit',JSON.stringify(false))
     setFirstVisit(false)
+    let d = document.querySelector('dialog')
+    d.close()
+    console.log(d)
       }
     return
   }
-  return ReactDom.createPortal(
-    <div
+
+ 
+    useEffect(()=>{
+      //todo if not first fisit 
+      let d:any = document.getElementById('dialog')
+      
+      try {
+        let firstVisit = localStorage.getItem('firstVisit')
+        if (firstVisit){
+          if (JSON.parse(firstVisit)!==false){
+            
+            d.showModal()
+          }
+        }else {
+         
+          d.showModal()
+        }
+      }catch(e){
+
+      }
+      
+    },[])
+    
+  return (
+    <div>
+
+   
+    <dialog id='dialog'>
+<div
     onClick={handleClick}
     className={styles.main}
     data-theme="light"
@@ -54,7 +86,8 @@ export const FirstVisitPortal = () => {
       
 
     </article>
-    </div>,document?.documentElement
-  
+    </div>
+    </dialog>
+    </div>
   )
 }
