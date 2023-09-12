@@ -11,7 +11,7 @@ export const SearchBarButton = ({}:theProps) => {
   const [isOpen,setIsOpen]=useState<boolean>(false)
   const [prices,setPrices]=useState([])
     const open = async(e)=>{
-      console.log("clicked")
+      //console.log("clicked")
        
         let html = document.querySelector("html")
         try{
@@ -19,7 +19,7 @@ export const SearchBarButton = ({}:theProps) => {
             html.style.overflowY="hidden"
           
         }catch(err){
-          console.log(err)
+          //console.log(err)
         }
     }
 

@@ -14,7 +14,7 @@ export const FirstVisitDialog = () => {
     setFirstVisit(false)
     let d = document.querySelector('dialog')
     d.close()
-    console.log(d)
+    //console.log(d)
   }
   const handleClick = (e:any)=>{
     let article = document.querySelector('[data-id="fta"]')
@@ -26,7 +26,7 @@ export const FirstVisitDialog = () => {
     setFirstVisit(false)
     let d = document.querySelector('dialog')
     d.close()
-    console.log(d)
+    //console.log(d)
       }
     return
   }

@@ -41,7 +41,7 @@ const {setNotification}=useNotification()
         img.requestFullscreen()
       }
     }catch(err){
-      console.log(err)
+      //console.log(err)
     }
    
    
@@ -62,7 +62,7 @@ const {setNotification}=useNotification()
         image:product.images[0],
         blur:product.metadata.blur
       }
-      console.log(newItem,"added to cart")
+      //console.log(newItem,"added to cart")
       AddProductToCart(newItem)
     }
     const handleMouseOver =(e)=>{

@@ -26,7 +26,7 @@ export const LoginForm = () => {
           time:3000,type:"cancel",message:data.message,open:true
         })
       }
-      console.log(data)
+      //console.log(data)
       if (data.status===200 && data.success){
         const user = {email:data.user_email,isAuth:true}
        setUser(user)

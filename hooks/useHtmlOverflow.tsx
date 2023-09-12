@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 
 const useHtmlOverflow = (value)=>{
 
-    console.log("useHtmloverFLow")
+    //console.log("useHtmloverFLow")
     const [dummy,setDummy]=useState(null)
     useEffect(()=>{
         let htmlTag = document.querySelector("html")

@@ -9,7 +9,7 @@ export async function POST (request) {
     const body = await request.json()
     const isAuth = body.isAuth
     let coupon = null
-    console.log(isAuth)
+    //console.log(isAuth)
 
     
         if (isAuth.status===200 && isAuth.isAuth){
@@ -18,7 +18,7 @@ export async function POST (request) {
                 percent_off: 10.0,
                 
               });
-              console.log(coupon.id,"👍🏻👍🏻")
+              //console.log(coupon.id,"👍🏻👍🏻")
               
               
               const session = await stripe.checkout.sessions.create({

@@ -49,7 +49,7 @@ const CheckoutPortal = () => {
       })
       const isAuthRes = await fetchIsAuth()
       const isAuth = await isAuthRes.json()
-      console.log(isAuth)
+      //console.log(isAuth)
       
       const options = {
         method: 'POST',
@@ -61,7 +61,7 @@ const CheckoutPortal = () => {
       }
         fetch(url,options).then((res)=>res.json())
          .then((data)=>{
-          console.log(data)
+          //console.log(data)
           //todo if data =origin = store origin ie fail
           window.location.assign(data)
           setModal()

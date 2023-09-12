@@ -20,7 +20,7 @@ export const Logoutbutton = () => {
             }
         },
         onError:(error)=>{
-            console.warn(error)
+            //console.warn(error)
         }
     })
     //todo error,loading,success,

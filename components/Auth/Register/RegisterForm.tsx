@@ -79,7 +79,7 @@ export const RegisterForm = () => {
         })
         router.push("/login")
       }else {
-        console.log(data)
+        //console.log(data)
         setNotification({
           time:3000,type:"cancel",message:data.message,open:true
         })
