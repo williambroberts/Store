@@ -34,7 +34,7 @@ export const LoginForm = () => {
         time:3000,type:"success",message:"Logged in succesfully",open:true
       })
         localStorage.setItem('user',JSON.stringify(user))
-        //router.push("/")
+        router.push("/")
       }
      
     },
