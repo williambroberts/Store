@@ -108,7 +108,7 @@ export const RegisterForm = () => {
     useEffect(()=>{
      const res:any = handleRequirements({email:email,password:pw,confirm:pw2})
       setIsValid(res.isValid)
-      console.log(res.requirements)
+      //console.log(res.requirements)
       setRequirements(res.requirements)
     },[email,pw,pw2])
 
