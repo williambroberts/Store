@@ -5,7 +5,7 @@ import {CgCloseO} from "react-icons/cg"
 import { useNotification } from '../../../contexts/NotificationContext';
 import { useMutation } from '@tanstack/react-query';
 import { createSuggestion } from './suggestionFetch';
-import base from '../../../utils/base';
+import  { origin } from '../../../utils/base';
 interface theProps {
   open:boolean;
   setOpen:Function;
@@ -46,13 +46,16 @@ export const SuggestPortal = ({open,setOpen}:theProps) => {
     
     //e.preventDefault()
     
-    const url = `${base}/suggest`
-    const options = {
-      method:"POST",
-      headers:{'Content-Type':'application/json'},
-      credendtials:'include',
-      body:JSON.stringify(data)
-    }
+    const url = `${origin}/suggest`
+    let options: any = {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      credentials: 'include', 
+      body: JSON.stringify(data)
+    };
+    
 
     postSuggestion.mutate({url,options})
 

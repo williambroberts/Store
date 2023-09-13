@@ -7,7 +7,7 @@ export const fetchAwake =async ()=>{
         credentials:'include'
     }
     try {
-        const res = await fetch(url,options)
+        const res = await fetch(url)
         
         return res
     }catch(e){

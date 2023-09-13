@@ -46,8 +46,8 @@ export const LoginForm = () => {
     }
     
   })
-    const [email,setEmail]=useState("bill@email.com")
-    const [pw,setPw]=useState("274759")
+    const [email,setEmail]=useState("")
+    const [pw,setPw]=useState("")
     const [type,setType]=useState<"password"|"text">("password")
     const handleLogin = (e:React.FormEvent<HTMLFormElement>)=>{
       testWrapper.run()
