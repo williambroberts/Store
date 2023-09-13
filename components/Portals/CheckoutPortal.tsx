@@ -14,10 +14,32 @@ import IconEcommerce_cart_remove from '../icons/CartX'
 import { useReactTheme } from '../../Theme/ThemeContext'
 import IconPadlock from '../icons/padlock'
 import { fetchIsAuth } from '../../utils/Fetch/fetchIsAuth'
+import { useQuery } from '@tanstack/react-query'
+import { useNotification } from '../../contexts/NotificationContext'
+import Link from 'next/link'
 const CheckoutPortal = () => {
     const {setModal,cart,total,ResetCart,count}=useStore()
     const {theme}=useReactTheme()
-    
+    const {setNotification}=useNotification()
+    const [isAuth,setIsAuth]=useState<boolean>(false)
+    const isAuthQuery = useQuery({
+      queryKey:['isAuth'],
+      queryFn:fetchIsAuth,
+      onSuccess:async(data)=>{
+        console.log(data)
+        let d = await data.json()
+        console.log(d)
+        if (d.isAuth===true){
+          setIsAuth(true)
+          setNotification({
+            time:3000,open:true,message:"10% discount ",type:"success"
+          })
+        }
+      },
+      onError:(err)=>{
+        console.log(err)
+      }
+    })
   useEffect(()=>{
     if (total===0){
       setModal()
@@ -140,7 +162,9 @@ const CheckoutPortal = () => {
             style:"currency",currency:"GBP"
           })}</span>
          </div>
-         <div className='text-sm'>Any discount will be applied at checkout</div>
+         <div className='text-sm'>{isAuth? <div className=''>A <strong>10% discount</strong> will be applied at checkout</div>:
+         <div><Link href={"/register"} className='hover:underline'>Sign up for a 10% discount</Link></div>
+         }</div>
           <button
          className='text-base flex flex-row items-center
          gap-2  w-full justify-center mt-8

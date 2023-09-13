@@ -2,8 +2,12 @@ import { origin } from "../base"
 
 export const fetchAwake =async ()=>{
     const url = `${origin}`
+    const options:any = {
+        method:"GET",
+        credentials:'include'
+    }
     try {
-        const res = await fetch(url)
+        const res = await fetch(url,options)
         
         return res
     }catch(e){
@@ -13,6 +17,7 @@ export const fetchAwake =async ()=>{
 }
 
 const refreshApi = async ()=>{
+    console.log("refreshing api")
     try {
         let refresh = localStorage.getItem('refresh-api')
         let now = new Date().getTime()

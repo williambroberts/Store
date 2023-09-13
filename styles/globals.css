@@ -61,8 +61,8 @@ input, button, textarea, select {
      --t-2:#38393B;
      --t-3:#898E96;
      --t-4:#989EA6;
-     /* --accent:#FF4A01; 
-    --accent:#00aaff; */
+     --accent:#FF4A01; 
+    --accent:var(--t-3);
    
 
    }

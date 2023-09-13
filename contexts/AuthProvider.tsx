@@ -26,7 +26,7 @@ const getInitialAuthState = async():Promise<any>=>{
                     return null
                 }
                 const data = await res.json()
-                console.warn(data,"data",res)
+                //console.warn(data,"data",res)
                 if (data.isAuth!==true){
                     user.isAuth===false
 
