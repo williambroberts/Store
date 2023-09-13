@@ -5,6 +5,8 @@ import { useNotification } from '../contexts/NotificationContext'
 import { useMutation } from '@tanstack/react-query'
 import { fetchSubscribe } from '../utils/Fetch/fetchSubscribe'
 import { fetchIsAuth } from '../utils/Fetch/fetchIsAuth'
+import { createSuggestion } from '../utils/Fetch/fetchSuggest'
+import { origin } from '../utils/base'
 export const EmailBanner = () => {
   const {setNotification}=useNotification()
   let nums = Array(60).fill(1)
@@ -13,10 +15,10 @@ export const EmailBanner = () => {
   })
     const [email,setEmail]=useState("")
    let subscribeMutation = useMutation({
-    mutationKey:['subscribe'],
+    
     mutationFn:fetchSubscribe,
     onError:(error)=>{
-
+      
     },
     onSuccess:(data)=>{
       setNotification({
@@ -26,10 +28,18 @@ export const EmailBanner = () => {
       
     }
    })
-  const handleSubmit = (e)=>{
+  const handleSubmit = (e:any)=>{
     e.preventDefault()
-    const payload = {email:email}
-    subscribeMutation.mutate(payload)
+    const url = `${origin}/auth/login`
+    let options: any = {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      credentials: 'include', 
+      body: JSON.stringify(email)
+    };
+    subscribeMutation.mutate({url,options})
     
   }
   return (

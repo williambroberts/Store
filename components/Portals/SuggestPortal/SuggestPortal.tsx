@@ -1,10 +1,11 @@
+"use client"
 import React, { useState } from 'react'
 import ReactDom from "react-dom"
 import styles from "./SuggestPortal.module.css"
 import {CgCloseO} from "react-icons/cg"
 import { useNotification } from '../../../contexts/NotificationContext';
 import { useMutation } from '@tanstack/react-query';
-import { createSuggestion } from './suggestionFetch';
+import { createSuggestion } from '../../../utils/Fetch/fetchSuggest';
 import  { origin } from '../../../utils/base';
 interface theProps {
   open:boolean;
