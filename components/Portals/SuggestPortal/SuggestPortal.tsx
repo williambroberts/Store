@@ -47,7 +47,7 @@ export const SuggestPortal = ({open,setOpen}:theProps) => {
     
     //e.preventDefault()
     
-    const url = `${origin}/suggest`
+    const url = `${origin}/store/suggest`
     let options: any = {
       method: "POST",
       headers: {

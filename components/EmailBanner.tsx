@@ -30,7 +30,7 @@ export const EmailBanner = () => {
    })
   const handleSubmit = (e:any)=>{
     e.preventDefault()
-    const url = `${origin}/auth/login`
+    const url = `${origin}/store/email`
     let options: any = {
       method: "POST",
       headers: {
