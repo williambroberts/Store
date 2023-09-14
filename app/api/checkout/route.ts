@@ -12,7 +12,7 @@ export async function POST (request) {
     //console.log(isAuth)
 
     
-        if (isAuth.status===200 && isAuth.isAuth){
+        if (isAuth?.status===200 && isAuth?.isAuth){
             //create coupon
              coupon = await stripe.coupons.create({
                 percent_off: 10.0,
