@@ -26,13 +26,13 @@ const CheckoutPortal = () => {
       queryKey:['isAuth'],
       queryFn:fetchIsAuth,
       onSuccess:async(data)=>{
-        console.log(data)
+        //console.log(data)
         let d = await data.json()
-        console.log(d)
+        //console.log(d)
         if (d.isAuth===true){
           setIsAuth(true)
           setNotification({
-            time:3000,open:true,message:"10% discount ",type:"success"
+            time:3000,open:true,message:"You have a 10% discount ",type:"success"
           })
         }
       },
@@ -69,8 +69,14 @@ const CheckoutPortal = () => {
         }
         
       })
-      const isAuthRes = await fetchIsAuth()
-      const isAuth = await isAuthRes.json()
+      let isAuth = null
+      try {
+        const isAuthRes = await fetchIsAuth()
+        isAuth = await isAuthRes.json()
+      }catch(e){
+
+      }
+     
       //console.log(isAuth)
       
       const options = {
