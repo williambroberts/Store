@@ -21,13 +21,13 @@ export const LoginForm = () => {
     mutationFn:fetchLogin,
     mutationKey:['login'],
     onSuccess:(data)=>{
-      if (data.status && data.status!==200){
-        setNotification({
+      if (data.status && data!==200){
+        setNotification({ 
           time:3000,type:"cancel",message:data.message,open:true
         })
       }
       //console.log(data)
-      if (data.status===200 && data.success){
+      if (data.status===200 && data.isAuth){
         const user = {email:data.user_email,isAuth:true}
        setUser(user)
        setNotification({
