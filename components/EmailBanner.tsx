@@ -18,9 +18,10 @@ export const EmailBanner = () => {
     
     mutationFn:fetchSubscribe,
     onError:(error)=>{
-      
+      console.log(error)
     },
     onSuccess:(data)=>{
+      console.log(data)
       setNotification({
         type:"success",time:3000,message:"Subscribed successfully ✓",open:true
       })
@@ -30,7 +31,8 @@ export const EmailBanner = () => {
    })
   const handleSubmit = (e:any)=>{
     e.preventDefault()
-    const url = `${origin}/store/email`
+    //const url = `${origin}/store/email`
+    const url = "api/email"
     let options: any = {
       method: "POST",
       headers: {
@@ -71,7 +73,7 @@ export const EmailBanner = () => {
                 <input autoComplete='on'
                 className='email__input'
                 type='text' value={email} 
-                placeholder='Your email'
+                placeholder='Your email' required
                 onChange={(e)=>setEmail(e.target.value)}/>
                 <button
                 
