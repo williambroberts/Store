@@ -21,16 +21,36 @@ export const EmailBanner = () => {
       console.log(error)
     },
     onSuccess:(data)=>{
-      console.log(data)
-      setNotification({
-        type:"success",time:3000,message:"Subscribed successfully ✓",open:true
-      })
+      console.log(data,data.errors)
+      if (data.errors){
+        let messages = ""
+        data.errors.forEach((e)=>{
+          messages+=e.msg+" "
+        })
+        
+        setNotification({
+          type:"cancel",time:3000,message:messages,open:true
+        })
+      }else {
+        setNotification({
+          type:"success",time:3000,message:"Subscribed successfully ✓",open:true
+        })
+      }
+      
       setEmail("")
       
     }
    })
   const handleSubmit = (e:any)=>{
     e.preventDefault()
+    let emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$/;
+    if (emailPattern.test(email)===false){
+      setNotification({
+        type:"cancel",time:3000,message:"Please provide a valid email format",open:true
+      })
+      return
+    }
+
     //const url = `${origin}/store/email`
     const url = "api/email"
     let options: any = {

@@ -5,4 +5,4 @@ const local = `http://localhost:5000`
 
 const origin =base2
 
-export {local,origin}
+export {local,origin}   
